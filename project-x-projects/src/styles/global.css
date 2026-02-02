@@ -453,7 +453,7 @@ body{
     top: var(--navH);
     left: 0;
     right: 0;
-    height: auto;
+    height: ;
     border-radius: 5px;
     grid-template-columns: 1fr;
   }
