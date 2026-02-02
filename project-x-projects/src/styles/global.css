@@ -453,7 +453,7 @@ body{
     top: var(--navH);
     left: 0;
     right: 0;
-    height: calc(55vh - var(--navH));
+    height: calc(60vh - var(--navH));
     border-radius: 5px;
     grid-template-columns: 1fr;
   }
@@ -492,16 +492,21 @@ body{
     border-top: 1px solid rgba(15, 23, 42, 0.14);
   }
 
-  .exploreMobileActions .btn{
-    display: block;
+  .exploreMobileActions .exploreDonateBtn{
+    display: flex;              /* keeps text centered */
+    align-items: center;
+    justify-content: center;
+
     width: 100%;
-    height: 44px;
+    min-height: 44px;           /* better than fixed height */
+    padding: 0 16px;            /* consistent */
     font-weight: 700;
+    text-align: center;
   }
 
   /* Member link spacing */
   .exploreMemberLink{
-    margin-top: 14px;
+    margin-top: 20px;
   }
 }
 
@@ -540,17 +545,36 @@ body{
   transform: translateY(-1px);
 }
 
-.btn{
-  border: 0px solid var(--buttonLine);
-  border-radius: 5px;
-  color: var(--ink);
-  padding: 8px 14px;
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 14px;
-  cursor: pointer;
-}
 
+
+.btn{
+  display: inline-flex;            /* KEY: makes <Link> behave like a button + lets width work */
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 16px;
+  min-height: 40px;
+
+  border: 1px solid transparent;   /* makes border-color in variants actually work */
+  border-radius: 5px;              /* remove the accidental border-radius: 0 */
+  background: transparent;
+  color: var(--ink);
+
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+  text-decoration: none;           /* for <Link>/<a> */
+  cursor: pointer;
+
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+
+  transition: transform 160ms ease, box-shadow 160ms ease, background 220ms ease, color 220ms ease, border-color 220ms ease;
+}
 .btn:hover{ box-shadow: var(--shadow); }
 
 .btnPrimary{
@@ -828,7 +852,6 @@ body{
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
 }
 .impactLink:hover{
   color: var(--brand);
@@ -1748,7 +1771,6 @@ body{
 .faqItem.isOpen .faqA{
   padding-bottom: 16px;
 }
-
 
 
 /* FOOTER */

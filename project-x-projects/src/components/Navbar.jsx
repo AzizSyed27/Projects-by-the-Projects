@@ -130,7 +130,7 @@ export default function Navbar() {
             </nav>
 
             <div className="exploreMobileActions">
-              <Link className="btn btnPrimary" to="/donate" onClick={() => setExploreOpen(false)}>
+              <Link className="btn btnPrimary exploreDonateBtn" to="/donate" onClick={() => setExploreOpen(false)}>
                 Donate
               </Link>
             </div>
