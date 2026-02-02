@@ -1,0 +1,458 @@
+.donatePage{
+  background: var(--bg1);
+}
+
+/* ================================
+   HERO
+================================== */
+.donateHero{
+  background: var(--bg1);
+  padding: 90px 0 105px;
+
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.donateHeroInner{
+  text-align: center;
+}
+
+.donateHeroTitle{
+  font-family: var(--font-heading);
+  font-size: clamp(44px, 4.6vw, 86px);
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+  color: var(--ink);
+}
+
+.donateHeroSub{
+  margin: 14px auto 0;
+  max-width: 72ch;
+  color: rgba(15, 23, 42, 0.75);
+  line-height: 1.7;
+  font-size: clamp(14px, 1.2vw, 18px);
+}
+
+/* ================================
+   HOW TO DONATE
+================================== */
+.donateHow{
+  background: var(--bg2);
+  padding: 90px 0 110px;
+
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.donateHowHead{
+  text-align: center;
+  margin-bottom: 34px;
+}
+
+.donateEyebrow{
+  font-size: clamp(14px, 1.2vw, 22px);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.donateHowTitle{
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  font-size: clamp(28px, 3.2vw, 46px);
+  margin: 0;
+}
+
+.donateHowSub{
+  margin: 12px auto 0;
+  max-width: 72ch;
+  color: rgba(15, 23, 42, 0.75);
+  line-height: 1.7;
+  font-size: clamp(14px, 1.2vw, 18px);
+}
+
+/* Donation card */
+.donateCard{
+  margin: 44px auto 0;
+  width: min(920px, 92vw);
+  background: var(--bg1);
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.donateCardTop{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 18px;
+  padding: 22px 22px 18px;
+  align-items: start;
+}
+
+.donateCardTopLeft{
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.donateIcon{
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  color: rgba(15, 23, 42, 0.70);
+}
+
+.donateMethod{
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(15, 23, 42, 0.78);
+  margin-top: 2px;
+}
+
+.donateTo{
+  margin-top: 6px;
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.70);
+}
+
+.donateEmail{
+  font-weight: 900;
+  color: rgba(15, 23, 42, 0.88);
+}
+
+.donateAnyAmount{
+  font-family: var(--font-heading);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  font-size: clamp(26px, 3vw, 40px);
+  color: rgba(15, 23, 42, 0.92);
+}
+
+.donateDivider{
+  height: 1px;
+  background: rgba(15, 23, 42, 0.10);
+}
+
+.donateBody{
+  padding: 18px 22px 10px;
+}
+
+
+.donateBodyKicker{
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(15, 23, 42, 0.70);
+  margin-bottom: 12px;
+}
+
+.donateChecks{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 34px;
+}
+
+.donateList{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.donateList li{
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 10px;
+  align-items: start;
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.72);
+  line-height: 1.5;
+}
+
+.donateCheck{
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: rgba(15, 23, 42, 0.72);
+  font-weight: 900;
+  font-size: 12px;
+}
+
+.donateCardBottom{
+  padding: 18px 22px 22px;
+  display: grid;
+  gap: 10px;
+}
+
+.donateBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+  background: var(--brand, #11878D);
+  color: #fff;
+  font-weight: 900;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+}
+
+.donateBtn:hover{
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  appearance: none;
+}
+
+.donateNote{
+  text-align: center;
+  font-size: 11px;
+  color: rgba(15, 23, 42, 0.58);
+}
+
+/* responsive */
+@media (max-width: 820px){
+  .donateChecks{
+    grid-template-columns: 1fr;
+  }
+  .donateCardTop{
+    grid-template-columns: 1fr;
+  }
+  .donateAnyAmount{
+    justify-self: start;
+  }
+}
+
+@media (max-width: 620px){
+  .donateHero{ padding: 70px 0 90px; }
+  .donateHow{ padding: 70px 0 90px; }
+}
+
+
+/* ================================
+   DIRECT (CHOOSE WHERE YOUR GIFT GOES)
+================================== */
+
+.donateDirect{
+  background: var(--bg4);
+  padding: 90px 0 110px;
+
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.donateDirectHead{
+  text-align: center;
+  margin: 0 auto 34px;
+  max-width: 950px;
+}
+
+.donateDirectTitle{
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  font-size: clamp(28px, 3.2vw, 46px);
+  margin: 0;
+}
+
+.donateDirectSub{
+  margin: 12px auto 0;
+  max-width: 72ch;
+  color: rgba(15, 23, 42, 0.75);
+  line-height: 1.7;
+  font-size: clamp(14px, 1.2vw, 18px);
+}
+
+/* the big split box */
+.donateDirectCard{
+  margin: 44px auto 0;
+  width: min(980px, 92vw);
+  border: 0px solid rgba(15, 23, 42, 0.14);
+  border-radius: 5px;
+  
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr; /* left larger */
+}
+
+/* left pane */
+.donateDirectLeft{
+  background: var(--bg3);
+  padding: 62px 58px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 360px;
+}
+
+.donateDirectIcon{
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  color: rgba(15, 23, 42, 0.70);
+  margin-bottom: 18px;
+}
+
+.donateDirectLeftTitle{
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  font-size: clamp(22px, 2.2vw, 34px);
+  margin: 0 0 10px;
+  max-width: 34ch;
+}
+
+.donateDirectLeftDesc{
+  margin: 0;
+  max-width: 62ch;
+  color: rgba(15, 23, 42, 0.74);
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.donateDirectActions{
+  margin-top: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.donateDirectBtn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  border-radius: 2px;
+  border: 0px solid rgba(15, 23, 42, 0.16);
+  background-color: var(--bg3);
+  color: rgba(15, 23, 42, 0.9);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.donateDirectBtn:hover{
+  box-shadow: var(--shadow);
+}
+
+.donateDirectLink{
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: rgba(15, 23, 42, 0.82);
+}
+
+.donateDirectLink:hover{
+  color: var(--brand, #11878D);
+}
+
+/* right pane: vertical menu */
+.donateDirectRight{
+  background-color: var(--bg3);
+  display: grid;
+}
+
+.donateDirectItem{
+  appearance: none;
+  border: none;
+  background: transparent;
+  text-align: left;
+  padding: 18px 18px;
+  border-left: 1px solid rgba(15, 23, 42, 0.12);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.10);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  font-size: 13px;
+  color: rgba(15, 23, 42, 0.86);
+  cursor: pointer;
+}
+
+.donateDirectItem:last-child{
+  border-bottom: none;
+}
+
+.donateDirectItem:hover{
+  background-color: var(--bg4);
+}
+
+.donateDirectItem.isActive{
+  background-color: var(--bg4);
+}
+
+/* responsive */
+@media (max-width: 900px){
+  .donateDirectCard{
+    grid-template-columns: 1fr;
+  }
+
+  .donateDirectRight{
+    grid-auto-rows: minmax(0, auto);
+  }
+
+  .donateDirectItem{
+    border-left: none;
+  }
+
+  .donateDirectLeft{
+    padding: 44px 28px;
+  }
+}
+
+
+.donateFaqSection{
+  background: var(--bg1);
+  padding: 90px 0 95px;
+}
+
+.donatefaqItem{
+  border-radius: 5px;
+  background: var(--bg2);
+}
+
+.donatefaqItem.isOpen .faqAnswerWrap{
+  grid-template-rows: 1fr;          /* open */
+}
+
+/* add spacing only when open */
+.donatefaqItem.isOpen .faqA{
+  padding-bottom: 16px;
+}
+
+
+.donateFaqContactBtn{
+  background-color: var(--brand);
+  border: 0px;
+  color: var(--bg1);
+  border-radius: 5px;
+  padding: 8px 14px;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 14px;
+  cursor: pointer;
+}

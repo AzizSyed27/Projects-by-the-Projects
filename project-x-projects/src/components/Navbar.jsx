@@ -97,7 +97,7 @@ export default function Navbar() {
 
         {/* RIGHT: Actions */}
         <div className="navActions">
-          <button className="btn navBtn" type="button">Donate</button>
+          <Link className="btn navBtn" to="/donate">Donate</Link>
         </div>
       </div>
 
@@ -130,9 +130,9 @@ export default function Navbar() {
             </nav>
 
             <div className="exploreMobileActions">
-              <button className="btn btnPrimary" type="button" onClick={() => setExploreOpen(false)}>
+              <Link className="btn btnPrimary" to="/donate" onClick={() => setExploreOpen(false)}>
                 Donate
-              </button>
+              </Link>
             </div>
 
             <a className="exploreMemberLink" href="#" onClick={(e) => e.preventDefault()}>
@@ -152,9 +152,9 @@ export default function Navbar() {
 
             <div className="exploreHero">
               <div className="exploreHeroText">CHANGE STARTS HERE</div>
-              <button className="exploreCta" type="button">
+              <Link className="exploreCta" to="/donate" onClick={() => setExploreOpen(false)}>
                 DONATE
-              </button>
+              </Link>
             </div>
           </div>
         </div>

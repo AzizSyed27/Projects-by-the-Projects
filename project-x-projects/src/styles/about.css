@@ -75,7 +75,7 @@
   max-width: 72ch;
   color: rgba(15, 23, 42, 0.78);
   line-height: 1.7;
-  font-size: clamp(14px, 1.2vw, 18px);
+  font-size: clamp(14px, 1.2vw, 16px);
 }
 
 .aboutEmergenceActions{

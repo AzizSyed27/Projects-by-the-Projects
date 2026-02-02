@@ -276,7 +276,7 @@ export default function GetInvolved() {
         </section>
 
         {/* STAY IN THE LOOP */}
-        <section className="giLoop" aria-label="Stay in the loop">
+        <section className="giLoop" aria-label="Stay in the loop" id="subscribe">
             <div className="container">
                 <div className="giLoopInner">
                     <h2 className="giLoopTitle">

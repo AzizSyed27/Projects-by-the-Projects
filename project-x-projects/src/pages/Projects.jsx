@@ -511,7 +511,7 @@ export default function Projects() {
 
                 <div className="projectCtaActions">
 
-                    <button className="btn btnPrimary" type="button">Get involved</button>
+                    <Link className="btn btnPrimary" to="/get-involved">Get involved</Link>
 
                     <Link to="/contact" className="btn btnGhost">
                     Contact

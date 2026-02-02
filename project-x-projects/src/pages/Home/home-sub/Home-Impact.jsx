@@ -5,6 +5,8 @@ import masjidImg from '../../../assets/impact/masjid-image.jpg';
 import waterwellImg from '../../../assets/impact/waterwell-icon.png';
 import careImg from '../../../assets/impact/carepackage-icon.png';
 import giftImg from '../../../assets/impact/gift-icon.png';
+
+import { Link } from "react-router-dom";
  
  export default function HomeImpact() {
 
@@ -38,9 +40,9 @@ import giftImg from '../../../assets/impact/gift-icon.png';
                             Pakistan, India, and Nepal.
                         </p>
 
-                        <button className="impactLink" type="button">
+                        <Link className="impactLink" to="./projects">
                             Explore <span aria-hidden="true">›</span>
-                        </button>
+                        </Link>
                         </article>
 
                         <article className="impactCard impactCardTall">
@@ -52,9 +54,9 @@ import giftImg from '../../../assets/impact/gift-icon.png';
                             strengthen their faith and bonds.
                         </p>
 
-                        <button className="impactLink" type="button">
+                        <Link className="impactLink" to="./projects">
                             Explore <span aria-hidden="true">›</span>
-                        </button>
+                        </Link>
 
                         <div className="impactMedia">
                             <img src={masjidImg} alt="A newly constructed masjid" className="impactMediaInner"/>
@@ -73,9 +75,9 @@ import giftImg from '../../../assets/impact/gift-icon.png';
                             future, regardless of where they are born.
                         </p>
 
-                        <button className="impactLink" type="button">
+                        <Link className="impactLink" to="./projects">
                             Explore <span aria-hidden="true">›</span>
-                        </button>
+                        </Link>
 
                         <div className="impactMedia">
                             <img src={madrassaImg} alt="Children attending a madrassa class" className="impactMediaInner"/>
@@ -83,56 +85,56 @@ import giftImg from '../../../assets/impact/gift-icon.png';
                         </article>
 
                         <article className="impactCard">
-                        <div className="impactIcon" aria-hidden="true">
-                            <img src={careImg} alt="" className="iconImg"/>
-                        </div>
-                        <h3 className="impactCardTitle">ESSENTIAL SUPPORT & LIVELIHOODS</h3>
+                            <div className="impactIcon" aria-hidden="true">
+                                <img src={careImg} alt="" className="iconImg"/>
+                            </div>
+                            <h3 className="impactCardTitle">ESSENTIAL SUPPORT & LIVELIHOODS</h3>
 
-                        <p className="impactCardBody">
-                            Providing food, essential supplies, and equipment to help families and
-                            small businesses become self-sufficient.
-                        </p>
+                            <p className="impactCardBody">
+                                Providing food, essential supplies, and equipment to help families and
+                                small businesses become self-sufficient.
+                            </p>
 
-                        <button className="impactLink" type="button">
-                            Explore <span aria-hidden="true">›</span>
-                        </button>
+                            <Link className="impactLink" to="./projects">
+                                Explore <span aria-hidden="true">›</span>
+                            </Link>
                         </article>
                     </div>
 
                     {/* COL 3 */}
                     <div className="impactCol">
                         <article className="impactCard">
-                        <div className="impactIcon" aria-hidden="true">
-                            <img src={giftImg} alt="" className="iconImg"/>
-                        </div>
-                        <h3 className="impactCardTitle">ORPHANS AND WIDOWS SPONSERED</h3>
+                            <div className="impactIcon" aria-hidden="true">
+                                <img src={giftImg} alt="" className="iconImg"/>
+                            </div>
+                            <h3 className="impactCardTitle">ORPHANS AND WIDOWS SPONSERED</h3>
 
-                        <p className="impactCardBody">
-                            Sponsorships, Eid gifts, and practical assistance for families facing
-                            loss and struggle.
-                        </p>
+                            <p className="impactCardBody">
+                                Sponsorships, Eid gifts, and practical assistance for families facing
+                                loss and struggle.
+                            </p>
 
-                        <button className="impactLink" type="button">
-                            Explore <span aria-hidden="true">›</span>
-                        </button>
+                            <Link className="impactLink" to="./projects">
+                                Explore <span aria-hidden="true">›</span>
+                            </Link>
                         </article>
 
                         <article className="impactCard impactCardTall">
-                        <div className="impactTag">Community</div>
-                        <h3 className="impactCardTitle">SCARBOROUGH BRINGS IT TOGETHER</h3>
+                            <div className="impactTag">Community</div>
+                            <h3 className="impactCardTitle">SCARBOROUGH BRINGS IT TOGETHER</h3>
 
-                        <p className="impactCardBody">
-                            Local events, sports and educational initiatives that bring
-                            people together and turn good intentions into action.
-                        </p>
+                            <p className="impactCardBody">
+                                Local events, sports and educational initiatives that bring
+                                people together and turn good intentions into action.
+                            </p>
 
-                        <button className="impactLink" type="button">
-                            Explore <span aria-hidden="true">›</span>
-                        </button>
+                            <Link className="impactLink" to="./about">
+                                Explore <span aria-hidden="true">›</span>
+                            </Link>
 
-                        <div className="impactMedia">
-                            <img src={bbqImg} alt="Community members gathered at a local event" className="impactMediaInner"/>
-                        </div>
+                            <div className="impactMedia">
+                                <img src={bbqImg} alt="Community members gathered at a local event" className="impactMediaInner"/>
+                            </div>
                         </article>
                     </div>
                     </div>

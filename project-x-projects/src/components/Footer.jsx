@@ -25,9 +25,9 @@ const COLS = [
     title: "Connect",
     links: [
       { label: "Donate now", to: "/donate" },
-      { label: "Newsletter", to: "/newsletter" },
-      { label: "Social media", to: "/social" },
-      { label: "Support", to: "/support" },
+      { label: "Newsletter", to: "/get-involved/#subscribe" },
+      { label: "Social media", to: "https://www.instagram.com/projectsxprojects/" },
+      { label: "Support", to: "/contact" },
     ],
   },
 ];

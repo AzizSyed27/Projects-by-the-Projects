@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 /* HERO IMAGES */
 import heroImg from "../../assets/hero/hero-image.JPG";
@@ -230,12 +231,12 @@ export default function Home() {
               </p>
 
               <div className="heroActions">
-                <button className="btn btnPrimary" type="button">
+                <Link className="btn btnPrimary" to="/donate">
                   Donate
-                </button>
-                <button className="btn btnGhost" type="button">
+                </Link>
+                <Link className="btn btnGhost" to="/projects">
                   Learn more
-                </button>
+                </Link>
               </div>
             </div>
 

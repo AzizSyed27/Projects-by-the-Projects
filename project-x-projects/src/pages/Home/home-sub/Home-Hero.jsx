@@ -1,6 +1,8 @@
 /* HERO IMAGES */
 import heroImg from "../../../assets/hero/hero-image.JPG";
 
+import { Link } from "react-router-dom";
+
 export default function HomeHero() {
 
     return(
@@ -27,8 +29,12 @@ export default function HomeHero() {
                             </p>
 
                             <div className="heroActions">
-                            <button className="btn btnPrimary" type="button">Donate</button>
-                            <button className="btn btnGhost" type="button">Learn more</button>
+                                <Link className="btn btnPrimary" to="/donate">
+                                    Donate
+                                </Link>
+                                <Link className="btn btnGhost" to="/projects">
+                                    Learn more
+                                </Link>
                             </div>
                         </div>
 

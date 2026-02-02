@@ -542,15 +542,15 @@ body{
 
 .btn{
   border: 0px solid var(--buttonLine);
-  border-radius: 3px;
+  border-radius: 5px;
   color: var(--ink);
   padding: 8px 14px;
-  border-radius: 0;
   font-family: var(--font-body);
   font-weight: 500;
   font-size: 14px;
   cursor: pointer;
 }
+
 .btn:hover{ box-shadow: var(--shadow); }
 
 .btnPrimary{
@@ -828,6 +828,7 @@ body{
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  font-size: 13px;
 }
 .impactLink:hover{
   color: var(--brand);
@@ -1747,6 +1748,8 @@ body{
 .faqItem.isOpen .faqA{
   padding-bottom: 16px;
 }
+
+
 
 /* FOOTER */
 .siteFooter{
