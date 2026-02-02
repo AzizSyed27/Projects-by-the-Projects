@@ -6,7 +6,9 @@ import water2 from "../assets/recent/recent-10.jpg";
 import water3 from "../assets/recent/recent-12.jpg";
 
 import waterChangesEverything from "../assets/projects/water-changes-everything.jpg"
+
 import forTheUmmah from "../assets/projects/for-the-ummah.jpg"
+
 import wellsOfAccess from "../assets/projects/wells-of-access.jpg"
 import foundationsOfFaith from "../assets/projects/foundation-of-faith.jpg"
 import waterPumpsOfRelief from "../assets/projects/water-pumps-of-relief.jpg"
