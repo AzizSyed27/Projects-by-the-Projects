@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 /* HERO IMAGES */
-import heroImg from "../../assets/hero/hero-image.JPG";
+import heroImg from "../../assets/hero/hero-image.jpg";
 
 /* IMPACT IMAGES */
 import bbqImg from "../../assets/impact/bbq-img-e.jpg";
