@@ -1,5 +1,5 @@
 /* HERO IMAGES */
-import heroImg from "../../../assets/hero/hero-image.JPG";
+import heroImg from "../../../assets/hero/hero-image.jpg";
 
 import { Link } from "react-router-dom";
 
