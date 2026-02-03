@@ -80,8 +80,8 @@ export default function Projects() {
     },
     {
       title: "PILLARS OF FAITH",
-      desc: "A masjid and water well completed to serve worship and clean water in Malawi.",
-      tags: ["Faith", "Water", "Malawi", "Masjid", "Ramadan"],
+      desc: "A mosque and water well completed to serve worship and clean water in Malawi.",
+      tags: ["Faith", "Water", "Malawi", "Mosque", "Ramadan"],
       img: pillarsOfFaith, //malawiPillarsImg
       to: "#",
     },
@@ -111,8 +111,8 @@ export default function Projects() {
     },
     {
       title: "FOUNDATIONS OF FAITH",
-      desc: "A masjid and water well built to support worship and daily clean water in Malawi.",
-      tags: ["Faith", "Water", "Malawi", "Masjid", "Community"],
+      desc: "A mosque and water well built to support worship and daily clean water in Malawi.",
+      tags: ["Faith", "Water", "Malawi", "Mosque", "Community"],
       img: foundationsOfFaith, //malawiFoundationsImg
       to: "#",
     },
@@ -120,7 +120,7 @@ export default function Projects() {
 
     const projectImpactStats = [
     { value: "50+", label: "WELLS INSTALLED ACROSS REGIONS" },
-    { value: "15+", label: "MASJIDS AND SCHOOLS BUILT" },
+    { value: "15+", label: "MOSQUES AND SCHOOLS BUILT" },
     { value: "1000+", label: "FAMILIES SUPPORTED AND SPONSORED" },
   ];
 

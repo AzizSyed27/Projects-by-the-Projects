@@ -24,7 +24,7 @@ export default function HomeHero() {
 
                             <p className="lead">
                             Projects <span className="xproj"> X</span> Projects started in Scarborough with a simple belief: real change comes from
-                            real people doing real work - wells, masjids, madrassas, relief packages,
+                            real people doing real work - wells, mosques, schools, relief packages,
                             and support for families in need. 
                             </p>
 

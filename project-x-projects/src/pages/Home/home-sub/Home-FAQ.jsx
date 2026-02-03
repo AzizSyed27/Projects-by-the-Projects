@@ -17,7 +17,7 @@ export default function HomeFAQ(){
             q: "How do you choose projects?",
             a:
                 "We listen to communities on the ground. Local partners tell us what’s needed: " +
-                "a well, a masjid, relief aid. We don’t guess. We ask, we verify, we act.",
+                "a well, a mosque, relief aid. We don’t guess. We ask, we verify, we act.",
         },
         {
             q: "Where does my donation go?",

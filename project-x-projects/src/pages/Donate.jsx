@@ -16,14 +16,14 @@ export default function Donate() {
 
     const bulletLeft = [
         "Water wells serve families",
-        "Madrassas educate children",
+        "Schools educate children",
         "Orphans and widows get support",
         "We’ll send your tax receipt",
         "Clean records, honest work",
     ];
 
     const bulletRight = [
-        "Masjids build community spaces",
+        "Mosques build community spaces",
         "Relief reaches those in crisis",
         "Let us decide wisely",
         "Email us after donating",
@@ -76,9 +76,9 @@ export default function Donate() {
             learnTo: "/projects",
             shareTo: "#",
         },
-        masjids: {
-            label: "MASJIDS",
-            title: "MASJIDS STRENGTHEN COMMUNITY LIFE",
+        mosques: {
+            label: "MOSQUES",
+            title: "MOSQUES STRENGTHEN COMMUNITY LIFE",
             desc: "Support spaces for prayer, learning, and gathering. Built for long-term use.",
             icon: mosque,
             learnTo: "/projects",
@@ -165,7 +165,7 @@ export default function Donate() {
                 <div className="container donateHeroInner">
                     <h1 className="donateHeroTitle">SUPPORT A PROJECT</h1>
                     <p className="donateHeroSub">
-                        Every donation builds wells, masjids, madrassas, and brings relief to families in need
+                        Every donation builds wells, mosques, schools, and brings relief to families in need
                     </p>
                 </div>
             </section>

@@ -16,7 +16,7 @@ export default function GetInvolved() {
         {
         kicker: "Give",
         title: "BECOME A DONOR",
-        desc: "Support wells, masjids, or relief",
+        desc: "Support wells, mosques, or relief",
         cta: "Donate",
         to: "/donate",
         img: path1,
@@ -48,7 +48,7 @@ export default function GetInvolved() {
         title: "HELP ORGANIZE COMMUNITY EVENTS",
         body: (
             <>
-            Join us at the annual masjid BBQ, Eid toy drive, or local fundraisers. No
+            Join us at the annual mosque BBQ, Eid toy drive, or local fundraisers. No
             experience needed, just show up ready to help.
             </>
         ),
@@ -183,7 +183,7 @@ export default function GetInvolved() {
                     <h3 className="giDonorHeading">SUPPORT WHAT MOVES YOU</h3>
 
                     <p className="giDonorDesc">
-                        Pick a project. Wells bring clean water. Mosques create worship spaces. Madrassas build
+                        Pick a project. Wells bring clean water. Mosques create worship spaces. Schools build
                         education. Relief reaches urgent needs. Oorphan sponsorships change lives. Give where
                         needed most and let us direct it.
                     </p>

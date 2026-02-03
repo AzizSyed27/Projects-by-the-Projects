@@ -595,10 +595,12 @@ body{
 }
 
 
+/*/////////////////////////////
+//////// HERO SECTION /////////
+/////////////////////////////*/
 
-/* HERO (matches screenshot layout) */
 .heroSection{
-  padding: 44px 0 56px;
+  padding: 50px 0 50px;
   background: var(--bg1);
 }
 
@@ -618,7 +620,7 @@ body{
   grid-template-columns: 1fr 1fr; /* <-- equal width */
 
   background: var(--bg2);
-  margin-bottom: 50px;
+
 
   min-height: 520px; /* helps desktop */
 }
@@ -651,9 +653,13 @@ body{
 }
 
 @media (max-width: 900px){
+  .heroSection{
+    padding: 20px 0 20px;
+  }
+
   .heroCard{
     grid-template-columns: 1fr;
-    aspect-ratio: auto;     /* 🔑 stop forcing the ratio */
+    aspect-ratio: auto;     
     min-height: unset;
   }
 
@@ -738,7 +744,7 @@ body{
 
 /* IMPACT SECTION */
 .impactSection{
-  padding: 70px 0 90px;
+  padding: 50px 0 50px;
   background: var(--bg4);
   width: 100vw;
   margin-left: calc(50% - 50vw);
@@ -860,7 +866,7 @@ body{
 /* media placeholder block — FULL BLEED */
 .impactMedia{
   margin-top: 18px;
-  border-radius: 5px;
+  border-radius: 5px 0px 5px 0px;
   /* cancel card padding so image goes edge-to-edge */
   margin-left: -26px;
   margin-right: -26px;
@@ -884,7 +890,8 @@ body{
   color: rgba(15, 23, 42, 0.55);
   font-weight: 600;
   overflow: hidden;  
-  border-radius: 5px;
+  border-radius: 0px 0px 5px 5px;
+
 }
 
 /* the standalone image-only block in the middle column */
@@ -906,6 +913,10 @@ body{
 }
 
 @media (max-width: 700px){
+  .impactSection{
+    padding: 20px 0 20px;
+  }
+  
   .impactGrid{
     grid-template-columns: 1fr;
     gap: 18px;
@@ -916,6 +927,7 @@ body{
   }
 
   .impactMedia{
+    display: none;
     margin-left: -18px;
     margin-right: -18px;
   }
@@ -937,7 +949,7 @@ body{
 
 /* Origins (matches screenshot layout) */
 .originsSection{
-  padding: 70px 0 90px;
+  padding: 50px 0 50px;
   background: var(--bg2);
   color: var(--inverseInk);
 }
@@ -1010,6 +1022,10 @@ body{
 }
 
 @media (max-width: 900px){
+  .originsSection{
+    padding: 20px 0 0px;
+  }
+  
   .originsCard{
     grid-template-columns: 1fr;
     aspect-ratio: auto;     /* 🔑 stop forcing the ratio */
@@ -1079,7 +1095,7 @@ body{
 .resultsSection{
   background: var(--bg4);
   color: var(--ink);
-  padding: 90px 0 100px;
+  padding: 50px 0 50px;
 }
 
 .resultsHeader{
@@ -1484,7 +1500,7 @@ body{
 
 /* Partners (matches screenshot layout) */
 .partnersSection{
-  padding: 70px 0 90px;
+  padding: 50px 0 50px;
   background: var(--bg2);
   color: var(--ink);
 }
@@ -1603,6 +1619,10 @@ body{
 }
 
 @media (max-width: 900px){
+  .partnersSection{
+    padding: 25px 0px 25px;
+  }
+  
   .partnersCard{
     grid-template-columns: 1fr;
     aspect-ratio: auto;     /* 🔑 stop forcing the ratio */
@@ -1618,6 +1638,7 @@ body{
     height: auto;
     width: 100%;
     object-fit: cover;
+    display: none;
   }
 
   .partnersActions{

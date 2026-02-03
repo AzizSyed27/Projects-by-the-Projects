@@ -25,7 +25,7 @@ export default function HomeResults(){
             img: resultsWaterImg,
             alt: "Water well project",
         },
-        masjids: {
+        mosques: {
             tab: "Mosques Built",
             tag: "Spaces",
             title: "MOSQUES THAT STAND, COMMUNITIES THAT GATHER",
@@ -65,7 +65,7 @@ export default function HomeResults(){
                     <div className="resultsEyebrow">Results</div>
                     <h2 className="resultsTitle">WHAT TANGIBLE WORK LOOKS LIKE</h2>
                     <p className="resultsSub">
-                        Enough talk about change. It's time to build. Wells that run, masjids that stand,
+                        Enough talk about change. It's time to build. Wells that run, mosques that stand,
                         schools that teach, families that eat. This is what Projects <span className="xproj"> X</span> Projects does.
                     </p>
 
@@ -80,9 +80,9 @@ export default function HomeResults(){
                         </button>
 
                         <button
-                        className={`resultsTab ${activeResult === "masjids" ? "isActive" : ""}`}
+                        className={`resultsTab ${activeResult === "mosques" ? "isActive" : ""}`}
                         type="button"
-                        onClick={() => setActiveResult("masjids")}
+                        onClick={() => setActiveResult("mosques")}
                         >
                         Mosques Built
                         </button>

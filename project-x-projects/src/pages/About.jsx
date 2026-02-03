@@ -51,12 +51,12 @@ export default function About() {
     {
       icon: mosqueIcon,
       title: "SPACES FOR WORSHIP AND COMMUNITY",
-      body: "Building masjids and supporting infrastructure projects that bring people together.",
+      body: "Building mosques and supporting infrastructure projects that bring people together.",
     },
     {
       icon: eduIcon,
       title: "EDUCATION AND SPIRITUAL GROWTH",
-      body: "Constructing madrassas where learning takes root and families can thrive.",
+      body: "Constructing schools where learning takes root and families can thrive.",
     },
   ];
 
@@ -110,7 +110,7 @@ export default function About() {
                 <p className="aboutEmergenceLead">
                     A few people in Scarborough saw what needed doing and started doing it. They
                     gathered neighbors around a grill, collected what was given, and sent it where
-                    it mattered: wells and madrassas in Malawi, orphan sponsership in Nepal, relief where crisis struck.
+                    it mattered: wells and schools in Malawi, orphan sponsership in Nepal, relief where crisis struck.
                     No committees. No distance between intention and action.
                 </p>
             </div>
@@ -177,7 +177,7 @@ export default function About() {
                     <h2 className="aboutSectionTitle">WHAT WE BUILD</h2>
 
                     <p className="aboutSectionSub">
-                        Wells, masjids, madrassas, relief, and family support.
+                        Wells, mosques, schools, relief, and family support.
                     </p>
                 
                 </header>

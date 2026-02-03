@@ -4,6 +4,7 @@ import pxpLogo from "../assets/pxp-logo.png";
 import newLogo from "../assets/pxp-mini-logo.png";
 
 const EXPLORE_ITEMS = [
+  { label: "Home", to: "/" },
   { label: "About Us", to: "/about" },
   { label: "Projects", to: "/projects" },
   { label: "Get Involved", to: "/get-involved" },

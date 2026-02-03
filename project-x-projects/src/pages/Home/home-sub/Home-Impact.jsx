@@ -47,7 +47,7 @@ import { Link } from "react-router-dom";
 
                         <article className="impactCard impactCardTall">
                         <div className="impactTag">SPACES</div>
-                        <h3 className="impactCardTitle">MASJIDS AND COMMUNITY SPACES</h3>
+                        <h3 className="impactCardTitle">MOSQUES AND COMMUNITY SPACES</h3>
 
                         <p className="impactCardBody">
                             Building places of worship and gathering spaces where communities
@@ -59,7 +59,7 @@ import { Link } from "react-router-dom";
                         </Link>
 
                         <div className="impactMedia">
-                            <img src={masjidImg} alt="A newly constructed masjid" className="impactMediaInner"/>
+                            <img src={masjidImg} alt="A newly constructed mosque" className="impactMediaInner"/>
                         </div>
                         </article>
                     </div>
@@ -68,7 +68,7 @@ import { Link } from "react-router-dom";
                     <div className="impactCol">
                         <article className="impactCard impactCardTall">
                         <div className="impactTag">EDUCATION</div>
-                        <h3 className="impactCardTitle">EDUCATION THROUGH MADRASSAS</h3>
+                        <h3 className="impactCardTitle">EDUCATION THROUGH SCHOOLS</h3>
 
                         <p className="impactCardBody">
                             Every child deserves the opportunity to learn, grow, and build a better

@@ -67,7 +67,7 @@ export default function Home() {
       img: resultsWaterImg,
       alt: "Water well project",
     },
-    masjids: {
+    mosques: {
       tab: "Mosques Built",
       tag: "Spaces",
       title: "MOSQUES THAT STAND, COMMUNITIES THAT GATHER",
@@ -178,7 +178,7 @@ export default function Home() {
       q: "How do you choose projects?",
       a:
         "We listen to communities on the ground. Local partners tell us what’s needed: " +
-        "a well, a masjid, relief aid. We don’t guess. We ask, we verify, we act.",
+        "a well, a mosque, relief aid. We don’t guess. We ask, we verify, we act.",
     },
     {
       q: "Where does my donation go?",
@@ -227,7 +227,7 @@ export default function Home() {
               <p className="lead">
                 Projects <span className="xproj"> X</span> Projects started in Scarborough
                 with a simple belief: real change comes from real people doing real work
-                - wells, masjids, madrassas, relief packages, and support for families in
+                - wells, mosques, schools, relief packages, and support for families in
                 need.
               </p>
 
@@ -284,7 +284,7 @@ export default function Home() {
 
               <article className="impactCard impactCardTall">
                 <div className="impactTag">SPACES</div>
-                <h3 className="impactCardTitle">MASJIDS AND COMMUNITY SPACES</h3>
+                <h3 className="impactCardTitle">MOSQUES AND COMMUNITY SPACES</h3>
 
                 <p className="impactCardBody">
                   Building places of worship and gathering spaces where communities
@@ -298,7 +298,7 @@ export default function Home() {
                 <div className="impactMedia">
                   <img
                     src={masjidImg}
-                    alt="A newly constructed masjid"
+                    alt="A newly constructed mosque"
                     className="impactMediaInner"
                   />
                 </div>
@@ -309,7 +309,7 @@ export default function Home() {
             <div className="impactCol">
               <article className="impactCard impactCardTall">
                 <div className="impactTag">EDUCATION</div>
-                <h3 className="impactCardTitle">EDUCATION THROUGH MADRASSAS</h3>
+                <h3 className="impactCardTitle">EDUCATION THROUGH SCHOOLS</h3>
 
                 <p className="impactCardBody">
                   Every child deserves the opportunity to learn, grow, and build a better
@@ -427,7 +427,7 @@ export default function Home() {
             <div className="resultsEyebrow">Results</div>
             <h2 className="resultsTitle">WHAT TANGIBLE WORK LOOKS LIKE</h2>
             <p className="resultsSub">
-              Enough talk about change. It's time to build. Wells that run, masjids that
+              Enough talk about change. It's time to build. Wells that run, mosques that
               stand, schools that teach, families that eat. This is what Projects{" "}
               <span className="xproj"> X</span> Projects does.
             </p>
