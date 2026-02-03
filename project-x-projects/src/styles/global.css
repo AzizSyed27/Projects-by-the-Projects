@@ -795,10 +795,17 @@ body{
 
 /* cards */
 .impactCard{
+  position: relative;
+  overflow: hidden;
   border: 0px solid var(--buttonLine);
   background-color: var(--bg3);
   border-radius: 5px;
   padding: 26px;
+}
+
+.impactCard > *:not(.impactWatermark){
+  position: relative;
+  z-index: 2;
 }
 
 .impactCardTall{
@@ -831,6 +838,26 @@ body{
   height: 100%;
   object-fit: contain;
   display: block;
+}
+
+.impactWatermark{
+  position: absolute;
+  top: -5%;
+  right: -14px;                 /* push it slightly off the edge */
+
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.50;
+
+  width: clamp(190px, 38%, 230px);  /* responsive size */
+  height: auto;
+}
+
+.impactWatermark img{
+  width: 100%;
+  height: auto;                 /* KEY: prevents “smushing” */
+  display: block;
+  object-fit: contain;
 }
 
 .impactCardTitle{
@@ -930,6 +957,10 @@ body{
     display: none;
     margin-left: -18px;
     margin-right: -18px;
+  }
+
+  .impactWatermark{
+    top: 0%;
   }
 }
 

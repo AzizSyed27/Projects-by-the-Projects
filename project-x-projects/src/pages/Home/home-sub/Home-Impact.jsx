@@ -2,9 +2,12 @@
 import bbqImg from '../../../assets/impact/bbq-img-e.jpg';
 import madrassaImg from '../../../assets/impact/madrassas-image.jpg';
 import masjidImg from '../../../assets/impact/masjid-image.jpg';
-import waterwellImg from '../../../assets/impact/waterwell-icon.png';
-import careImg from '../../../assets/impact/carepackage-icon.png';
-import giftImg from '../../../assets/impact/gift-icon.png';
+import waterwellImg from '../../../assets/impact/waterwell-icon-color.png';
+import careImg from '../../../assets/impact/carepackage-icon-color.png';
+import giftImg from '../../../assets/impact/gift-icon-color.png';
+import edu from '../../../assets/impact/edu-icon-color.png';
+import mosque from '../../../assets/impact/mosque-icon-color.png';
+import comm from '../../../assets/impact/comm-icon-color.png';
 
 import { Link } from "react-router-dom";
  
@@ -27,8 +30,8 @@ import { Link } from "react-router-dom";
                     {/* COL 1 */}
                     <div className="impactCol">
                         <article className="impactCard">
-                        <div className="impactIcon" aria-hidden="true">
-                            <img src={waterwellImg} alt="" className="iconImg"/>
+                        <div className="impactWatermark" aria-hidden="true">
+                            <img src={waterwellImg} alt="" />
                         </div>
 
                         <h3 className="impactCardTitle">
@@ -46,7 +49,9 @@ import { Link } from "react-router-dom";
                         </article>
 
                         <article className="impactCard impactCardTall">
-                        <div className="impactTag">SPACES</div>
+                        <div className="impactWatermark" aria-hidden="true">
+                            <img src={mosque} alt="" className="iconImg"/>
+                        </div>
                         <h3 className="impactCardTitle">MOSQUES AND COMMUNITY SPACES</h3>
 
                         <p className="impactCardBody">
@@ -67,7 +72,9 @@ import { Link } from "react-router-dom";
                     {/* COL 2 */}
                     <div className="impactCol">
                         <article className="impactCard impactCardTall">
-                        <div className="impactTag">EDUCATION</div>
+                        <div className="impactWatermark" aria-hidden="true">
+                            <img src={edu} alt="" className="iconImg"/>
+                        </div>
                         <h3 className="impactCardTitle">EDUCATION THROUGH SCHOOLS</h3>
 
                         <p className="impactCardBody">
@@ -85,7 +92,7 @@ import { Link } from "react-router-dom";
                         </article>
 
                         <article className="impactCard">
-                            <div className="impactIcon" aria-hidden="true">
+                            <div className="impactWatermark" aria-hidden="true">
                                 <img src={careImg} alt="" className="iconImg"/>
                             </div>
                             <h3 className="impactCardTitle">ESSENTIAL SUPPORT & LIVELIHOODS</h3>
@@ -104,7 +111,7 @@ import { Link } from "react-router-dom";
                     {/* COL 3 */}
                     <div className="impactCol">
                         <article className="impactCard">
-                            <div className="impactIcon" aria-hidden="true">
+                            <div className="impactWatermark" aria-hidden="true">
                                 <img src={giftImg} alt="" className="iconImg"/>
                             </div>
                             <h3 className="impactCardTitle">ORPHANS AND WIDOWS SPONSERED</h3>
@@ -120,7 +127,9 @@ import { Link } from "react-router-dom";
                         </article>
 
                         <article className="impactCard impactCardTall">
-                            <div className="impactTag">Community</div>
+                            <div className="impactWatermark" aria-hidden="true">
+                                <img src={comm} alt="" className="iconImg"/>
+                            </div>
                             <h3 className="impactCardTitle">SCARBOROUGH BRINGS IT TOGETHER</h3>
 
                             <p className="impactCardBody">
