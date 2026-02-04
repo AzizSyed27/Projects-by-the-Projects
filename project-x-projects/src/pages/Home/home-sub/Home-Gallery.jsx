@@ -75,51 +75,86 @@ export default function HomeGallery() {
 
         raf = requestAnimationFrame(tick);
         return () => cancelAnimationFrame(raf);
+   
     }, [paused]);
 
-  return (
-    <main>
-      {/* RECENT WORK */}
-      <section className="recentSection" aria-label="Recent work" id="gallery">
-        <div className="container">
-          <header className="recentHeader">
-            <h2 className="recentTitle">RECENT WORK</h2>
-            <p className="recentSub">
-              Photos and stories from the field show what we’ve built and who we’ve helped.
-            </p>
-          </header>
+    const resumeTimerRef = useRef(null);
 
-          <div className="recentRailWrap">
-            <div
-              className="recentRail autoScroll"
-              ref={recentRef}
-              // pause if the user interacts (nice UX)
-              onMouseEnter={() => setPaused(true)}
-              onMouseLeave={() => setPaused(false)}
-              onTouchStart={() => setPaused(true)}
-              onTouchEnd={() => setPaused(false)}
-              onFocus={() => setPaused(true)}
-              onBlur={() => setPaused(false)}
-            >
-              {railItems.map((item, i) => {
-                // second half are clones
-                const isClone = i >= recentItems.length; 
-                return (
-                  <div className="recentCard" key={`${item.alt}-${i}`} aria-hidden={isClone}>
-                    <img
-                      src={item.img}
-                      alt={isClone ? "" : item.alt}
-                      loading="lazy"
-                      draggable="false"
-                    />
-                  </div>
-                );
-              })}
-            </div>
+    const pauseTemporarily = () => {
+    setPaused(true);
 
-          </div>
-        </div>
-      </section>
-    </main>
-  );
+    // auto-resume even if pointerup never fires (mobile edge case)
+    window.clearTimeout(resumeTimerRef.current);
+    resumeTimerRef.current = window.setTimeout(() => {
+        setPaused(false);
+    }, 900);
+    };
+
+    const resumeNow = () => {
+    window.clearTimeout(resumeTimerRef.current);
+    setPaused(false);
+    };
+
+    useEffect(() => {
+        const onUp = () => resumeNow();
+
+        window.addEventListener("pointerup", onUp);
+        window.addEventListener("pointercancel", onUp);
+        window.addEventListener("touchend", onUp, { passive: true });
+        window.addEventListener("touchcancel", onUp, { passive: true });
+
+        return () => {
+            window.removeEventListener("pointerup", onUp);
+            window.removeEventListener("pointercancel", onUp);
+            window.removeEventListener("touchend", onUp);
+            window.removeEventListener("touchcancel", onUp);
+        };
+    }, []);
+
+    return (
+        <main>
+            {/* RECENT WORK */}
+            <section className="recentSection" aria-label="Recent work" id="gallery">
+                <div className="container">
+                    <header className="recentHeader">
+                        <h2 className="recentTitle">RECENT WORK</h2>
+                        <p className="recentSub">
+                        Photos and stories from the field show what we’ve built and who we’ve helped.
+                        </p>
+                    </header>
+
+                    <div className="recentRailWrap">
+                        <div
+                        className="recentRail autoScroll"
+                        ref={recentRef}
+                        // pause if the user interacts (nice UX)
+                        onMouseEnter={() => setPaused(true)}
+                        onMouseLeave={() => setPaused(false)}
+                        onPointerDown={pauseTemporarily}
+                        onPointerUp={resumeNow}
+                        onPointerCancel={resumeNow}
+                        onFocus={() => setPaused(true)}
+                        onBlur={() => setPaused(false)}
+                        >
+                            {railItems.map((item, i) => {
+                                // second half are clones
+                                const isClone = i >= recentItems.length; 
+                                return (
+                                <div className="recentCard" key={`${item.alt}-${i}`} aria-hidden={isClone}>
+                                    <img
+                                    src={item.img}
+                                    alt={isClone ? "" : item.alt}
+                                    loading="lazy"
+                                    draggable="false"
+                                    />
+                                </div>
+                                );
+                            })}
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </main>
+    );
 }
