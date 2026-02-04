@@ -121,10 +121,10 @@ export default function GetInvolved() {
       {/* HERO */}
         <section className="giHero" aria-label="Join us now">
             <div className="container giHeroInner">
-                <h1 className="giHeroTitle">JOIN US NOW</h1>
+                <h1 className="giHeroTitle">JOIN US IN THREE WAYS</h1>
                 <p className="giHeroSub">
-                    There are many ways to help. Donate, volunteer, partner with us, or join our community
-                    events.
+                    Donate, volunteer, partner with us, or join our community
+                    events. Pick your role and make it count.
                 </p>
             </div>
         </section>
@@ -133,12 +133,6 @@ export default function GetInvolved() {
         <section className="giWays" aria-label="Three paths forward">
             
             <div className="container">
-                
-                <header className="giWaysHead">
-                    <div className="giEyebrow">Paths</div>
-                    <h2 className="giWaysTitle">THREE WAYS FORWARD</h2>
-                    <p className="giWaysSub">Pick your role and make it count</p>
-                </header>
 
                 <div className="giCards">
                     {ways.map((w) => (

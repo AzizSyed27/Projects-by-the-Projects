@@ -2,7 +2,7 @@
 .projectsPage{ background: var(--bg1); }
 
 .projectsTop{
-  padding: 86px 0 64px;
+  padding: 50px 0 60px;
   text-align: center;
   background: var(--bg1);
 }
@@ -26,7 +26,7 @@
 /* light band behind the category */
 .projectsBlock{
   background: var(--bg2);
-  padding: 70px 0 90px;
+  padding: 50px 0 50px;
 
   width: 100vw;
   margin-left: calc(50% - 50vw);
@@ -175,8 +175,10 @@
 
 /* phone */
 @media (max-width: 620px){
+  .projectsBlock{ padding: 20px 0 20px; }
   .projectsGrid { grid-template-columns: 1fr; }
   .projectCard { min-height: 500px; }
+  
 }
 
 
@@ -186,7 +188,7 @@
 
 .currentNowSection{
   background: var(--bg4);
-  padding: 70px 0 90px;
+  padding: 50px 0 50px;
 }
 
 .currentNowHead{
@@ -346,6 +348,7 @@
 }
 
 @media (max-width: 620px){
+  .currentNowSection{ padding: 20px 0 20px; }
   .currentNowGrid{ grid-template-columns: 1fr; }
   .currentNowMedia{ height: 270px; }
 }
@@ -357,7 +360,7 @@
 
 .completedSection{
   background: var(--bg2);
-  padding: 70px 0 90px;
+  padding: 50px 0 50px;
 }
 
 .completedHead{
@@ -517,6 +520,7 @@
 }
 
 @media (max-width: 620px){
+  .completedSection{ padding: 20px 0 20px; }
   .completedGrid{ grid-template-columns: 1fr; }
   .completedMedia{ height: 270px; }
 }
@@ -529,12 +533,8 @@
 
 .projectImpactSection{
   background: var(--bg3);
-  padding: 90px 0 95px;
-
-  /* full-bleed like your categories band */
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  padding: 50px 0 50px;
+  
 }
 
 .projectImpactHead{
@@ -683,6 +683,7 @@
 }
 
 @media (max-width: 620px){
+  .projectImpactSection{ padding: 20px 0 20px; }
   .projectImpactStats {
     grid-template-columns: 1fr ;
     
@@ -695,11 +696,7 @@
 
 .trustedPartnersSection{
   background: var(--bg1);
-  padding: 90px 0 95px;
-
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  padding: 50px 0 50px;
 }
 
 .trustedPartnersRow{
@@ -789,6 +786,7 @@
 }
 
 @media (max-width: 620px){
+  .trustedPartnersSection{ padding: 20px 0 20px; }
   .trustedGrid{ grid-template-columns: 1fr; }
   
 }
@@ -820,7 +818,7 @@
 
 /* CTA */
 .projectCta{
-  padding: 60px 0 65px;
+  padding: 50px 0 50px;
   background: var(--bg4);
 }
 
@@ -857,6 +855,7 @@
 
 /* responsive */
 @media (max-width: 900px){
+  .projectCta{ padding: 30px 0 30px; }
   .aboutDifferenceGrid{
     grid-template-columns: 1fr;
   }

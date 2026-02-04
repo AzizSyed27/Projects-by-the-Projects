@@ -1,15 +1,29 @@
 export default function Contact() {
   return (
     <main>
+
+      <section className="giHero" aria-label="Join us now">
+            <div className="container giHeroInner">
+                <h1 className="giHeroTitle">GET IN TOUCH</h1>
+                <p className="giHeroSub">
+                    Questions about our work or how to get involved? We’re listening.
+                </p>
+            </div>
+        </section>
       <section className="contactSection" aria-label="Contact">
         <div className="container">
+        
+
+
+
           {/* TOP ROW */}
           <div className="contactTop">
             <div className="contactLeft">
               <div className="contactKicker">Reach out</div>
-              <h1 className="contactTitle">GET IN TOUCH</h1>
+              <h1 className="contactTitle">CALL OR E-MAIL</h1>
               <p className="contactLead">
-                Questions about our work or how to get involved? We’re listening.
+                Whether you have questions about our projects,
+                volunteering, or need assistance.
               </p>
             </div>
 

@@ -2043,8 +2043,8 @@ body{
 
 /* CONTACT PAGE */
 .contactSection{
-  background: var(--bg1);
-  padding: 90px 0 95px;
+  background: var(--bg2);
+  padding: 50px 0 50px;
 }
 
 /* top row: left text + right info */

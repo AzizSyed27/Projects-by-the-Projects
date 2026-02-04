@@ -290,7 +290,7 @@ export default function Donate() {
 
                             <div className="donateDirectActions">
                             <a className="donateDirectBtn" href={currentGift.learnTo}>
-                                Learn more
+                                Learn more <span aria-hidden="true"> ›</span>
                             </a>
                             
                             </div>

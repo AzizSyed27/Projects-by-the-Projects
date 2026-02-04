@@ -8,12 +8,7 @@
 ================================== */
 .giHero{
   background: var(--bg1);
-  padding: 90px 0 110px;
-
-  /* full-bleed section like your other bands */
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  padding: 50px 0 50px;
 }
 
 .giHeroInner{
@@ -41,11 +36,7 @@
 ================================== */
 .giWays{
   background: var(--bg2);
-  padding: 90px 0 105px;
-
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  padding: 25px 0 50px;
 }
 
 .giWaysHead{
@@ -86,7 +77,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 22px;
   align-items: stretch;
-  margin-top: 26px;
+
 }
 
 .giCard{
@@ -173,8 +164,9 @@
 }
 
 @media (max-width: 620px){
+  .giHero{ padding: 50px 0 50px; }
   .giCards{ grid-template-columns: 1fr; }
-  .giHero{ padding: 70px 0 90px; }
+  .giWays{ padding: 20px 0 20px; }
 }
 
 
@@ -184,12 +176,8 @@
 ================================== */
 .giDonor{
   background: var(--bg4);
-  padding: 90px 0 110px;
+  padding: 50px 0 50px;
 
-  /* full-bleed band */
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
 }
 
 .giDonorHead{
@@ -337,7 +325,7 @@
 }
 
 @media (max-width: 620px){
-  .giDonor{ padding: 70px 0 90px; }
+  .giDonor{ padding: 50px 0 20px; }
 }
 
 
@@ -350,11 +338,8 @@
 
 .giServeSection{
   background: var(--bg1);
-  padding: 90px 0 110px;
+  padding: 50px 0 50px;
 
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
 }
 
 /* Top actions under the paragraph */
@@ -437,6 +422,7 @@
 
 /* responsive */
 @media (max-width: 900px){
+  .giServeSection{ padding: 50px 0 20px; }
   .aboutDifferenceGrid{
     grid-template-columns: 1fr;
   }
@@ -469,12 +455,7 @@
 
 .giLoop{
   background: var(--bg4);
-  padding: 95px 0 105px;
-
-  /* full-bleed band like your other sections */
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  padding: 50px 0 50px;
 }
 
 .giLoopInner{

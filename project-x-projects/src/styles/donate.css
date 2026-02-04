@@ -7,11 +7,8 @@
 ================================== */
 .donateHero{
   background: var(--bg1);
-  padding: 90px 0 105px;
+  padding: 50px 0 60px;
 
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
 }
 
 .donateHeroInner{
@@ -39,11 +36,8 @@
 ================================== */
 .donateHow{
   background: var(--bg2);
-  padding: 90px 0 110px;
+  padding: 50px 0 60px;
 
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
 }
 
 .donateHowHead{
@@ -241,8 +235,8 @@
 }
 
 @media (max-width: 620px){
-  .donateHero{ padding: 70px 0 90px; }
-  .donateHow{ padding: 70px 0 90px; }
+
+  .donateHow{ padding: 50px 0 20px; }
 }
 
 
@@ -252,11 +246,8 @@
 
 .donateDirect{
   background: var(--bg4);
-  padding: 90px 0 110px;
+  padding: 50px 0 60px;
 
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
 }
 
 .donateDirectHead{
@@ -302,6 +293,9 @@
   flex-direction: column;
   justify-content: center;
   min-height: 360px;
+
+  position: relative;
+  overflow: hidden;
 }
 
 .donateDirectIcon{
@@ -407,27 +401,31 @@
 
 /* responsive */
 @media (max-width: 900px){
-  .donateDirectCard{
-    grid-template-columns: 1fr;
-  }
+    
+    .donateDirect{ padding: 50px 0 20px; }
 
-  .donateDirectRight{
-    grid-auto-rows: minmax(0, auto);
-  }
+    .donateDirectCard{
+        grid-template-columns: 1fr;
+    }
 
-  .donateDirectItem{
-    border-left: none;
-  }
+    .donateDirectRight{
+        grid-auto-rows: minmax(0, auto);
+    }
 
-  .donateDirectLeft{
-    padding: 44px 28px;
-  }
+    .donateDirectItem{
+        border-top: 1px solid rgba(15, 23, 42, 0.12);
+        border-left: none;
+    }
+
+    .donateDirectLeft{
+        padding: 44px 28px;
+    }
 }
 
 
 .donateFaqSection{
   background: var(--bg1);
-  padding: 90px 0 95px;
+  padding: 50px 0 50px;
 }
 
 .donatefaqItem{
