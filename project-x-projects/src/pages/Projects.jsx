@@ -463,7 +463,7 @@ export default function Projects() {
           <div className="trustedPartnersRow">
             <div className="trustedPartnersLeft">
               <h2 className="trustedPartnersTitle">
-                WE WORK WITH TRUSTED PARTNERS ON <br /> THE GROUND
+                WE WORK WITH TRUSTED PARTNERS ON THE GROUND
               </h2>
 
               <p className="trustedPartnersSub">
