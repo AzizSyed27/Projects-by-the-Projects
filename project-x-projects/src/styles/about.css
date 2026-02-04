@@ -204,12 +204,21 @@
   border: 0px;
   border-radius: 5px;
   padding: 22px;
-  min-height: 300px;
+  height: auto;
 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+
+  position: relative;
+  overflow: hidden;
 }
+
+.aboutCard > *:not(.impactWatermark){
+  position: relative;
+  z-index: 2;
+}
+
 
 .aboutCardWide{
   padding: 26px;
@@ -435,12 +444,21 @@
   background-color: var(--bg2);
   border-radius: 5px;
   padding: 22px;
-  min-height: 300px;
+  height: auto;
   
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+
+  position: relative;
+  overflow: hidden;
 }
+
+.aboutDiffCard > *:not(.impactWatermark){
+  position: relative;
+  z-index: 2;
+}
+
 
 .aboutDiffCardWide{
   padding: 26px;

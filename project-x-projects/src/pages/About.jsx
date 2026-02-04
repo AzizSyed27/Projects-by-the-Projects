@@ -2,15 +2,17 @@ import { Link } from "react-router-dom";
 
 import aboutImg from "../assets/about/about-hero.jpg"; 
 
-import waterIcon from "../assets/about/about-water-icon.png";
-import commIcon from "../assets/about/about-comm-icon.png"
-import toolIcon from "../assets/about/about-tools-icon.png"
-import waveIcon from "../assets/about/about-wave-icon.png"
-import mosqueIcon from "../assets/about/about-mosque-icon.png"
-import eduIcon from "../assets/about/about-edu-icon.png"
-import mapIcon from "../assets/about/about-map-icon.png"
-import paperIcon from "../assets/about/about-paper-icon.png"
-import projectIcon from "../assets/about/about-project-icon.png"
+import waterIcon from "../assets/about/about-water-icon-color.png";
+import commIcon from "../assets/about/about-comm-icon-color.png"
+import toolIcon from "../assets/about/about-tools-icon-color.png"
+
+import waveIcon from "../assets/about/about-wave-icon-color.png"
+import mosqueIcon from "../assets/about/about-mosque-icon-color.png"
+import eduIcon from "../assets/about/about-edu-icon-color.png"
+
+import mapIcon from "../assets/about/about-map-icon-color.png"
+import paperIcon from "../assets/about/about-paper-icon-color.png"
+import projectIcon from "../assets/about/about-project-icon-color.png"
 
 import malawiImg from "../assets/about/about-malawi-img.jpg";
 import ugandaImg from "../assets/about/about-uganda-img.jpg";
@@ -152,7 +154,7 @@ export default function About() {
                             key={c.title}
                             className={`aboutCard ${c.wide ? "aboutCardWide" : ""}`}
                         >
-                            <img src={c.icon} className="aboutIcon" alt="icon"/>
+                            <img src={c.icon} className="impactWatermark" alt="icon"/>
                             <h3 className="aboutCardTitle">{c.title}</h3>
                             <p className="aboutCardBody">{c.body}</p>
 
@@ -188,7 +190,7 @@ export default function About() {
 
                     <article key={c.title} className="aboutCard aboutCardSoft">
                         
-                        <img src={c.icon}  className="aboutIcon"/>
+                        <img src={c.icon}  className="impactWatermark"/>
 
                         <h3 className="aboutCardTitle">{c.title}</h3>
 
@@ -269,7 +271,7 @@ export default function About() {
                     className={`aboutDiffCard ${c.wide ? "aboutDiffCardWide" : ""}`}
                     >
 
-                    <img src={c.icon} className="aboutDiffIcon"/>
+                    <img src={c.icon} className="impactWatermark"/>
 
                     <h3 className="aboutDiffTitle">{c.title}</h3>
                     <p className="aboutDiffBody">{c.body}</p>

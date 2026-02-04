@@ -33,7 +33,7 @@ export default function HomeHero() {
                                     Donate
                                 </Link>
                                 <Link className="btn btnGhost" to="/projects">
-                                    Learn more
+                                    Learn more<span aria-hidden="true">›</span>
                                 </Link>
                             </div>
                         </div>
