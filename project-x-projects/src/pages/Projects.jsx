@@ -472,9 +472,9 @@ export default function Projects() {
 
               <div className="trustedPartnersActions">
                 
-                <a className="trustedLink" href="#connect">
+                <Link className="trustedLink" to="/contact">
                   Connect <span aria-hidden="true">›</span>
-                </a>
+                </Link>
               </div>
             </div>
 
