@@ -139,7 +139,7 @@ export default function About() {
 
                 <header className="aboutSectionHeader">
 
-                    <div className="aboutEyebrow">Purpose</div>
+                    <div className="aboutEyebrowPurpose">Purpose</div>
 
                     <h2 className="aboutSectionTitle">MISSION, VISION, VALUES</h2>
 
@@ -213,7 +213,7 @@ export default function About() {
             <div className="container">
                 
                 <header className="aboutSectionHeader aboutSectionHeaderTight">
-                    <div className="aboutEyebrow">Reach</div>
+                    <div className="aboutEyebrowLocations">Reach</div>
                     <h2 className="aboutSectionTitle">LOCATIONS</h2>
                     <p className="aboutSectionSub">Active across Africa, Asia, and Canada</p>
                 </header>

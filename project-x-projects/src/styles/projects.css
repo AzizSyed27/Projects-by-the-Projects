@@ -124,6 +124,7 @@
   text-transform: uppercase;
   opacity: 0.9;
   color: var(--bg1);
+  text-align: center;
 }
 
 .projectTitle{
@@ -134,6 +135,7 @@
   letter-spacing: -0.01em;
   text-transform: uppercase;
   color: var(--bg1);
+  text-align: center;
 }
 
 .projectDesc{
@@ -142,6 +144,8 @@
   opacity: 0.9;
   max-width: 40ch;
   color: var(--bg1);
+  margin: 0 auto;
+  text-align: center;
 }
 
 .projectLinks{
@@ -197,10 +201,11 @@
 }
 
 .currentNowEyebrow{
+  font-size: clamp(14px, 1.2vw, 22px);
   font-weight: 800;
-  letter-spacing: 0.06em;
-  font-size: 13px;
-  color: rgba(15, 23, 42, 0.75);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bg2);
   margin-bottom: 8px;
 }
 
@@ -552,6 +557,14 @@
   margin: 0;
 }
 
+.projectsEyebrowImpact{
+  font-size: clamp(14px, 1.2vw, 22px);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bg1);
+  margin-bottom: 12px;
+}
 
 .projectImpactSub{
   margin: 12px auto 0;

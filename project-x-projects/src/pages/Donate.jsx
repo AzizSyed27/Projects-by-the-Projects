@@ -271,7 +271,7 @@ export default function Donate() {
             <section className="donateDirect" aria-label="Choose where your gift goes">
                 <div className="container">
                     <header className="donateDirectHead">
-                        <div className="donateEyebrow">Direct</div>
+                        <div className="donateEyebrowDirect">Direct</div>
                         <h2 className="donateDirectTitle">CHOOSE WHERE YOUR GIFT GOES</h2>
                         <p className="donateDirectSub">
                             Pick a project that moves you. Every dollar reaches the ground and builds something real.

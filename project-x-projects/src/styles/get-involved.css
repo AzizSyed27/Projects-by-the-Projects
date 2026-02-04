@@ -180,6 +180,15 @@
 
 }
 
+.giEyebrowDonor{
+  font-size: clamp(14px, 1.2vw, 22px);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bg1);
+  margin-bottom: 12px;
+}
+
 .giDonorHead{
   text-align: center;
   margin: 0 auto 38px;

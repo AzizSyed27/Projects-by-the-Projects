@@ -165,7 +165,7 @@ export default function GetInvolved() {
             <div className="container">
                 <header className="giDonorHead">
                     {/* reuse your existing eyebrow style */}
-                    <div className="giEyebrow">Impact</div>
+                    <div className="giEyebrowDonor">Impact</div>
                     <h2 className="giDonorTitle">BECOME A DONOR</h2>
                     <p className="giDonorSub">Your money reaches real people</p>
                 </header>

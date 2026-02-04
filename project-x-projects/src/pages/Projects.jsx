@@ -261,7 +261,7 @@ export default function Projects() {
       <section className="currentNowSection" aria-label="Work happening now" id="current-now">
         <div className="container">
           <div className="currentNowHead">
-            <div className="projectsEyebrow">Current</div>
+            <div className="currentNowEyebrow">Current</div>
             <h2 className="currentNowTitle">WORK HAPPENING NOW</h2>
             <p className="currentNowSub">
               Each project addresses a real need in communities near and far.
@@ -399,7 +399,7 @@ export default function Projects() {
       <section className="projectImpactSection" aria-label="Impact">
         <div className="container">
           <header className="projectImpactHead">
-            <div className="projectsEyebrow">Impact</div>
+            <div className="projectsEyebrowImpact">Impact</div>
             <h2 className="projectImpactTitle">WHAT WE&apos;VE BUILT TOGETHER</h2>
             <p className="projectImpactSub">Real work. Real numbers. Real lives changed.</p>
           </header>
