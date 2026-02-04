@@ -1204,7 +1204,7 @@ body{
   width: 100%;
   height: 100%;
   background: var(--bg3);
-  order: 1;
+  order: -1;
 }
 
 .resultsMedia img{
@@ -1212,6 +1212,9 @@ body{
   height: 100%;
   object-fit: cover;
   display: block;
+
+  filter: grayscale(0.15) contrast(1.05) brightness(0.82);
+  transform: scale(1.02);
 }
 
 .resultsContent{
@@ -1274,6 +1277,119 @@ body{
   padding-right: 0 !important;
 }
 
+
+
+/* RESULTS + NUMBERS (MERGED) */
+.resultsCardMerged{
+  /* image + stat column */
+  grid-template-columns: 1fr min(420px, 42%);
+}
+
+/* left side becomes an overlay layout */
+.resultsMediaOverlay{
+  position: relative;
+  overflow: hidden;
+}
+
+/* darken image for readability */
+.resultsMediaOverlay::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.06) 0%,
+    rgba(15, 23, 42, 0.72) 100%
+  );
+  pointer-events: none;
+}
+
+/* overlay text */
+.resultsOverlay{
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  padding: clamp(18px, 3vw, 46px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+
+  color: var(--inverseInk);
+}
+
+.resultsOverlay .resultsTag,
+.resultsOverlay .resultsCardTitle,
+.resultsOverlay .resultsCardBody{
+  color: var(--inverseInk);
+}
+
+.resultsOverlay .resultsCardBody{
+  max-width: 60ch;
+}
+
+/* keep ghost button readable on the image */
+.resultsOverlay .resultsBtnGhost{
+  color: var(--inverseInk) !important;
+}
+
+/* right-side stat card */
+.resultsStat{
+  background: var(--bg3);
+  padding: clamp(18px, 2.6vw, 38px);
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: center;
+}
+
+
+
+.resultsMiniGrid{
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 50px;
+}
+
+.resultsMini{
+  border: 1px solid rgba(15,23,42,0.10);
+  background: rgba(255,255,255,0.16);
+  border-radius: 4px;
+  padding: 10px 10px;
+}
+
+.resultsMiniK{
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(15,23,42,0.62);
+  margin-bottom: 6px;
+}
+
+.resultsMiniV{
+  margin-top: auto;
+
+  display: flex; 
+  justify-content: flex-end;   
+  align-items: flex-end; 
+
+  line-height: 1;
+  min-height: calc(2 * 1em);
+  text-align: end;
+
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 900;
+  color: rgba(15,23,42,0.90);
+}
+
+
+
+
+
 @media (max-width: 900px){
   .resultsSection{
     padding: 20px 0 20px;
@@ -1295,6 +1411,24 @@ body{
   .resultsTopActions .btn,
   .resultsCardActions .btn{
     width: 100%;
+  }
+
+  .resultsCardMerged{
+    grid-template-columns: 1fr;
+  }
+
+  .resultsStat{
+    height: auto;
+  }
+
+  .resultsMiniGrid{
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 20px;
+  }
+
+  .resultsMiniV{
+    justify-content: flex-start;  
+    text-align: start; 
   }
 }
 
@@ -1424,7 +1558,7 @@ body{
 
 /* RECENT WORK */
 .recentSection{
-  background: var(--bg2);
+  background: var(--bg4);
   color: var(--ink);
   padding: 50px 0 50px;
 }
@@ -1498,7 +1632,7 @@ body{
   width: 5px;
   height: 5px;
   border-radius: 999px;
-  background: var(--bg3);
+  background: var(--bg1);
 }
 
 .recentDot.isActive{
@@ -1522,7 +1656,19 @@ body{
 }
 
 .recentArrow:hover{
-  background: var(--bg4);
+  background: var(--bg3);
+}
+
+.recentRail.autoScroll{
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+
+  /* keep it clean */
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* IE/Edge legacy */
+}
+.recentRail.autoScroll::-webkit-scrollbar{
+  height: 0;                      /* Chrome/Safari */
 }
 
 /* responsive */
@@ -1714,7 +1860,7 @@ body{
 
 /* FAQ / QUESTIONS */
 .faqSection{
-  background: var(--bg4);
+  background: var(--bg2);
   padding: 50px 0 50px;
 }
 
@@ -1749,7 +1895,7 @@ body{
 
 .faqItem{
   border-radius: 5px;
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--bg1);
 }
 
 .faqQ{
@@ -1812,7 +1958,7 @@ body{
 
 .faqContactBtn{
   background-color: var(--brand);
-  background: rgba(255, 255, 255, 0.2);
+  color: var(--bg1);
   border: 0px;
   border-radius: 3px;
 }

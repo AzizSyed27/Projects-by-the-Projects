@@ -22,8 +22,6 @@ export default function Home() {
         <HomeResults/>
 
         <HomePartners/>
-
-        <HomeNumbers/>
         
         <HomeGallery/>
         
