@@ -1671,6 +1671,10 @@ body{
   height: 0;                      /* Chrome/Safari */
 }
 
+.recentRail.autoScroll{
+  touch-action: pan-x;
+}
+
 /* responsive */
 @media (max-width: 900px){
   .recentSection{

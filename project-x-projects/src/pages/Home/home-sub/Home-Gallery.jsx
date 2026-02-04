@@ -20,6 +20,8 @@ export default function HomeGallery() {
 
     const recentRef = useRef(null);
     const [paused, setPaused] = useState(false);
+    const resumeTimerRef = useRef(null);
+    
 
     const recentItems = useMemo(
         () => [
@@ -78,21 +80,20 @@ export default function HomeGallery() {
    
     }, [paused]);
 
-    const resumeTimerRef = useRef(null);
-
+    
     const pauseTemporarily = () => {
-    setPaused(true);
+        setPaused(true);
 
-    // auto-resume even if pointerup never fires (mobile edge case)
-    window.clearTimeout(resumeTimerRef.current);
-    resumeTimerRef.current = window.setTimeout(() => {
-        setPaused(false);
-    }, 900);
+        // Safety auto-resume
+        if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+        resumeTimerRef.current = setTimeout(() => {
+            setPaused(false);
+        }, 900);
     };
 
     const resumeNow = () => {
-    window.clearTimeout(resumeTimerRef.current);
-    setPaused(false);
+        if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+        setPaused(false);
     };
 
     useEffect(() => {
@@ -125,16 +126,22 @@ export default function HomeGallery() {
 
                     <div className="recentRailWrap">
                         <div
-                        className="recentRail autoScroll"
-                        ref={recentRef}
-                        // pause if the user interacts (nice UX)
-                        onMouseEnter={() => setPaused(true)}
-                        onMouseLeave={() => setPaused(false)}
-                        onPointerDown={pauseTemporarily}
-                        onPointerUp={resumeNow}
-                        onPointerCancel={resumeNow}
-                        onFocus={() => setPaused(true)}
-                        onBlur={() => setPaused(false)}
+                            className="recentRail autoScroll"
+                            ref={recentRef}
+                            // pause if the user interacts (nice UX)
+                            onMouseEnter={() => setPaused(true)}
+                            onMouseLeave={() => setPaused(false)}
+
+                            onPointerDown={(e) => {
+                                e.currentTarget.setPointerCapture?.(e.pointerId);
+                                pauseTemporarily();
+                            }}
+                            onPointerUp={resumeNow}
+                            onPointerCancel={resumeNow}
+
+                            // Extra safety for devices that behave oddly
+                            onClick={resumeNow}
+                        
                         >
                             {railItems.map((item, i) => {
                                 // second half are clones
