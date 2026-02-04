@@ -225,7 +225,7 @@ body{
   grid-template-columns: minmax(320px, 36%) 1fr;
   overflow: hidden;
 
-  background: var(--bg4); /* warm off-white like screenshot */
+  background: var(--bg3); /* warm off-white like screenshot */
   border-radius: 5px;
   box-shadow: var(--shadow);
 

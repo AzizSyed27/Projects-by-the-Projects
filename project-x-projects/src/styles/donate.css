@@ -419,15 +419,18 @@
 
     .donateDirectRight{
         grid-auto-rows: minmax(0, auto);
+        grid-template-columns: 1fr 1fr;
     }
 
     .donateDirectItem{
-        border-top: 1px solid rgba(15, 23, 42, 0.12);
+        border: 1px solid rgba(15, 23, 42, 0.12);
         border-left: none;
+        text-align: center;
     }
 
     .donateDirectLeft{
         padding: 44px 28px;
+        min-height: 300px;
     }
 }
 

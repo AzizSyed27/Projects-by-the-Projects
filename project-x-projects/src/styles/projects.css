@@ -181,7 +181,7 @@
 @media (max-width: 620px){
   .projectsBlock{ padding: 50px 0 20px; }
   .projectsGrid { grid-template-columns: 1fr; }
-  .projectCard { min-height: 500px; }
+  .projectCard { min-height: 400px; }
   
 }
 
@@ -698,7 +698,7 @@
 @media (max-width: 620px){
   .projectImpactSection{ padding: 50px 0 20px; }
   .projectImpactStats {
-    grid-template-columns: 1fr ;
+    grid-template-columns: 1fr 1fr 1fr ;
     
   }
 }
@@ -800,7 +800,7 @@
 
 @media (max-width: 620px){
   .trustedPartnersSection{ padding: 50px 0 20px; }
-  .trustedGrid{ grid-template-columns: 1fr; }
+  .trustedGrid{ grid-template-columns: 1fr 1fr; }
   
 }
 

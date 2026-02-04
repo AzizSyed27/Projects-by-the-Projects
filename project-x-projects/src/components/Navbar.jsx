@@ -112,9 +112,6 @@ export default function Navbar() {
       >
         <div className="explorePanel">
           <div className="exploreLeft">
-            <div className="exploreLocationRow">
-              <div className="exploreLoc"></div>
-            </div>
 
             <nav className="exploreList" aria-label="Explore">
               {EXPLORE_ITEMS.map((item) => (
