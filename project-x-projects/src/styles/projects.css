@@ -179,7 +179,7 @@
 
 /* phone */
 @media (max-width: 620px){
-  .projectsBlock{ padding: 20px 0 20px; }
+  .projectsBlock{ padding: 50px 0 20px; }
   .projectsGrid { grid-template-columns: 1fr; }
   .projectCard { min-height: 500px; }
   
@@ -353,7 +353,7 @@
 }
 
 @media (max-width: 620px){
-  .currentNowSection{ padding: 20px 0 20px; }
+  .currentNowSection{ padding: 50px 0 20px; }
   .currentNowGrid{ grid-template-columns: 1fr; }
   .currentNowMedia{ height: 270px; }
 }
@@ -525,7 +525,7 @@
 }
 
 @media (max-width: 620px){
-  .completedSection{ padding: 20px 0 20px; }
+  .completedSection{ padding: 50px 0 20px; }
   .completedGrid{ grid-template-columns: 1fr; }
   .completedMedia{ height: 270px; }
 }
@@ -696,7 +696,7 @@
 }
 
 @media (max-width: 620px){
-  .projectImpactSection{ padding: 20px 0 20px; }
+  .projectImpactSection{ padding: 50px 0 20px; }
   .projectImpactStats {
     grid-template-columns: 1fr ;
     
@@ -799,7 +799,7 @@
 }
 
 @media (max-width: 620px){
-  .trustedPartnersSection{ padding: 20px 0 20px; }
+  .trustedPartnersSection{ padding: 50px 0 20px; }
   .trustedGrid{ grid-template-columns: 1fr; }
   
 }

@@ -941,7 +941,7 @@ body{
 
 @media (max-width: 700px){
   .impactSection{
-    padding: 20px 0 20px;
+    padding: 50px 0 20px;
   }
   
   .impactGrid{
@@ -1392,7 +1392,7 @@ body{
 
 @media (max-width: 900px){
   .resultsSection{
-    padding: 20px 0 20px;
+    padding: 50px 0 20px;
   }
   
   .resultsCard{
@@ -2178,7 +2178,7 @@ body{
 
 @media (max-width: 700px){
   .faqSection{
-    padding: 20px 0 20px;
+    padding: 50px 0 20px;
   }
   
   .footerCols{

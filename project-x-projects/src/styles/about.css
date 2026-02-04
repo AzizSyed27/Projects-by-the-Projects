@@ -329,13 +329,13 @@
 
 @media (max-width: 900px){
   .aboutPurpose{
-    padding: 25px 0 20px;
+    padding: 50px 0 20px;
     margin-top: -50px;
   }
 
   .aboutWork{
 
-    padding: 20px 0 20px;
+    padding: 50px 0 20px;
   }
 
 }
@@ -419,7 +419,7 @@
 /* responsive */
 @media (max-width: 900px){
   .aboutLocations{
-    padding: 20px 0 20px;
+    padding: 50px 0 20px;
   }
   
   .aboutLocationsGrid{
@@ -615,7 +615,7 @@
 /* responsive */
 @media (max-width: 900px){
   .aboutDifference{
-    padding: 20px 0 20px;
+    padding: 50px 0 20px;
   }
   .aboutDifferenceGrid{
     grid-template-columns: 1fr;
