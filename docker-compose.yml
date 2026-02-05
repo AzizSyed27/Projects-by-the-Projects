@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres:16
+    container_name: pxp-postgres
+    environment:
+      POSTGRES_PASSWORD: pxp-aziz
+      POSTGRES_DB: pxp_dev
+    ports:
+      - "5432:5432"
+    volumes:
+      - pxp_pgdata:/var/lib/postgresql/data
+
+volumes:
+  pxp_pgdata:
