@@ -3,6 +3,7 @@ services:
     image: postgres:16
     container_name: pxp-postgres
     environment:
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: pxp-aziz
       POSTGRES_DB: pxp_dev
     ports:
