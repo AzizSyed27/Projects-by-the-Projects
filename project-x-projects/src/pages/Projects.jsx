@@ -13,7 +13,7 @@ import mjtfLogo from "../assets/partners/mtjf-logo.png";
 import dehamLogo from "../assets/partners/deham-logo.png";
 import arsalanLogo from "../assets/partners/arsalaan-logo.png";
 
-const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8080";
+const API_BASE = import.meta.env.VITE_API_URL;
 
 function parseTags(csv) {
   return (csv || "")
@@ -29,7 +29,7 @@ function mapApiProjectToCard(p) {
     title: p.projectTitle,
     desc: p.projectShortDesc,
     tags: parseTags(p.projectTags),
-    img: p.cardImageUrl, // may be null early on (you’ll fill later via admin + R2)
+    img: p.cardImageUrl, // will add r2 link after
   };
 }
 
