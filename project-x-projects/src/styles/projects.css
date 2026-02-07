@@ -420,6 +420,7 @@
   background: rgba(15, 23, 42, 0.05);
   display: grid;
   place-items: center;
+  overflow: hidden;
 }
 
 .completedMedia img{

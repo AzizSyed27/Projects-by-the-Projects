@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import Home from "./pages/Home/Home.jsx";
@@ -10,12 +10,22 @@ import GetInvolved from "./pages/GetInvolved.jsx"
 import Donate from "./pages/Donate.jsx"
 import ScrollToTop from "./components/ScrollToTop";
 
+import AdminLogin from "./admin/AdminLogin.jsx";
+import AdminDashboard from "./admin/AdminDashboard.jsx";
+import AdminProjectEditor from "./admin/AdminProjectEditor.jsx";
+import ProtectedRoute from "./admin/ProtectedRoute.jsx";
+
 
 export default function App() {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith("/admin");
+
   return (
     <>
       <ScrollToTop/>
-      <Navbar />
+
+      {!isAdminRoute && <Navbar />}
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -25,8 +35,38 @@ export default function App() {
         <Route path="/donate" element={<Donate/>} />
         <Route path="/Contact" element={<Contact/>}/>
 
+        
+        {/* Admin */}
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/projects/new"
+          element={
+            <ProtectedRoute>
+              <AdminProjectEditor mode="create" />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/projects/:id/edit"
+          element={
+            <ProtectedRoute>
+              <AdminProjectEditor mode="edit" />
+            </ProtectedRoute>
+          }
+        />
+
+
       </Routes>
-      <Footer />
+
+      {!isAdminRoute && <Footer />}
     </>
   );
 }

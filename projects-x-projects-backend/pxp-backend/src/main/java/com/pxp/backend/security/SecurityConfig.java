@@ -1,6 +1,7 @@
 package com.pxp.backend.security;
 
 import org.springframework.context.annotation.*;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.*;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -21,18 +22,22 @@ public class SecurityConfig {
 
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-    http
-      .csrf(csrf -> csrf.disable())
-      .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-      .authorizeHttpRequests(auth -> auth
-        // public endpoints
-        .requestMatchers("/api/projects/**").permitAll()
-        .requestMatchers("/api/admin/auth/login").permitAll()
-
-        // admin endpoints
-        .requestMatchers("/api/admin/**").hasRole("ADMIN")
-
-        .anyRequest().permitAll()
+	http
+	  .cors(cors -> {})
+	  .csrf(csrf -> csrf.disable())
+	  .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+	  .authorizeHttpRequests(auth -> auth
+		
+		.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+		
+		// public endpoints
+		.requestMatchers("/api/projects/**").permitAll()
+		.requestMatchers("/api/admin/auth/login").permitAll()
+		
+		// admin endpoints
+		.requestMatchers("/api/admin/**").hasRole("ADMIN")
+		
+		.anyRequest().permitAll()
       );
 
     http.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);

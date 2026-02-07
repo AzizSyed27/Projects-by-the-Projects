@@ -121,7 +121,7 @@ export default function ProjectDetail() {
               <header className="ppGalleryHead">
                 <div className="ppEyebrow">Gallery</div>
                 <h2 className="ppH2">SEE THE WORK</h2>
-                <p className="ppSub">Photos from the field — planning, progress, and results.</p>
+                <p className="ppSub">Photos from the field. Planning, progress, and results.</p>
               </header>
 
               <div className="ppGrid">
