@@ -37,6 +37,9 @@ public class SecurityConfig {
 		// admin endpoints
 		.requestMatchers("/api/admin/**").hasRole("ADMIN")
 		
+		//for subscription service
+		.requestMatchers("/api/subscribers/**").permitAll()
+		
 		.anyRequest().permitAll()
       );
 

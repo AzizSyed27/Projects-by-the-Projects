@@ -3,6 +3,7 @@ package com.pxp.backend.web.admin;
 import com.pxp.backend.entity.Project;
 import com.pxp.backend.entity.ProjectStatus;
 import com.pxp.backend.repo.ProjectRepository;
+import com.pxp.backend.service.ProjectNotificationService;
 import com.pxp.backend.web.admin.dto.*;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -17,9 +18,13 @@ import java.util.Locale;
 public class AdminProjectController {
 
   private final ProjectRepository projectRepo;
+  
+  private final ProjectNotificationService notify;
 
-  public AdminProjectController(ProjectRepository projectRepo) {
+  public AdminProjectController(ProjectRepository projectRepo, ProjectNotificationService notify) {
     this.projectRepo = projectRepo;
+    this.notify = notify;
+    
   }
 
   @GetMapping
@@ -47,8 +52,13 @@ public class AdminProjectController {
 
     String slug = (req.slug() == null || req.slug().isBlank()) ? slugify(req.projectTitle()) : slugify(req.slug());
     p.setSlug(makeUniqueSlug(slug));
+    
+    Project saved = projectRepo.save(p);
+    if (saved.getStatus() == ProjectStatus.ACTIVE) {
+      notify.notifyNewProject(saved);
+    }
 
-    return toResp(projectRepo.save(p));
+    return toResp(saved);
   }
 
   @PutMapping("/{id}")

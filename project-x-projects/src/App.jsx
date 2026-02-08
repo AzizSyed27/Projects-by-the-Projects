@@ -15,6 +15,9 @@ import AdminDashboard from "./admin/AdminDashboard.jsx";
 import AdminProjectEditor from "./admin/AdminProjectEditor.jsx";
 import ProtectedRoute from "./admin/ProtectedRoute.jsx";
 
+import SubscribeVerify from "./pages/SubscribeVerify.jsx";
+import SubscribeUnsubscribe from "./pages/SubscribeUnsubscribe.jsx";
+
 
 export default function App() {
   const location = useLocation();
@@ -34,6 +37,9 @@ export default function App() {
         <Route path="/get-involved" element={<GetInvolved/>} />
         <Route path="/donate" element={<Donate/>} />
         <Route path="/Contact" element={<Contact/>}/>
+
+        <Route path="/subscribe/verify" element={<SubscribeVerify />} />
+        <Route path="/subscribe/unsubscribe" element={<SubscribeUnsubscribe />} />
 
         
         {/* Admin */}
