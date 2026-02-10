@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import { Link } from "react-router-dom";
 import "../styles/projects.css";
 
@@ -12,6 +12,8 @@ import muslimhandsLogo from "../assets/partners/muslinhands-logo.png";
 import mjtfLogo from "../assets/partners/mtjf-logo.png";
 import dehamLogo from "../assets/partners/deham-logo.png";
 import arsalanLogo from "../assets/partners/arsalaan-logo.png";
+
+import locationIcon from "../assets/projects/location-icon.png";
 
 const API_BASE = import.meta.env.VITE_API_URL;
 
@@ -173,12 +175,67 @@ export default function Projects() {
     }
   };
 
+
+
+  function dateParts(iso) {
+    // iso is "YYYY-MM-DD"
+    const d = new Date(`${iso}T00:00:00`);
+    const dow = d.toLocaleDateString(undefined, { weekday: "short" }); // Sat
+    const day = d.getDate(); // 15
+    const monthYear = d.toLocaleDateString(undefined, { month: "short", year: "numeric" }); // Mar 2025
+    return { dow, day, monthYear };
+  }
+
+  // Events state
+  const [eventView, setEventView] = useState("UPCOMING"); // UPCOMING | PASSED
+  const [upcomingEvents, setUpcomingEvents] = useState([]);
+  const [pastEvents, setPastEvents] = useState([]);
+  const [eventsLoading, setEventsLoading] = useState(false);
+  const [eventsErr, setEventsErr] = useState("");
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function load() {
+      setEventsErr("");
+      setEventsLoading(true);
+
+      try {
+        const [up, past] = await Promise.all([
+          fetch(`${API_BASE}/api/events`).then((r) => r.json()),
+          fetch(`${API_BASE}/api/events?status=PASSED`).then((r) => r.json()),
+        ]);
+
+        if (cancelled) return;
+
+        setUpcomingEvents(Array.isArray(up) ? up : []);
+        setPastEvents(Array.isArray(past) ? past : []);
+      } catch (e) {
+        if (!cancelled) setEventsErr("Couldn’t load events right now.");
+      } finally {
+        if (!cancelled) setEventsLoading(false);
+      }
+    }
+
+    load();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const eventsToShow = useMemo(() => {
+    return eventView === "UPCOMING" ? upcomingEvents : pastEvents;
+  }, [eventView, upcomingEvents, pastEvents]);
+
+
+
+
   return (
     <main className="projectsPage">
       {/* PAGE HEADER */}
       <section className="projectsTop" aria-label="Projects header">
         <div className="container">
-          <h1 className="projectsTitle">OUR PROJECTS</h1>
+          <h1 className="projectsTitle">OUR PROJECTS & EVENTS</h1>
           <p className="projectsSub">
             Projects <span className="xproj"> X</span> Projects acts locally and builds globally. See the work
             P<span className="xproj">X</span>P is doing right now.
@@ -355,6 +412,104 @@ export default function Projects() {
           )}
         </div>
       </section>
+
+      {/* COMMUNITY EVENTS */}
+      <section className="giEvents" aria-label="Community events" id="events">
+        <div className="container">
+          <header className="giEventsHead">
+            <div className="giEventsEyebrow">Community</div>
+            <h2 className="giEventsTitle">EVENTS</h2>
+            <p className="giEventsSub">Join us for gatherings that matter</p>
+          </header>
+
+          {eventsLoading && <div className="evHint">Loading events…</div>}
+          {eventsErr && <div className="evError">{eventsErr}</div>}
+
+          {!eventsLoading && !eventsErr && (
+            <>
+              <div className="evGrid" aria-label="Events grid">
+                {eventsToShow.map((ev) => {
+                  const tags = parseTags(ev.tags);
+                  const tag = tags[0] || "Community";
+
+                  const isPast = ev.status === "PASSED";
+                  const label = isPast ? "Past event" : "Upcoming event";
+
+                  const { dow, day, monthYear } = dateParts(ev.eventDate);
+
+                  return (
+                    <article key={ev.id} className={`evCard ${isPast ? "isPast" : ""}`}>
+                      <div className="evMedia" aria-label="Event image">
+                        {ev.imageUrl ? (
+                          <img src={ev.imageUrl} alt="" loading="lazy" />
+                        ) : (
+                          <div className="evMediaPlaceholder" aria-hidden="true">Image</div>
+                        )}
+
+                        <div className="evDate">
+                          <div className="evDow">{dow}</div>
+                          <div className="evDay">{day}</div>
+                          <div className="evMY">{monthYear}</div>
+                        </div>
+                      </div>
+
+                      <div className="evBody">
+                          <div className="evTags">
+                            {tags.map((t) => (
+                              <span className="evTag" key={t}>
+                                {t}
+                              </span>
+                            ))}
+                        </div>
+
+                        <h3 className="evTitle">{ev.title}</h3>
+
+                        <div className="evLocation">
+                          <img src={locationIcon} alt="Location icon" className="evLocationIcon" />
+                            {ev.location || ""}
+                        </div>
+
+                        <p className="evDesc">{ev.shortDesc || ""}</p>
+
+                        <div className="evAction" aria-label={label}>
+                          {label} 
+                        </div>
+                      </div>
+                    </article>
+                  );
+                })}
+
+                {!eventsToShow.length && (
+                  <div className="evEmpty">
+                    {eventView === "UPCOMING"
+                      ? "No upcoming events yet."
+                      : "No past events yet."}
+                  </div>
+                )}
+              </div>
+
+              <div className="evFooter">
+                <button
+                  className="btn btnGhost evToggle"
+                  type="button"
+                  onClick={() => setEventView((v) => (v === "UPCOMING" ? "PASSED" : "UPCOMING"))}
+                  disabled={eventView === "UPCOMING" ? !pastEvents.length : !upcomingEvents.length}
+                >
+                  {eventView === "UPCOMING" ? "Past events" : "Upcoming events"}
+                </button>
+              </div>
+            </>
+          )}
+        </div>
+      </section>
+
+
+
+
+
+
+
+
 
       {/* IMPACT */}
       <section className="projectImpactSection" aria-label="Impact">

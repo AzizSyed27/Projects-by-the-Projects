@@ -15,8 +15,13 @@ import AdminDashboard from "./admin/AdminDashboard.jsx";
 import AdminProjectEditor from "./admin/AdminProjectEditor.jsx";
 import ProtectedRoute from "./admin/ProtectedRoute.jsx";
 
+import AdminEvents from "./admin/AdminEvents.jsx";
+import AdminEventEditor from "./admin/AdminEventEditor.jsx";
+
 import SubscribeVerify from "./pages/SubscribeVerify.jsx";
 import SubscribeUnsubscribe from "./pages/SubscribeUnsubscribe.jsx";
+
+
 
 
 export default function App() {
@@ -69,8 +74,37 @@ export default function App() {
           }
         />
 
+        <Route
+          path="/admin/events"
+          element={
+            <ProtectedRoute>
+              <AdminEvents />
+            </ProtectedRoute>
+          }
+        />
 
+        <Route
+          path="/admin/events/new"
+          element={
+            <ProtectedRoute>
+              <AdminEventEditor mode="create" />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/events/:id/edit"
+          element={
+            <ProtectedRoute>
+              <AdminEventEditor mode="edit" />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
+
+      
+
+
 
       {!isAdminRoute && <Footer />}
     </>

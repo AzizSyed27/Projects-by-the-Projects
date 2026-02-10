@@ -110,3 +110,29 @@ export const AdminImagesApi = {
       body: JSON.stringify({ orderedIds }),
     }),
 };
+
+
+// Events
+export const AdminEventsApi = {
+  list: () => adminFetch("/api/admin/events"),
+  create: (payload) =>
+    adminFetch("/api/admin/events", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    }),
+  update: (id, payload) =>
+    adminFetch(`/api/admin/events/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    }),
+  setStatus: (id, status) =>
+    adminFetch(`/api/admin/events/${id}/status?status=${encodeURIComponent(status)}`, {
+      method: "PATCH",
+    }),
+  remove: (id) =>
+    adminFetch(`/api/admin/events/${id}`, {
+      method: "DELETE",
+    }),
+};

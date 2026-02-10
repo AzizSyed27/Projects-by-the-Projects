@@ -39,6 +39,8 @@ public class SecurityConfig {
 		
 		//for subscription service
 		.requestMatchers("/api/subscribers/**").permitAll()
+		.requestMatchers("/api/events/**").permitAll()
+		.requestMatchers("/api/admin/events/**").hasRole("ADMIN")
 		
 		.anyRequest().permitAll()
       );
