@@ -5,6 +5,8 @@ import "../styles/admin.css";
 import { AdminEventsApi, presignUpload } from "./adminApi";
 import { clearAdminToken } from "./adminAuth";
 
+import LocationAutocomplete from "./LocationAutocomplete";
+
 function slugify(input) {
   const s = (input || "").trim().toLowerCase();
   const dashed = s.replace(/\s+/g, "-");
@@ -90,7 +92,7 @@ export default function AdminEventEditor({ mode }) {
       // For events we reuse projectSlug as a folder-safe slug like "event-<slug>".
       const presign = await presignUpload({
         projectSlug: `event-${eventSlug}`,
-        purpose: "EVENT", // ✅ if you added EVENT to UploadPurpose; see note below
+        purpose: "EVENT", 
         originalFileName: file.name,
         contentType: file.type,
       });
@@ -209,7 +211,7 @@ export default function AdminEventEditor({ mode }) {
                     <option value="CANCELLED">CANCELLED</option>
                   </select>
                   <div className="adminHint">
-                    Setting to <b>UPCOMING</b> triggers email notifications (per your backend logic).
+                    Setting to <b>UPCOMING</b> triggers email notifications.
                   </div>
                 </div>
 
@@ -224,6 +226,7 @@ export default function AdminEventEditor({ mode }) {
                   />
                 </div>
 
+                {/*
                 <div className="adminField">
                   <div className="adminLabel">Location</div>
                   <input
@@ -233,15 +236,30 @@ export default function AdminEventEditor({ mode }) {
                     placeholder="Scarborough, ON"
                   />
                 </div>
+                */}
+
+                <div className="adminField">
+                  <div className="adminLabel">Location</div>
+                  <LocationAutocomplete
+                    value={form.location}
+                    onChange={(val) => updateField("location", val)}
+                    placeholder="Scarborough, ON"
+                  />
+                </div>
+
+
 
                 <div className="adminField" style={{ gridColumn: "1 / -1" }}>
                   <div className="adminLabel">Short Description</div>
                   <textarea
-                    className="adminTextarea"
+                    className="adminInput"
                     value={form.shortDesc}
                     onChange={(e) => updateField("shortDesc", e.target.value)}
                     placeholder="A quick blurb for the event card…"
                   />
+                  <div className="adminHint">
+                    This short description appears on the event card on the public events page. Keep it brief and engaging. (1-2 sentences max is ideal.)
+                  </div>
                 </div>
 
                 <div className="adminField" style={{ gridColumn: "1 / -1" }}>
@@ -253,7 +271,7 @@ export default function AdminEventEditor({ mode }) {
                     placeholder="Community, Food, Scarborough"
                   />
                   <div className="adminHint">
-                    Keep tags comma-separated (your frontend will split by commas).
+                    Keep tags comma-separated, the projects page will seperate them into tags.
                   </div>
                 </div>
 
@@ -278,7 +296,7 @@ export default function AdminEventEditor({ mode }) {
                   />
 
                   <div className="adminHint">
-                    Uploads to R2 via presigned URL.
+                    This image will be the thumbnail for the event card on the public events page. Recommended size: 600x400px
                   </div>
                 </div>
               </div>
@@ -299,9 +317,6 @@ export default function AdminEventEditor({ mode }) {
               {ok && <div className="adminOk">{ok}</div>}
             </form>
 
-            <p className="adminHint" style={{ marginTop: 12 }}>
-              Note: events are cards only (no detail page), so the public section will just render these.
-            </p>
           </div>
         </div>
       </div>

@@ -183,7 +183,7 @@ export default function AdminEvents() {
             )}
 
             <p className="adminHint" style={{ marginTop: 12 }}>
-              Tags must stay <b>comma-separated</b> (example: <b>Community, Scarborough, Food</b>).
+              <b>"Drafts"</b> do not appear in the public event list, either change their status to <b>"Upcoming"</b> or <b>"Passed"</b> for them to appear.
             </p>
           </div>
         </div>

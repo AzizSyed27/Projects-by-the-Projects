@@ -154,7 +154,7 @@ export default function AdminDashboard() {
             )}
 
             <p className="adminHint" style={{ marginTop: 12 }}>
-              Tags must stay <b>comma-separated</b> (example: <b>Water, Malawi, Infrastructure</b>).
+              <b>"Drafts"</b> do not appear in the public project list, either change their status to <b>"Active"</b> or <b>"Completed"</b> for them to appear.
             </p>
           </div>
         </div>

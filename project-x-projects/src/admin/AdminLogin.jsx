@@ -73,10 +73,17 @@ export default function AdminLogin() {
                 </button>
               </div>
 
-              {err && <div className="adminError">{err}</div>}
-              <p className="adminHint">
-                Tip: keep this page hidden from the public nav. Access it directly via <b>/admin/login</b>.
-              </p>
+              <div className="adminError">
+                {err === "Forbidden" ? (
+                  "Invalid Username or Password. Please try again."
+                ) : (
+                  err
+                )}
+                
+              </div>
+              
+
+
             </form>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import "../styles/project-detail.css";
 
@@ -51,6 +51,94 @@ export default function ProjectDetail() {
     const imgs = data?.projectImages || [];
     return [...imgs].sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0));
   }, [data?.projectImages]);
+
+  ///////////////////////
+  /// GALLERY LOGIC /////
+  ///////////////////////
+
+  const galleryRef = useRef(null);
+  const [paused, setPaused] = useState(false);
+  const resumeTimerRef = useRef(null);
+
+  const galleryItems = useMemo(() => {
+    return (gallery || []).map((img, idx) => ({
+      img: img.url,
+      alt: img.alt || `${data?.projectTitle || "Project"} photo ${idx + 1}`,
+    }));
+  }, [gallery, data?.projectTitle]);
+
+  // Duplicate list for seamless loop
+  const railItems = useMemo(
+    () => [...galleryItems, ...galleryItems],
+    [galleryItems]
+  );
+
+  useEffect(() => {
+    const el = galleryRef.current;
+    if (!el) return;
+
+    // reduced-motion users
+    const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    if (reduce) return;
+
+    // if there are no items, do nothing
+    if (!galleryItems.length) return;
+
+    let raf = 0;
+    let last = performance.now();
+
+    // pixels per second , anything less than ~50 is probably too slowto move
+    const speed = 100;
+
+    const tick = (now) => {
+      const dt = (now - last) / 1000;
+      last = now;
+
+      if (!paused) {
+        el.scrollLeft += speed * dt;
+
+        // jump back by half (end of first copy)
+        const half = el.scrollWidth / 2;
+        if (el.scrollLeft >= half) el.scrollLeft -= half;
+      }
+
+      raf = requestAnimationFrame(tick);
+    };
+
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [paused, galleryItems.length]);
+
+  const pauseTemporarily = () => {
+    setPaused(true);
+
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    resumeTimerRef.current = setTimeout(() => {
+      setPaused(false);
+    }, 900);
+  };
+
+  const resumeNow = () => {
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    setPaused(false);
+  };
+
+  useEffect(() => {
+    const onUp = () => resumeNow();
+
+    window.addEventListener("pointerup", onUp);
+    window.addEventListener("pointercancel", onUp);
+    window.addEventListener("touchend", onUp, { passive: true });
+    window.addEventListener("touchcancel", onUp, { passive: true });
+
+    return () => {
+      window.removeEventListener("pointerup", onUp);
+      window.removeEventListener("pointercancel", onUp);
+      window.removeEventListener("touchend", onUp);
+      window.removeEventListener("touchcancel", onUp);
+    };
+  }, []);
+
 
   return (
     <main className="ppPage">
@@ -124,21 +212,42 @@ export default function ProjectDetail() {
                 <p className="ppSub">Photos from the field. Planning, progress, and results.</p>
               </header>
 
-              <div className="ppGrid">
-                {gallery.length ? (
-                  gallery.map((img, idx) => (
-                    <figure className="ppCell" key={`${img.url}-${idx}`}>
-                      <img
-                        src={img.url}
-                        alt={img.alt || `${data.projectTitle} photo ${idx + 1}`}
-                        loading="lazy"
-                      />
-                    </figure>
-                  ))
+              <div className="recentRailWrap">
+                {galleryItems.length ? (
+                  <div
+                    className="recentRail autoScroll"
+                    ref={galleryRef}
+                    onMouseEnter={() => setPaused(true)}
+                    onMouseLeave={() => setPaused(false)}
+                    onPointerDown={(e) => {
+                      e.currentTarget.setPointerCapture?.(e.pointerId);
+                      pauseTemporarily();
+                    }}
+                    onPointerUp={resumeNow}
+                    onPointerCancel={resumeNow}
+                    onClick={resumeNow}
+                  >
+                    {railItems.map((item, i) => {
+                      const isClone = i >= galleryItems.length;
+                      return (
+                        <div className="recentCard" key={`${item.alt}-${i}`} aria-hidden={isClone}>
+                          <img
+                            src={item.img}
+                            alt={isClone ? "" : item.alt}
+                            loading="lazy"
+                            draggable="false"
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
                 ) : (
                   <div className="ppEmpty">No gallery photos yet.</div>
                 )}
               </div>
+
+
+
             </div>
           </section>
         </>

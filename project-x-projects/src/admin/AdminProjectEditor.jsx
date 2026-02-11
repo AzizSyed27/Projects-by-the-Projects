@@ -321,6 +321,9 @@ export default function AdminProjectEditor({ mode }) {
                     <option value="ACTIVE">ACTIVE</option>
                     <option value="COMPLETED">COMPLETED</option>
                   </select>
+                  <div className="adminHint">
+                    Setting to <b>ACTIVE</b> triggers email notifications.
+                  </div>
                 </div>
 
                 <div className="adminField">
@@ -331,6 +334,11 @@ export default function AdminProjectEditor({ mode }) {
                     value={form.displayOrder}
                     onChange={(e) => updateField("displayOrder", e.target.value)}
                   />
+                  <div className="adminHint">
+                    You don't have to worry about this, projects are by default ordered by creation date. 
+                    But if you want to manually adjust the order of projects, lower numbers will be shown first.
+
+                  </div>
                 </div>
 
                 <div className="adminField" style={{ gridColumn: "1 / -1" }}>
@@ -340,15 +348,21 @@ export default function AdminProjectEditor({ mode }) {
                     value={form.heroBlurb}
                     onChange={(e) => updateField("heroBlurb", e.target.value)}
                   />
+                  <div className="adminHint">
+                    This is the short text that appears on the beginning of a projects page, it should be a concise and compelling summary of the project (ideally 1-2 sentence).
+                  </div>
                 </div>
 
                 <div className="adminField" style={{ gridColumn: "1 / -1" }}>
                   <div className="adminLabel">Short Description</div>
                   <textarea
-                    className="adminTextarea"
+                    className="adminInput"
                     value={form.projectShortDesc}
                     onChange={(e) => updateField("projectShortDesc", e.target.value)}
                   />
+                  <div className="adminHint">
+                    This is the text that appears on the project card on the project list, it should be a concise summary of the project (ideally 1 sentence).
+                  </div>
                 </div>
 
                 <div className="adminField" style={{ gridColumn: "1 / -1" }}>
@@ -369,7 +383,7 @@ export default function AdminProjectEditor({ mode }) {
                     placeholder="Water, Malawi, Infrastructure"
                   />
                   <div className="adminHint">
-                    Keep tags comma-separated. Your public frontend will split on commas.
+                    Keep tags comma-separated. They will be split by commas on the project pages.
                   </div>
                 </div>
 
@@ -390,7 +404,7 @@ export default function AdminProjectEditor({ mode }) {
                       e.target.value = "";
                     }}
                   />
-                  <div className="adminHint">Uploads to R2 via presigned URL.</div>
+                  <div className="adminHint">This is the image that appears on the project card on the project list.</div>
                 </div>
 
                 <div className="adminField">
@@ -410,7 +424,7 @@ export default function AdminProjectEditor({ mode }) {
                       e.target.value = "";
                     }}
                   />
-                  <div className="adminHint">Used on the per-project page header/media.</div>
+                  <div className="adminHint">This is the main image that appears on the per-project page header/media.</div>
                 </div>
               </div>
 
@@ -436,7 +450,7 @@ export default function AdminProjectEditor({ mode }) {
                 <div>
                   <div className="adminKicker">Gallery</div>
                   <div className="adminHint">
-                    Upload images to R2 and manage order. (This powers your per-project gallery.)
+                    Upload images and manage order. These images will appear in a gallery on the project page. Remeber to set alt text for each image for accessibility reasons.
                   </div>
                 </div>
 
