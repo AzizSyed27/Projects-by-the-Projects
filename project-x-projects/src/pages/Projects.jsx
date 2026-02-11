@@ -109,6 +109,8 @@ export default function Projects() {
   const [showAllCompleted, setShowAllCompleted] = useState(false);
   const [cols, setCols] = useState(getColsForViewport());
 
+  const [workTab, setWorkTab] = useState("current"); // "current" | "completed"
+
   useEffect(() => {
     const onResize = () => setCols(getColsForViewport());
     window.addEventListener("resize", onResize, { passive: true });
@@ -272,143 +274,160 @@ export default function Projects() {
         </div>
       </section>
 
-      {/* WORK HAPPENING NOW */}
-      <section className="currentNowSection" aria-label="Work happening now" id="current-now">
+      {/* CURRENT + COMPLETED (toggle in one section) */}
+      <section
+        className={`projectsWorkToggle ${workTab === "completed" ? "isCompleted" : "isCurrent"}`}
+        aria-label="Projects (current and completed)"
+        id="projects-work"
+      >
         <div className="container">
-          <div className="currentNowHead">
-            <div className="currentNowEyebrow">Current</div>
-            <h2 className="currentNowTitle">WORK HAPPENING NOW</h2>
-            <p className="currentNowSub">Each project addresses a real need in communities near and far.</p>
+          <div className="workToggleHead">
+            <div className="workToggleEyebrow">
+              {workTab === "current" ? "Current" : "Completed"}
+            </div>
+
+            <h2 className="workToggleTitle">
+              {workTab === "current" ? "WORK HAPPENING NOW" : "COMPLETED PROJECTS"}
+            </h2>
+
+            <p className="workToggleSub">
+              {workTab === "current"
+                ? "Each project addresses a real need in communities near and far."
+                : "Completed work with real outcomes delivered to communities around the world."}
+            </p>
 
             {loadingProjects && <p className="projectsLoadNote">Loading projects…</p>}
-            {projectsError && <p className="projectsLoadNote projectsLoadError">Couldn’t load: {projectsError}</p>}
-          </div>
+            {projectsError && (
+              <p className="projectsLoadNote projectsLoadError">Couldn’t load: {projectsError}</p>
+            )}
 
-          <div className="currentNowGrid">
-            {visibleCurrentNow.map((p) => (
-              <Link
-                key={p.projectId || p.slug}
-                to={`/projects/${p.slug}`}
-                className="currentNowCardLink"
-                aria-label={`Open project ${p.title}`}
-              >
-                <article className="currentNowCard">
-                  <div className="currentNowMedia">
-                    {p.img ? (
-                      <img src={p.img} alt={p.title} loading="lazy" />
-                    ) : (
-                      <div className="currentNowPlaceholder" aria-hidden="true" />
-                    )}
-                  </div>
-
-                  <div className="currentNowBody">
-                    <h3 className="currentNowCardTitle">{p.title}</h3>
-                    <p className="currentNowDesc">{p.desc}</p>
-
-                    <div className="currentNowTags">
-                      {p.tags.map((t) => (
-                        <span className="currentNowTag" key={t}>
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </article>
-              </Link>
-            ))}
-          </div>
-
-          {canToggleCurrent && (
-            <div className="currentNowAllRow">
+            <div className="workToggleTabs" role="tablist" aria-label="Project status toggle">
               <button
-                className="btn currentNowAllBtn"
                 type="button"
-                onClick={() => {
-                  setShowAllCurrent((s) => {
-                    const next = !s;
-                    if (!next) {
-                      requestAnimationFrame(() => {
-                        document.getElementById("current-now")?.scrollIntoView({ behavior: "smooth", block: "start" });
-                      });
-                    }
-                    return next;
-                  });
-                }}
+                className={`workToggleBtn ${workTab === "current" ? "isActive" : ""}`}
+                onClick={() => setWorkTab("current")}
+                role="tab"
+                aria-selected={workTab === "current"}
               >
-                {showAllCurrent ? "Show less" : "View all"}
+                Current projects
+              </button>
+
+              <button
+                type="button"
+                className={`workToggleBtn ${workTab === "completed" ? "isActive" : ""}`}
+                onClick={() => setWorkTab("completed")}
+                role="tab"
+                aria-selected={workTab === "completed"}
+              >
+                Completed projects
               </button>
             </div>
-          )}
-        </div>
-      </section>
-
-      {/* COMPLETED WORK */}
-      <section className="completedSection" id="completed-projects" aria-label="Completed projects">
-        <div className="container">
-          <div className="completedHead">
-            <div className="projectsEyebrow">Completed</div>
-            <h2 className="completedTitle">COMPLETED PROJECTS</h2>
-            <p className="completedSub">
-              Completed work with real outcomes delivered to communities around the world.
-            </p>
           </div>
 
-          <div className="completedGrid">
-            {visibleCompleted.map((p) => (
-              <Link
-                key={p.projectId || p.slug}
-                to={`/projects/${p.slug}`}
-                className="completedCardLink"
-                aria-label={`Open project ${p.title}`}
-              >
-                <article className="completedCard">
-                  <div className="completedMedia">
-                    {p.img ? (
-                      <img src={p.img} alt={p.title} loading="lazy" />
-                    ) : (
-                      <div className="completedPlaceholder" aria-hidden="true" />
-                    )}
-                  </div>
+          {workTab === "current" ? (
+            <>
+              <div className="currentNowGrid">
+                {visibleCurrentNow.map((p) => (
 
-                  <div className="completedBody">
-                    <h3 className="completedCardTitle">{p.title}</h3>
-                    <p className="completedDesc">{p.desc}</p>
+                    <article className="currentNowCard">
+                      <div className="currentNowMedia">
+                        {p.img ? (
+                          <img src={p.img} alt={p.title} loading="lazy" />
+                        ) : (
+                          <div className="currentNowPlaceholder" aria-hidden="true" />
+                        )}
+                      </div>
 
-                    <div className="completedTags">
-                      {p.tags.map((t) => (
-                        <span className="completedTag" key={t}>
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </article>
-              </Link>
-            ))}
-          </div>
+                      <div className="currentNowBody">
+                        <h3 className="currentNowCardTitle">{p.title}</h3>
+                        <p className="currentNowDesc">{p.desc}</p>
 
-          {canToggleCompleted && (
-            <div className="completedAllRow">
-              <button
-                className="btn completedAllBtn"
-                type="button"
-                onClick={() => {
-                  setShowAllCompleted((s) => {
-                    const next = !s;
-                    if (!next) {
-                      requestAnimationFrame(() => {
-                        document
-                          .getElementById("completed-projects")
-                          ?.scrollIntoView({ behavior: "smooth", block: "start" });
-                      });
-                    }
-                    return next;
-                  });
-                }}
-              >
-                {showAllCompleted ? "Show less" : "View all"}
-              </button>
-            </div>
+                        <div className="currentNowTags">
+                          {p.tags.map((t) => (
+                            <span className="currentNowTag" key={t}>
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+
+                        <Link
+                          to={`/projects/${p.slug}`}
+                          className="projectViewLink"
+                          aria-label={`View project: ${p.title}`}
+                        >
+                          View Project <span aria-hidden="true">›</span>
+                        </Link>
+
+                      </div>
+                    </article>
+
+                ))}
+              </div>
+
+              {canToggleCurrent && (
+                <div className="currentNowAllRow">
+                  <button
+                    className="btn currentNowAllBtn"
+                    type="button"
+                    onClick={() => setShowAllCurrent((s) => !s)}
+                  >
+                    {showAllCurrent ? "Show less" : "View all"}
+                  </button>
+                </div>
+              )}
+            </>
+          ) : (
+            <>
+              <div className="currentNowGrid">
+                {visibleCompleted.map((p) => (
+                  
+                    <article className="currentNowCard">
+                      <div className="currentNowMedia">
+                        {p.img ? (
+                          <img src={p.img} alt={p.title} loading="lazy" />
+                        ) : (
+                          <div className="currentNowPlaceholder" aria-hidden="true" />
+                        )}
+                      </div>
+
+                      <div className="currentNowBody">
+                        <h3 className="currentNowCardTitle">{p.title}</h3>
+                        <p className="currentNowDesc">{p.desc}</p>
+
+                        <div className="currentNowTags">
+                          {p.tags.map((t) => (
+                            <span className="currentNowTag" key={t}>
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+
+                        <Link
+                          to={`/projects/${p.slug}`}
+                          className="projectViewLink"
+                          aria-label={`View project: ${p.title}`}
+                        >
+                          View Project <span aria-hidden="true">›</span>
+                        </Link>
+
+                      </div>
+                    </article>
+                  
+                ))}
+              </div>
+
+              {canToggleCompleted && (
+                <div className="completedAllRow">
+                  <button
+                    className="btn completedAllBtn"
+                    type="button"
+                    onClick={() => setShowAllCompleted((s) => !s)}
+                  >
+                    {showAllCompleted ? "Show less" : "View all"}
+                  </button>
+                </div>
+              )}
+            </>
           )}
         </div>
       </section>
@@ -421,6 +440,38 @@ export default function Projects() {
             <h2 className="giEventsTitle">EVENTS</h2>
             <p className="giEventsSub">Join us for gatherings that matter</p>
           </header>
+
+          <div className="workToggleHead">
+
+            <div className="workToggleTabs" role="tablist" aria-label="Event status toggle">
+              <button
+                type="button"
+                className={`eventToggleBtn ${eventView === "UPCOMING" ? "isActive" : ""}`}
+                onClick={() => setEventView("UPCOMING")}
+                role="tab"
+                aria-selected={eventView === "UPCOMING"}
+              >
+                Ongoing Events
+              </button>
+
+              <button
+                type="button"
+                className={`eventToggleBtn ${eventView === "PASSED" ? "isActive" : ""}`}
+                onClick={() => setEventView("PASSED")}
+                role="tab"
+                aria-selected={eventView === "PASSED"}
+              >
+                Past Events
+              </button>
+            </div>
+           
+          </div>
+
+          
+
+
+
+
 
           {eventsLoading && <div className="evHint">Loading events…</div>}
           {eventsErr && <div className="evError">{eventsErr}</div>}
@@ -488,27 +539,10 @@ export default function Projects() {
                 )}
               </div>
 
-              <div className="evFooter">
-                <button
-                  className="btn btnGhost evToggle"
-                  type="button"
-                  onClick={() => setEventView((v) => (v === "UPCOMING" ? "PASSED" : "UPCOMING"))}
-                  disabled={eventView === "UPCOMING" ? !pastEvents.length : !upcomingEvents.length}
-                >
-                  {eventView === "UPCOMING" ? "Past events" : "Upcoming events"}
-                </button>
-              </div>
             </>
           )}
         </div>
       </section>
-
-
-
-
-
-
-
 
 
       {/* IMPACT */}
