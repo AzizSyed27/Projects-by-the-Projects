@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import instaLogo from "../assets/footer/instagram-logo-black-transparent.png"
 
+import { useState } from "react";
+import { subscribeEmail } from "../api/subscribers";
+
 const COLS = [
   {
     title: "Our work",
@@ -48,6 +51,10 @@ export default function Footer() {
     alert("Thanks! Newsletter signup coming soon.");
   }
 
+  const [footerEmail, setFooterEmail] = useState("");
+  const [footerStatus, setFooterStatus] = useState("idle"); // idle | success | error | loading
+  const [footerMsg, setFooterMsg] = useState("");
+
   return (
     <footer className="siteFooter" aria-label="Footer">
       <div className="container">
@@ -81,7 +88,31 @@ export default function Footer() {
               Stay informed with our latest news and project updates from Projects by the Projects.
             </p>
 
-            <form className="footerForm" onSubmit={onSubmit}>
+            <form
+              className="footerForm"
+              onSubmit={async (e) => {
+                e.preventDefault();
+                setFooterMsg("");
+
+                const trimmed = footerEmail.trim();
+                if (!trimmed) {
+                  setFooterStatus("error");
+                  setFooterMsg("Please enter your email.");
+                  return;
+                }
+
+                setFooterStatus("loading");
+                try {
+                  const res = await subscribeEmail(trimmed);
+                  setFooterStatus("success");
+                  setFooterMsg(res?.message || "Check your email to confirm your subscription.");
+                  setFooterEmail("");
+                } catch (err) {
+                  setFooterStatus("error");
+                  setFooterMsg(err?.message || "Subscription failed. Please try again.");
+                }
+              }}
+            >
               <label className="srOnly" htmlFor="footerEmail">Email</label>
               <input
                 id="footerEmail"
@@ -89,9 +120,29 @@ export default function Footer() {
                 type="email"
                 placeholder="Enter your email"
                 required
+                value={footerEmail}
+                onChange={(e) => {
+                  setFooterEmail(e.target.value);
+                  if (footerStatus !== "idle") setFooterStatus("idle");
+                }}
+                aria-invalid={footerStatus === "error"}
               />
-              <button className="footerSubmit" type="submit">Subscribe</button>
+              <button className="footerSubmit" type="submit" disabled={footerStatus === "loading"}>
+                {footerStatus === "loading" ? "..." : "Subscribe"}
+              </button>
+
+              
             </form>
+
+            {(footerStatus === "error" || footerStatus === "success") && (
+                <div
+                  className="footerMsg"
+                  role={footerStatus === "error" ? "alert" : "status"}
+                  style={{ marginTop: 10, fontSize: 12 }}
+                >
+                  {footerMsg}
+                </div>
+              )}
             {/*}
             <p className="footerFine">
               By subscribing you agree to our <Link className="footerInlineLink" to="/privacy">Privacy Policy</Link> and

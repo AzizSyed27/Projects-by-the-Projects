@@ -489,7 +489,7 @@
   max-width: 70ch;
   color: rgba(15, 23, 42, 0.72);
   line-height: 1.7;
-  font-size: 13px;
+  font-size: 18px;
 }
 
 .giLoopForm{
@@ -508,7 +508,7 @@
   background-color: var(--bg2);
   color: rgba(15, 23, 42, 0.9);
   outline: none;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .giLoopInput::placeholder{

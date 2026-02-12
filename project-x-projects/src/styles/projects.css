@@ -888,6 +888,18 @@
     grid-template-columns: 1fr 1fr 1fr ;
     
   }
+
+  .projectImpactStats{
+    text-align: center;
+  }
+
+  .projectImpactValue
+  {
+    font-size: clamp(32px, 6vw, 60px);
+  }
+  .projectImpactLabel{
+    font-size: 14px;
+  }
 }
 
 /* ================================

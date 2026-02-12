@@ -11,6 +11,8 @@ import serve3 from "../assets/gi/serve-3.jpg"
 
 import chooseImg from "../assets/gi/gi-merge.jpg"
 
+import { subscribeEmail } from "../api/subscribers";
+
 export default function GetInvolved() {
     const ways = [
         {
@@ -100,19 +102,23 @@ export default function GetInvolved() {
     const [email, setEmail] = useState("");
     const [loopStatus, setLoopStatus] = useState("idle"); // idle | success | error
 
-    function onLoopSubmit(e) {
-    e.preventDefault();
+    async function onLoopSubmit(e) {
+        e.preventDefault();
 
-    const trimmed = email.trim();
-    if (!trimmed) {
-        setLoopStatus("error");
-        return;
-    }
+        const trimmed = email.trim();
+        if (!trimmed) {
+            setLoopStatus("error");
+            return;
+        }
 
-    // Front-end only placeholder:
-    // Later you can connect this to Mailchimp/Brevo/ConvertKit/etc.
-    setLoopStatus("success");
-    setEmail("");
+        setLoopStatus("loading");
+        try {
+            await subscribeEmail(trimmed);
+            setLoopStatus("success");
+            setEmail("");
+        } catch (err) {
+            setLoopStatus("error");
+        }
     }
 
   return (
@@ -303,21 +309,21 @@ export default function GetInvolved() {
                             aria-invalid={loopStatus === "error"}
                         />
 
-                        <button className="giLoopBtn" type="submit">
-                            Subscribe
+                        <button className="giLoopBtn" type="submit" disabled={loopStatus === "loading"}>
+                            {loopStatus === "loading" ? "Subscribing…" : "Subscribe"}
                         </button>
 
                     </form>
 
                     {loopStatus === "error" && (
                         <div className="giLoopMsg" role="alert">
-                        Please enter your email.
+                            Something went wrong — please check your email and try again.
                         </div>
-                    )}
+                        )}
 
-                    {loopStatus === "success" && (
+                        {loopStatus === "success" && (
                         <div className="giLoopMsg" role="status">
-                        You&apos;re subscribed — thank you!
+                            Check your email to confirm your subscription 
                         </div>
                     )}
 
