@@ -5,6 +5,8 @@ import mtjfLogo from '../../../assets/partners/mtjf-logo.png';
 import muslimhandsLogo from '../../../assets/partners/muslinhands-logo.png';
 import mergedPartners from '../../../assets/partners/merged-partners.jpg';
 
+import "../../../styles/global.css";
+
 export default function HomePartners(){
     
     return(

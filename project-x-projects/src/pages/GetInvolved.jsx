@@ -34,7 +34,7 @@ export default function GetInvolved() {
         title: "JOIN COMMUNITY EVENTS",
         desc: "Organize BBQs and toy drives",
         cta: "Attend",
-        to: "/contact",
+        to: "/projects/#events",
         img: path3,
         },
     ];

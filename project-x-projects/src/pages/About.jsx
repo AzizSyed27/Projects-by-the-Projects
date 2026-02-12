@@ -112,7 +112,7 @@ export default function About() {
                 <p className="aboutEmergenceLead">
                     A few people in Scarborough saw what needed doing and started doing it. They
                     gathered neighbors around a grill, collected what was given, and sent it where
-                    it mattered: wells and schools in Malawi, orphan sponsership in Nepal, relief where crisis struck.
+                    it mattered: wells and schools in Malawi, orphan sponsorship in Nepal, relief where crisis struck.
                     No committees. No distance between intention and action.
                 </p>
             </div>
@@ -215,7 +215,7 @@ export default function About() {
                 <header className="aboutSectionHeader aboutSectionHeaderTight">
                     <div className="aboutEyebrowLocations">Reach</div>
                     <h2 className="aboutSectionTitle">LOCATIONS</h2>
-                    <p className="aboutSectionSub">Active across Africa, Asia, and Canada</p>
+                    <p className="aboutSectionSub">Active across Africa, Asia, Pakistan, India, and Canada</p>
                 </header>
 
                 <div className="aboutLocationsGrid">

@@ -5,7 +5,7 @@ const COLS = [
   {
     title: "Our work",
     links: [
-      { label: "Projects", to: "/projects" },
+      { label: "Projects", to: "/projects/#projects-work" },
       { label: "Get involved", to: "/get-involved" },
       { label: "About us", to: "/about" },
       { label: "Contact", to: "/contact" },
@@ -27,7 +27,7 @@ const COLS = [
       { label: "Donate now", to: "/donate" },
       { label: "Newsletter", to: "/get-involved/#subscribe" },
       { label: "Social media", to: "https://www.instagram.com/projectsxprojects/" },
-      { label: "Support", to: "/contact" },
+      { label: "Events", to: "/projects/#events" },
     ],
   },
 ];

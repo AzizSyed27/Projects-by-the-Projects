@@ -6,7 +6,7 @@ import newLogo from "../assets/pxp-mini-logo.png";
 const EXPLORE_ITEMS = [
   { label: "Home", to: "/" },
   { label: "About Us", to: "/about" },
-  { label: "Projects", to: "/projects" },
+  { label: "Projects & Events", to: "/projects" },
   { label: "Get Involved", to: "/get-involved" },
   { label: "Contact Us", to: "/contact" },
 ];
@@ -40,10 +40,10 @@ export default function Navbar() {
     };
 
     document.addEventListener("keydown", onDown);
-    document.addEventListener("mousedown", onClick);
+    document.addEventListener("pointerdown", onClick, { passive: true });
     return () => {
       document.removeEventListener("keydown", onDown);
-      document.removeEventListener("mousedown", onClick);
+      document.removeEventListener("pointerdown", onClick);
     };
   }, [exploreOpen]);
 
@@ -133,9 +133,7 @@ export default function Navbar() {
               </Link>
             </div>
 
-            <a className="exploreMemberLink" href="#" onClick={(e) => e.preventDefault()}>
-              Admin Site <span aria-hidden="true">↗</span>
-            </a>
+            
           </div>
 
           <div className="exploreRight" aria-hidden="true">

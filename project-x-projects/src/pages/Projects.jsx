@@ -242,6 +242,16 @@ export default function Projects() {
             Projects <span className="xproj"> X</span> Projects acts locally and builds globally. See the work
             P<span className="xproj">X</span>P is doing right now.
           </p>
+          
+          
+          <div className="projectsJumpLinks" aria-label="Jump links">
+            <Link className="projectsJumpLink" to="#projects-work">
+              <span aria-hidden="true">↓</span> Jump to Projects 
+            </Link>
+            <Link className="projectsJumpLink" to="#events">
+              Jump to Events <span aria-hidden="true">↓</span>
+            </Link>
+          </div>
         </div>
       </section>
 

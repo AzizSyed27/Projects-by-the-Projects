@@ -136,9 +136,9 @@ export default function HomeResults(){
                             <img src={current.img} alt={current.alt} />
 
                             <div className="resultsOverlay">
-                            <div className="resultsTag">{current.tag}</div>
-                            <h3 className="resultsCardTitle">{current.title}</h3>
-                            <p className="resultsCardBody">{current.body}</p>
+                                <div className="resultsTag">{current.tag}</div>
+                                <h3 className="resultsCardTitle">{current.title}</h3>
+                                <p className="resultsCardBody">{current.body}</p>
 
                             </div>
                         </div>
