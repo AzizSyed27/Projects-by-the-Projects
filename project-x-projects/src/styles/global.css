@@ -1025,7 +1025,7 @@ body{
   justify-content: center;
   padding: clamp(24px, 4vw, 56px);
   color: var(--ink);
-  gap: 25px;
+  gap: 15px;
 }
 
 .originsRight{
