@@ -49,10 +49,16 @@ export default function GetInvolved() {
         tag: "Scarborough",
         title: "HELP ORGANIZE COMMUNITY EVENTS",
         body: (
-            <>
-            Join us at the annual mosque BBQ, Eid toy drive, or local fundraisers. No
-            experience needed, just show up ready to help.
-            </>
+        <>
+            Be part of the team that brings our local community together. Join us at the annual mosque BBQ, Eid toy drive,
+            seasonal food distributions, and local fundraising events. You don’t need experience, just a willingness to help
+            and a positive attitude.
+            <br /><br />
+            Volunteers can support simple but important tasks like setting up tables, greeting families, organizing lines,
+            handing out food or items, helping with kids’ activities, taking photos/videos for updates, and cleaning up after.
+            If you only have an hour, we can still use you. Every extra pair of hands makes the event smoother and more
+            welcoming.
+        </>     
         ),
         ctas: [
             { label: "Learn", to: "/about" },
@@ -66,10 +72,16 @@ export default function GetInvolved() {
         tag: "Event crew",
         title: "SUPPORT FUNDRAISERS AND COMMUNITY DRIVES",
         body: (
-            <>
-            Help with setup, welcoming guests, donations tables, and logistics so
-            events run smoothly and feel inviting for everyone.
-            </>
+        <>
+            Help our fundraisers and community drives run smoothly from start to finish. Event crew volunteers support
+            setup and takedown, signage, guest welcome, and keeping things organized so everyone feels comfortable and
+            included.
+            <br /><br />
+            You might help manage donation tables, sort items for a drive, guide people to the right areas, coordinate
+            supplies, or assist with behind-the-scenes logistics (like packing boxes, tracking what’s running low, or
+            making sure volunteers are in the right spots). It’s hands-on, fast-paced, and a great way to make a big impact
+            in a short time.
+        </>
         ),
         ctas: [
             { label: "Learn", to: "/about" },
@@ -83,10 +95,15 @@ export default function GetInvolved() {
         tag: "Outreach",
         title: "CONNECT, COORDINATE, AND SUPPORT ON THE GROUND",
         body: (
-            <>
-            Assist with outreach efforts, coordinating updates, connecting with
-            local partners, and helping deliver support where it’s needed most.
-            </>
+        <>
+            Outreach is about staying connected to real needs and helping support reach the right people. You can assist by
+            coordinating updates, communicating with local partners, organizing supply lists, and helping plan what support
+            goes where.
+            <br /><br />
+            Depending on the effort, outreach volunteers may help prepare and package items, support distribution days,
+            confirm details with partners, and document progress so we can keep our community informed. If you’re organized,
+            dependable, and good with communication, outreach is one of the most meaningful ways to contribute.
+        </>
         ),
         ctas: [
             { label: "Learn", to: "/about" },
@@ -179,14 +196,21 @@ export default function GetInvolved() {
                 <div className="giDonorCard">
                     {/* Left content */}
                     <div className="giDonorLeft">
-                    <div className="giDonorKicker">Choose</div>
-                    <h3 className="giDonorHeading">SUPPORT WHAT MOVES YOU</h3>
+                        <div className="giDonorKicker">Choose</div>
+                        <h3 className="giDonorHeading">SUPPORT WHAT MOVES YOU</h3>
 
-                    <p className="giDonorDesc">
-                        Pick a project. Wells bring clean water. Mosques create worship spaces. Schools build
-                        education. Relief reaches urgent needs. Oorphan sponsorships change lives. Give where
-                        needed most and let us direct it.
-                    </p>
+                        <p className="giDonorDesc">
+                            Pick a project that feels personal to you, or give generally and let us direct it to where the need is highest.
+                            Wells and hand pumps help families access clean water every day. Mosques and community spaces create places to
+                            pray, gather, and support one another. 
+                            <br /><br />
+                            Education projects help children learn with safer spaces and better
+                            resources. Emergency relief responds fast when families are facing sudden hardship. Sponsorship and ongoing
+                            support can change a household’s future over time.
+                            <br /><br />
+                            Whether you give once or monthly, your donation becomes real impact on the ground. We share updates whenever we
+                            can so you know what your support is helping make possible.
+                        </p>
 
                     
                     </div>

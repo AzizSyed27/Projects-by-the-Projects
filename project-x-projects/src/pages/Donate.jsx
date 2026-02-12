@@ -18,7 +18,7 @@ export default function Donate() {
         "Water wells serve families",
         "Schools educate children",
         "Orphans and widows get support",
-        "We’ll send your tax receipt",
+        "We’ll send you a receipt",
         "Clean records, honest work",
     ];
 
@@ -133,9 +133,9 @@ export default function Donate() {
             "That’s it. A payment gateway is coming soon for more options.",
         },
         {
-        q: "Do I get a tax receipt?",
+        q: "Do I get a receipt after donating?",
         a:
-            "Email us after you donate and we’ll send one your way. " +
+            "Check you email after you donate and we’ll send one your way. " +
             "We keep records clean and honest.",
         },
         {

@@ -106,7 +106,7 @@
 }
 
 .donateMethod{
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -116,7 +116,7 @@
 
 .donateTo{
   margin-top: 6px;
-  font-size: 12px;
+  font-size: 15px;
   color: rgba(15, 23, 42, 0.70);
 }
 
@@ -145,7 +145,7 @@
 
 
 .donateBodyKicker{
-  font-size: 11px;
+  font-size: 16px;
   font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -172,7 +172,7 @@
   grid-template-columns: 18px 1fr;
   gap: 10px;
   align-items: start;
-  font-size: 12px;
+  font-size: 15px;
   color: rgba(15, 23, 42, 0.72);
   line-height: 1.5;
 }
@@ -202,7 +202,7 @@
   background: var(--brand, #11878D);
   color: #fff;
   font-weight: 900;
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   border-radius: 2px;
@@ -217,7 +217,7 @@
 
 .donateNote{
   text-align: center;
-  font-size: 11px;
+  font-size: 13px;
   color: rgba(15, 23, 42, 0.58);
 }
 
@@ -225,6 +225,7 @@
 @media (max-width: 820px){
   .donateChecks{
     grid-template-columns: 1fr;
+    gap: 8px;
   }
   .donateCardTop{
     grid-template-columns: 1fr;
@@ -237,6 +238,9 @@
 @media (max-width: 620px){
 
   .donateHow{ padding: 50px 0 20px; }
+
+  
+  
 }
 
 
@@ -333,7 +337,7 @@
   max-width: 62ch;
   color: rgba(15, 23, 42, 0.74);
   line-height: 1.7;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .donateDirectActions{
@@ -391,9 +395,10 @@
   text-transform: uppercase;
   font-weight: 900;
   letter-spacing: -0.01em;
-  font-size: 13px;
+  font-size: 20px;
   color: rgba(15, 23, 42, 0.86);
   cursor: pointer;
+  text-align: center;
 }
 
 .donateDirectItem:last-child{

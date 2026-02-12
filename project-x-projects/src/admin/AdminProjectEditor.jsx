@@ -342,7 +342,7 @@ export default function AdminProjectEditor({ mode }) {
                 </div>
 
                 <div className="adminField" style={{ gridColumn: "1 / -1" }}>
-                  <div className="adminLabel">Hero Blurb</div>
+                  <div className="adminLabel">Top Description</div>
                   <input
                     className="adminInput"
                     value={form.heroBlurb}
