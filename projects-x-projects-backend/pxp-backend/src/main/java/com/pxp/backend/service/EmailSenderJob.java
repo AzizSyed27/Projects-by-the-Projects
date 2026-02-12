@@ -4,8 +4,14 @@ import com.pxp.backend.entity.OutboxStatus;
 import com.pxp.backend.repo.EmailOutboxRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
+
+import jakarta.mail.internet.MimeMessage;
+import org.springframework.mail.javamail.MimeMessageHelper;
+
+import java.nio.charset.StandardCharsets;
+	
 import org.springframework.mail.javamail.JavaMailSender;
+
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +23,7 @@ public class EmailSenderJob {
   private final EmailOutboxRepository repo;
   private final JavaMailSender mailSender;
 
-  @Value("${pxp-mail.from}")
+  @Value("${pxp.mail.from}")
   private String from;
 
   public EmailSenderJob(EmailOutboxRepository repo, JavaMailSender mailSender) {
@@ -37,13 +43,26 @@ public class EmailSenderJob {
       if (sent >= 30) break; // safety cap per run
 
       try {
-        SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setFrom(from);
-        msg.setTo(e.getToEmail());
-        msg.setSubject(e.getSubject());
-        msg.setText(e.getBody());
-
-        mailSender.send(msg);
+		  MimeMessage mm = mailSender.createMimeMessage();
+		  MimeMessageHelper helper = new MimeMessageHelper(mm, true, StandardCharsets.UTF_8.name());
+		
+		  helper.setFrom(from); // e.g. "Project X Projects <info@projectsxprojects.ca>"
+		  helper.setTo(e.getToEmail());
+		  helper.setSubject(e.getSubject());
+		
+		  // text fallback + HTML if present
+		  if (e.getHtmlBody() != null && !e.getHtmlBody().isBlank()) {
+		    helper.setText(e.getBody(), e.getHtmlBody());
+		  } else {
+		    helper.setText(e.getBody(), false);
+		  }
+		
+		  // Adds Gmail/Apple Mail “Unsubscribe” button if supported
+		  if (e.getListUnsubscribe() != null && !e.getListUnsubscribe().isBlank()) {
+		    mm.addHeader("List-Unsubscribe", "<" + e.getListUnsubscribe() + ">");
+		  }
+		
+		  mailSender.send(mm);
 
         e.setStatus(OutboxStatus.SENT);
         e.setSentAt(OffsetDateTime.now());

@@ -14,32 +14,24 @@ public class ProjectNotificationService {
 
   private final SubscriberRepository subscriberRepo;
   private final EmailOutboxService outbox;
+  private final EmailTemplateService templates;
   
   @Value("${pxp.site-url}") private String siteUrl;
 
-  public ProjectNotificationService(SubscriberRepository subscriberRepo, EmailOutboxService outbox) {
-    this.subscriberRepo = subscriberRepo;
-    this.outbox = outbox;
+  public ProjectNotificationService(SubscriberRepository subscriberRepo, EmailOutboxService outbox, EmailTemplateService templates) {
+	  this.subscriberRepo = subscriberRepo;
+	  this.outbox = outbox;
+	  this.templates = templates;
   }
 
   public void notifyNewProject(Project project) {
-    var subs = subscriberRepo.findByStatus(SubscriberStatus.ACTIVE);
+	  var subs = subscriberRepo.findByStatus(SubscriberStatus.ACTIVE);
 
-    String subject = "New project underway: " + project.getTitle();
-    String projectUrl = siteUrlNoSlash() + "/projects/" + project.getSlug();
-
-    for (var s : subs) {
-    	String unsubLink  = siteUrlNoSlash() + "/subscribe/unsubscribe?token=" + s.getUnsubscribeToken();
-      String body =
-        "Hello,\n\n" +
-        "A new project is underway:\n" +
-        project.getTitle() + "\n\n" +
-        "View project:\n" +
-        projectUrl + "\n\n" +
-        "Unsubscribe:\n" +
-        unsubLink + "\n";
-      outbox.queue(s.getEmail(), subject, body);
-    }
+	  for (var s : subs) {
+	    String unsubLink = siteUrlNoSlash() + "/subscribe/unsubscribe?token=" + s.getUnsubscribeToken();
+	    var email = templates.newProject(project, unsubLink);
+	    outbox.queueHtml(s.getEmail(), email.subject(), email.textBody(), email.htmlBody(), email.listUnsubscribe());
+	  }
   }
   
   private String siteUrlNoSlash() {

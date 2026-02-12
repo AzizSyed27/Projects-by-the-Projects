@@ -20,4 +20,14 @@ public class EmailOutboxService {
     e.setBody(body);
     repo.save(e);
   }
+  
+  public void queueHtml(String toEmail, String subject, String textBody, String htmlBody, String listUnsubscribe) {
+	  EmailOutbox e = new EmailOutbox();
+	  e.setToEmail(toEmail);
+	  e.setSubject(subject);
+	  e.setBody(textBody);           // existing column = text fallback
+	  e.setHtmlBody(htmlBody);       // new
+	  e.setListUnsubscribe(listUnsubscribe); // new
+	  repo.save(e);
+	}
 }

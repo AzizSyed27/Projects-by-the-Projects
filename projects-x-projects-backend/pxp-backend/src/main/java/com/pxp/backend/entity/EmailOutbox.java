@@ -45,6 +45,12 @@ public class EmailOutbox {
     if (createdAt == null) createdAt = now;
     if (nextAttemptAt == null) nextAttemptAt = now;
   }
+  
+  @Column(name = "html_body", columnDefinition = "TEXT")
+  private String htmlBody;
+
+  @Column(name = "list_unsubscribe", columnDefinition = "TEXT")
+  private String listUnsubscribe;  
 
   public Long getId() { return id; }
 
@@ -71,4 +77,10 @@ public class EmailOutbox {
 
   public OffsetDateTime getSentAt() { return sentAt; }
   public void setSentAt(OffsetDateTime sentAt) { this.sentAt = sentAt; }
+  
+  public String getHtmlBody() { return htmlBody; }
+  public void setHtmlBody(String htmlBody) { this.htmlBody = htmlBody; }
+
+  public String getListUnsubscribe() { return listUnsubscribe; }
+  public void setListUnsubscribe(String listUnsubscribe) { this.listUnsubscribe = listUnsubscribe; }
 }

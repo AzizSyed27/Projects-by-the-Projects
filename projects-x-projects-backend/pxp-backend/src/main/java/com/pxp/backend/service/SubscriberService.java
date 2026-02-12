@@ -14,14 +14,16 @@ public class SubscriberService {
   private final SubscriberRepository repo;
   private final TokenService tokens;
   private final EmailOutboxService outbox;
+  private final EmailTemplateService templates;
 
   @Value("${pxp.site-url}")
   private String siteUrl;
 
-  public SubscriberService(SubscriberRepository repo, TokenService tokens, EmailOutboxService outbox) {
-    this.repo = repo;
-    this.tokens = tokens;
-    this.outbox = outbox;
+  public SubscriberService(SubscriberRepository repo, TokenService tokens, EmailOutboxService outbox, EmailTemplateService templates) {
+	  this.repo = repo;
+	  this.tokens = tokens;
+	  this.outbox = outbox;
+	  this.templates = templates;
   }
 
   public void subscribe(String emailRaw) {
@@ -85,17 +87,9 @@ public class SubscriberService {
 	  String verifyLink = siteUrlNoSlash() + "/subscribe/verify?token=" + s.getVerifyToken();
 	  String unsubLink  = siteUrlNoSlash() + "/subscribe/unsubscribe?token=" + s.getUnsubscribeToken();
 
-    String subject = "Confirm your subscription to Project X Projects";
-    String body =
-      "Hello,\n\n" +
-      "Please confirm your subscription to Project X Projects updates:\n" +
-      verifyLink + "\n\n" +
-      "If you didn’t request this, you can ignore this email.\n\n" +
-      "Unsubscribe at any time:\n" +
-      unsubLink + "\n";
-
-    outbox.queue(s.getEmail(), subject, body);
-  }
+	  var email = templates.subscriptionVerify(verifyLink, unsubLink);
+	  outbox.queueHtml(s.getEmail(), email.subject(), email.textBody(), email.htmlBody(), email.listUnsubscribe());
+	}
 
   private String apiLink(String path) {
     String base = siteUrl.endsWith("/") ? siteUrl.substring(0, siteUrl.length() - 1) : siteUrl;
