@@ -229,7 +229,32 @@ export default function Projects() {
     return eventView === "UPCOMING" ? upcomingEvents : pastEvents;
   }, [eventView, upcomingEvents, pastEvents]);
 
+  //Show Poster
+  const [activePoster, setActivePoster] = useState(null); // { src, alt } | null
 
+  const openPoster = (src, alt = "Event poster") => {
+    if (!src) return;
+    setActivePoster({ src, alt });
+  };
+
+  const closePoster = () => setActivePoster(null);
+
+  useEffect(() => {
+    if (!activePoster) return;
+
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") closePoster();
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    // optional: prevent background scroll while open
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [activePoster]);
 
 
   return (
@@ -477,11 +502,6 @@ export default function Projects() {
            
           </div>
 
-          
-
-
-
-
 
           {eventsLoading && <div className="evHint">Loading events…</div>}
           {eventsErr && <div className="evError">{eventsErr}</div>}
@@ -502,7 +522,14 @@ export default function Projects() {
                     <article key={ev.id} className={`evCard ${isPast ? "isPast" : ""}`}>
                       <div className="evMedia" aria-label="Event image">
                         {ev.imageUrl ? (
-                          <img src={ev.imageUrl} alt="" loading="lazy" />
+                          <button
+                            type="button"
+                            className="evPosterBtn"
+                            onClick={() => openPoster(ev.imageUrl, ev.title || "Event poster")}
+                            aria-label={`Open poster for ${ev.title || "event"}`}
+                          >
+                            <img src={ev.imageUrl} alt={ev.title || "Event poster"} loading="lazy" />
+                          </button>
                         ) : (
                           <div className="evMediaPlaceholder" aria-hidden="true">Image</div>
                         )}
@@ -663,6 +690,32 @@ export default function Projects() {
           </div>
         </div>
       </section>
+
+      {activePoster && (
+        <div
+          className="posterModal"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Event poster"
+          onMouseDown={(e) => {
+            // click outside closes
+            if (e.target === e.currentTarget) closePoster();
+          }}
+        >
+          <button
+            type="button"
+            className="posterClose"
+            onClick={closePoster}
+            aria-label="Close poster"
+          >
+            ✕
+          </button>
+
+          <img className="posterImg" src={activePoster.src} alt={activePoster.alt} />
+        </div>
+      )}
+
+
     </main>
   );
 }
