@@ -450,7 +450,7 @@ export default function AdminProjectEditor({ mode }) {
                 <div>
                   <div className="adminKicker">Gallery</div>
                   <div className="adminHint">
-                    Upload images and manage order. These images will appear in a gallery on the project page. Remeber to set alt text for each image for accessibility reasons.
+                    These images will appear in a gallery on the project page. Remeber to set alt text for each image for accessibility reasons. The preferred image aspect ratio is 1:1.
                   </div>
                 </div>
 

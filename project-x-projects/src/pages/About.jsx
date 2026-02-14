@@ -227,9 +227,9 @@ export default function About() {
                         <h3 className="aboutLocTitle">MALAWI</h3>
                         <p className="aboutLocDesc">Wells, mosques, and relief in Malawi</p>
 
-                        <button className="aboutLocLink" type="button">
+                        <Link className="aboutLocLink" to="/projects">
                         Learn more <span aria-hidden="true">›</span>
-                        </button>
+                        </Link>
                     </article>
 
                     <article className="aboutLocCard">
@@ -240,78 +240,77 @@ export default function About() {
                         <h3 className="aboutLocTitle">UGANDA</h3>
                         <p className="aboutLocDesc">Orphan sponsorships and madrassa support</p>
 
-                        <button className="aboutLocLink" type="button">
+                        <Link className="aboutLocLink" to="/projects">
                         Learn more <span aria-hidden="true">›</span>
-                        </button>
+                        </Link>
                     </article>
                 </div>
             </div>
         </section>
 
         {/* DIFFERENCE */}
-    <section className="aboutDifference" aria-label="Why we stand apart">
+        <section className="aboutDifference" aria-label="Why we stand apart">
 
-        <div className="container">
+            <div className="container">
 
-            <header className="aboutSectionHeader aboutSectionHeaderTight">
+                <header className="aboutSectionHeader aboutSectionHeaderTight">
 
-                <div className="aboutEyebrow">Difference</div>
+                    <div className="aboutEyebrow">Difference</div>
 
-                <h2 className="aboutSectionTitle">WHY WE STAND APART</h2>
+                    <h2 className="aboutSectionTitle">WHY WE STAND APART</h2>
 
-                <p className="aboutSectionSub">Grassroots work, real partnerships, tangible results</p>
+                    <p className="aboutSectionSub">Grassroots work, real partnerships, tangible results</p>
 
-            </header>
+                </header>
 
-            <div className="aboutDifferenceGrid">
+                <div className="aboutDifferenceGrid">
 
-                {differenceCards.map((c) => (
-                    <article
-                    key={c.title}
-                    className={`aboutDiffCard ${c.wide ? "aboutDiffCardWide" : ""}`}
-                    >
+                    {differenceCards.map((c) => (
+                        <article
+                        key={c.title}
+                        className={`aboutDiffCard ${c.wide ? "aboutDiffCardWide" : ""}`}
+                        >
 
-                    <img src={c.icon} className="impactWatermark"/>
+                        <img src={c.icon} className="impactWatermark"/>
 
-                    <h3 className="aboutDiffTitle">{c.title}</h3>
-                    <p className="aboutDiffBody">{c.body}</p>
+                        <h3 className="aboutDiffTitle">{c.title}</h3>
+                        <p className="aboutDiffBody">{c.body}</p>
 
-                    
-                    </article>
-                ))}
+                        
+                        </article>
+                    ))}
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    {/* CTA */}
-    <section className="aboutCta" aria-label="Join us">
+        {/* CTA */}
+        <section className="aboutCta" aria-label="Join us">
 
-        <div className="container">
+            <div className="container">
 
-            <div className="aboutCtaBox">
+                <div className="aboutCtaBox">
 
-                <h2 className="aboutCtaTitle">JOIN US IN PRACTICAL CHANGE</h2>
+                    <h2 className="aboutCtaTitle">JOIN US IN PRACTICAL CHANGE</h2>
 
-                <p className="aboutCtaSub">
-                    Support a project, volunteer your time, or connect with our work
-                </p>
+                    <p className="aboutCtaSub">
+                        Support a project, volunteer your time, or connect with our work
+                    </p>
 
-                <div className="aboutCtaActions">
+                    <div className="aboutCtaActions">
 
-                    <Link className="btn btnPrimary" to="/get-involved">Get involved</Link>
+                        <Link className="btn btnPrimary" to="/get-involved">Get involved</Link>
 
-                    <Link to="/contact" className="btn btnGhost">
-                    Contact
-                    </Link>
+                        <Link to="/contact" className="btn btnGhost">
+                        Contact
+                        </Link>
+
+                    </div>
 
                 </div>
 
             </div>
 
-        </div>
-
-    </section>
-
+        </section>
 
     </main>
   );

@@ -276,7 +276,7 @@ export default function AdminEventEditor({ mode }) {
                 </div>
 
                 <div className="adminField" style={{ gridColumn: "1 / -1" }}>
-                  <div className="adminLabel">Event Image (card)</div>
+                  <div className="adminLabel">Event Flyer Image (card)</div>
 
                   {form.imageUrl ? (
                     <img className="adminThumb" src={form.imageUrl} alt="" />
@@ -296,7 +296,7 @@ export default function AdminEventEditor({ mode }) {
                   />
 
                   <div className="adminHint">
-                    This image will be the thumbnail for the event card on the public events page. Recommended size: 600x400px
+                    This image will be the thumbnail for the event card on the public events page. Best to use a Flyer of the event. Recommended size: 600x400px
                   </div>
                 </div>
               </div>

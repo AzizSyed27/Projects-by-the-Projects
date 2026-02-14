@@ -98,7 +98,7 @@ export default function Projects() {
     return 3;
   }
 
-  // NEW: projects from backend
+  //projects from backend
   const [currentNow, setCurrentNow] = useState([]);
   const [completedProjects, setCompletedProjects] = useState([]);
   const [loadingProjects, setLoadingProjects] = useState(true);
@@ -156,6 +156,7 @@ export default function Projects() {
 
   const visibleCompleted = showAllCompleted ? completedProjects : completedProjects.slice(0, cols);
   const canToggleCompleted = completedProjects.length > cols;
+  
 
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -255,6 +256,15 @@ export default function Projects() {
       document.body.style.overflow = "";
     };
   }, [activePoster]);
+
+  //scroll helper
+  const scrollToProjectsWork = () => {
+    requestAnimationFrame(() => {
+      const el = document.getElementById("projects-work");
+      if (!el) return;
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  };
 
 
   return (
@@ -404,7 +414,13 @@ export default function Projects() {
                   <button
                     className="btn currentNowAllBtn"
                     type="button"
-                    onClick={() => setShowAllCurrent((s) => !s)}
+                    onClick={() => {
+                      setShowAllCurrent((s) => {
+                        const next = !s;
+                        if (s && !next) scrollToProjectsWork(); 
+                        return next;
+                      });
+                    }}
                   >
                     {showAllCurrent ? "Show less" : "View all"}
                   </button>
@@ -456,7 +472,13 @@ export default function Projects() {
                   <button
                     className="btn completedAllBtn"
                     type="button"
-                    onClick={() => setShowAllCompleted((s) => !s)}
+                    onClick={() => {
+                      setShowAllCompleted((s) => {
+                        const next = !s;
+                        if (s && !next) scrollToProjectsWork(); // Show less
+                        return next;
+                      });
+                    }}
                   >
                     {showAllCompleted ? "Show less" : "View all"}
                   </button>

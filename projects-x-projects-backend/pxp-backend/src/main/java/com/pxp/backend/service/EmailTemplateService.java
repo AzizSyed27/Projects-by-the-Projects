@@ -78,7 +78,7 @@ public class EmailTemplateService {
       project.getTitle() + "\n\n" +
       (project.getHeroBlurb() != null ? project.getHeroBlurb() + "\n\n" : "") +
       (project.getShortDesc() != null ? project.getShortDesc() + "\n\n" : "") +
-      (tags.isBlank() ? "" : "Tags: " + tags + "\n\n") +
+      (tags.isBlank() ? "" : "" + tags + "\n\n") +
       "View project:\n" + projectUrl + "\n\n" +
       "Unsubscribe:\n" + unsubscribeUrl + "\n\n" +
       orgName + " • " + orgLocation + "\n" +

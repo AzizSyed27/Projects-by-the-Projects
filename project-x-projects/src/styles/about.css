@@ -402,14 +402,15 @@
 }
 
 .aboutLocLink{
-  width: 100%;
+  display: block;
   background: transparent;
   border: 0;
   cursor: pointer;
   padding: 10px 0 20px;
   font-weight: 800;
-  font-size: 12px;
+  font-size: 14px;
   color: rgba(15, 23, 42, 0.78);
+  text-align: center;
 }
 
 .aboutLocLink:hover{
