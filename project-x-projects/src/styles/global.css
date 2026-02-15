@@ -1089,6 +1089,10 @@ body{
     order: -1;              /* image on top (optional) */
   }
 
+  .originsLeft{
+    gap: 0px;
+  }
+
   .originsRight img{
     aspect-ratio: 1 / 1;  /* keeps image from becoming too tall */
     height: auto;
@@ -1844,11 +1848,12 @@ body{
 }
 
 .partnerLogos{
-  display: flex;
+  display: grid;
   align-items: center;
   gap: 50px;
   flex-wrap: nowrap;              /* keep in one row like screenshot */
   margin: 25px 0 18px;
+  grid-template-columns: 1fr 1fr 1fr 1fr; /* 5 logos, equal spacing */
 }
 
 .partnerLogo{
@@ -1908,6 +1913,7 @@ body{
     flex-wrap: wrap;      /* allow wrapping on mobile */
     justify-content: center;
     gap: 14px;
+    
   }
 
   .partnerLogo{
@@ -1939,7 +1945,7 @@ body{
   margin: 0 auto;
   color: #123b3e;
   line-height: 1.7;
-  font-size: 20px;
+  font-size: 16px;
   max-width: 60ch;
 }
 
@@ -2013,7 +2019,7 @@ body{
 .faqMoreSub{
   margin: 0 0 16px;
   color: #123b3e;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .faqContactBtn{

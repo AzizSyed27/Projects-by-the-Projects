@@ -767,9 +767,9 @@
 
 .projectImpactLabel{
   margin: 15px 0 0;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: rgba(15, 23, 42, 0.75);
 }
