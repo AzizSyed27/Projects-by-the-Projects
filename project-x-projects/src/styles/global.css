@@ -1451,6 +1451,11 @@ body{
   .resultsMiniV{
     justify-content: flex-start;  
     text-align: start; 
+    font-size: 18px;
+  }
+
+  .resultsMiniK{
+    font-size: 12px;
   }
 
   .resultsTab{
