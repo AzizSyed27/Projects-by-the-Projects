@@ -46,8 +46,8 @@ export default function Contact() {
                 </span>
                 <div className="contactInfoText">
                   <div className="contactInfoLabel">PHONE</div>
-                  <a className="contactInfoValue" href="tel:+14165550147">
-                    +1 (416) 555-5555
+                  <a className="contactInfoValue" href="tel:+16475693331">
+                    +1 (647) 569-3331
                   </a>
                 </div>
               </div>
