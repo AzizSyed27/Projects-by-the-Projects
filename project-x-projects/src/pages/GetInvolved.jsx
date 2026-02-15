@@ -36,7 +36,7 @@ export default function GetInvolved() {
         title: "JOIN COMMUNITY EVENTS",
         desc: "Organize BBQs and toy drives",
         cta: "Attend",
-        to: "/projects/#events",
+        to: "/projects/#projects-impact",
         img: path3,
         },
     ];
@@ -166,9 +166,9 @@ export default function GetInvolved() {
                                 <h3 className="giCardTitle">{w.title}</h3>
                                 <p className="giCardDesc">{w.desc}</p>
 
-                                <a className="giCardLink" href={w.to} aria-label={`${w.cta}: ${w.title}`}>
+                                <Link className="giCardLink" to={w.to} aria-label={`${w.cta}: ${w.title}`}>
                                     {w.cta} <span aria-hidden="true">›</span>
-                                </a>
+                                </Link>
                             </div>
 
                             <div className="giCardMedia">

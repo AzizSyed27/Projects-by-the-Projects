@@ -21,7 +21,7 @@ import AdminEventEditor from "./admin/AdminEventEditor.jsx";
 import SubscribeVerify from "./pages/SubscribeVerify.jsx";
 import SubscribeUnsubscribe from "./pages/SubscribeUnsubscribe.jsx";
 
-
+import NewsletterPopup from "./components/NewsletterPopup.jsx";
 
 
 export default function App() {
@@ -33,6 +33,8 @@ export default function App() {
       <ScrollToTop/>
 
       {!isAdminRoute && <Navbar />}
+
+      <NewsletterPopup />
 
       <Routes>
         <Route path="/" element={<Home />} />

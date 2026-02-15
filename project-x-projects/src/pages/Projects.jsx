@@ -605,7 +605,7 @@ export default function Projects() {
 
 
       {/* IMPACT */}
-      <section className="projectImpactSection" aria-label="Impact">
+      <section className="projectImpactSection" aria-label="Impact" id="projects-impact">
         <div className="container">
           <header className="projectImpactHead">
             <div className="projectsEyebrowImpact">Impact</div>
