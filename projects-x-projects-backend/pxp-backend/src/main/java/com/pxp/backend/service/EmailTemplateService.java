@@ -111,7 +111,7 @@ public class EmailTemplateService {
     String where = (event.getLocation() == null || event.getLocation().isBlank()) ? "Location TBD" : event.getLocation();
 
     // cards only → send them to your Events section/page
-    String viewLink = noSlash(siteUrl) + "/get-involved#events";
+    String viewLink = noSlash(siteUrl) + "/projects/#events";
 
     String text =
       "Hello,\n\n" +
