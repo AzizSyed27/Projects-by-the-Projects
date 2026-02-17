@@ -52,6 +52,7 @@
   text-transform: uppercase;
   color: var(--muted);
   margin-bottom: 12px;
+  text-align: center;
 }
 
 .donateHowTitle{
@@ -61,6 +62,7 @@
   letter-spacing: -0.01em;
   font-size: clamp(28px, 3.2vw, 46px);
   margin: 0;
+  text-align: center;
 }
 
 .donateHowSub{
@@ -69,6 +71,7 @@
   color: rgba(15, 23, 42, 0.75);
   line-height: 1.7;
   font-size: clamp(14px, 1.2vw, 18px);
+  text-align: center;
 }
 
 /* Donation card */
@@ -259,8 +262,9 @@
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--bg1);
+  color: var(--muted);
   margin-bottom: 12px;
+  text-align: center;
 }
 
 .donateDirectHead{
@@ -276,6 +280,7 @@
   letter-spacing: -0.01em;
   font-size: clamp(28px, 3.2vw, 46px);
   margin: 0;
+  text-align: center;
 }
 
 .donateDirectSub{
@@ -284,6 +289,7 @@
   color: rgba(15, 23, 42, 0.75);
   line-height: 1.7;
   font-size: clamp(14px, 1.2vw, 18px);
+  text-align: center;
 }
 
 /* the big split box */
@@ -470,4 +476,429 @@
   font-weight: 400;
   font-size: 14px;
   cursor: pointer;
+}
+
+/*////////////*/
+/* // STRIPE /*/
+/*////////////*/
+
+.donateStripeSection{
+  background: var(--bg1);
+  padding: 50px 0 60px;
+}
+
+.donateStripeHead{
+  text-align: center;
+  margin: 0 auto 28px;
+  max-width: 980px;
+}
+
+.donateStripeEyebrow{
+  font-size: clamp(14px, 1.2vw, 22px);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.donateStripeTitle{
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  font-size: clamp(28px, 3.2vw, 46px);
+  margin: 0;
+}
+
+.donateStripeSub{
+  margin: 12px auto 0;
+  max-width: 72ch;
+  color: rgba(15, 23, 42, 0.75);
+  line-height: 1.7;
+  font-size: clamp(14px, 1.2vw, 18px);
+}
+
+.donateStripeCard{
+  width: min(980px, 92vw);
+  margin: 0 auto;
+  border: 1.5px solid rgba(15, 23, 42, 0.12);
+  border-radius: 4px;
+  overflow: hidden;
+  background: rgba(230, 251, 252, 0.72);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+}
+
+.donateStripeLeft{
+  padding: 22px;
+  background: rgba(255,255,255,0.55);
+  border-right: 1px solid rgba(15, 23, 42, 0.10);
+}
+
+.donateStripeRight{
+  padding: 22px;
+}
+
+.donateStripePanelTitle{
+  font-family: var(--font-heading);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: rgba(15, 23, 42, 0.90);
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+.donateStripePresets{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.donateStripeChip{
+  border: 1.5px solid rgba(15, 23, 42, 0.14);
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.donateStripeChip:hover{
+  box-shadow: var(--shadow);
+}
+
+.donateStripeChip.isActive{
+  border-color: rgba(17, 135, 141, 0.55);
+  box-shadow: var(--shadow);
+}
+
+.donateStripeForm{
+  display: grid;
+  gap: 10px;
+}
+
+.donateStripeLabel{
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(15, 23, 42, 0.70);
+}
+
+.donateStripeInputRow{
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 12px;
+  border-radius: 4px;
+  border: 1.5px solid rgba(15, 23, 42, 0.14);
+  background: rgba(255,255,255,0.92);
+}
+
+.donateStripeCurrency,
+.donateStripeCode{
+  font-weight: 900;
+  color: rgba(15, 23, 42, 0.65);
+}
+
+.donateStripeInput{
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  color: rgba(15, 23, 42, 0.88);
+}
+
+.donateStripeHint{
+  font-size: 13px;
+  color: rgba(15, 23, 42, 0.65);
+  line-height: 1.5;
+}
+
+.donateStripeBtn{
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: var(--brand, #11878D);
+  color: #fff;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.donateStripeBtn:hover{
+  box-shadow: var(--shadow);
+}
+
+.donateStripeMsg{
+  border: 1px solid rgba(220, 38, 38, 0.25);
+  background: rgba(220, 38, 38, 0.08);
+  color: rgba(127, 29, 29, 0.92);
+  border-radius: 4px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+.donateStripeMeta{
+  display: grid;
+  gap: 10px;
+}
+
+.donateStripeMetaRow{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 12px 12px;
+  border-radius: 4px;
+  border: 1.5px solid rgba(15, 23, 42, 0.12);
+  background: rgba(255,255,255,0.75);
+}
+
+.donateStripeMetaLabel{
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(15, 23, 42, 0.62);
+}
+
+.donateStripeMetaValue{
+  font-weight: 900;
+  color: rgba(15, 23, 42, 0.90);
+}
+
+.donateStripeLinkBtn{
+  justify-self: start;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: 900;
+  color: rgba(15, 23, 42, 0.78);
+}
+
+.donateStripeLinkBtn:hover{
+  color: var(--brand, #11878D);
+}
+
+.donateStripeFinePrint{
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.58);
+  line-height: 1.5;
+}
+
+.donateStripeFrame{
+  border: 1.5px solid rgba(15, 23, 42, 0.12);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.82);
+  overflow: hidden;
+  position: relative;
+  min-height: 520px; /* keeps layout stable while Stripe loads */
+}
+
+/* Stripe renders an iframe inside; this helps it feel “native” */
+.donateStripeFrame iframe{
+  width: 100%;
+  border: 0;
+  border-radius: 4px;
+}
+
+.donateStripeLoading{
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(15, 23, 42, 0.62);
+  background: rgba(255,255,255,0.75);
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  border-radius: 4px;
+  padding: 6px 10px;
+}
+
+.donateStripePlaceholder{
+  border: 1.5px dashed rgba(15, 23, 42, 0.18);
+  border-radius: 4px;
+  padding: 18px;
+  background: rgba(255,255,255,0.55);
+  min-height: 520px;
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+
+.donateStripePlaceholderTitle{
+  font-family: var(--font-heading);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  font-size: 18px;
+  color: rgba(15, 23, 42, 0.90);
+  text-align: center;
+}
+
+.donateStripePlaceholderText{
+  margin: 0;
+  color: rgba(15, 23, 42, 0.70);
+  line-height: 1.7;
+  text-align: center;
+}
+
+.donateStripeComplete{
+  border: 1.5px solid rgba(15, 23, 42, 0.12);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.75);
+  padding: 16px;
+  display: grid;
+  gap: 8px;
+}
+
+@media (max-width: 900px){
+  .donateStripeCard{
+    grid-template-columns: 1fr;
+  }
+  .donateStripeLeft{
+    border-right: none;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.10);
+  }
+  .donateStripeFrame,
+  .donateStripePlaceholder{
+    min-height: 560px;
+  }
+}
+
+/* Disclaimer*/
+
+.donateStripeDisclaimer{
+  margin-top: 10px;
+  padding: 12px 12px;
+  border-radius: 4px;
+  border: 1.5px solid rgba(15, 23, 42, 0.12);
+  background: rgba(255,255,255,0.68);
+}
+
+.donateStripeDisclaimerTitle{
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(15, 23, 42, 0.70);
+  margin-bottom: 6px;
+}
+
+.donateStripeDisclaimerText{
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(15, 23, 42, 0.70);
+}
+
+.donateStripeCalc{
+  border-radius: 4px;
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  background: rgba(255,255,255,0.75);
+  padding: 10px 10px;
+  display: grid;
+  gap: 8px;
+}
+
+.donateStripeCalcRow{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.donateStripeCalcLabel{
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(15, 23, 42, 0.62);
+}
+
+.donateStripeCalcValue{
+  font-weight: 900;
+  color: rgba(15, 23, 42, 0.88);
+}
+
+.donateStripeCalcValue.isFee{
+  color: rgba(185, 28, 28, 0.85);
+}
+
+.donateStripeCalcDivider{
+  height: 1px;
+  background: rgba(15, 23, 42, 0.10);
+}
+
+.donateStripeCalcRow.isNet .donateStripeCalcValue{
+  color: rgba(17, 135, 141, 0.95);
+}
+
+.donateStripeCalcFinePrint{
+  margin-top: 2px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(15, 23, 42, 0.58);
+}
+
+
+/* Hides Checkout until ready to pay */
+.donateStripeCard.isIntro{
+  grid-template-columns: 1fr;
+}
+
+/* Checkout state: two columns */
+.donateStripeCard.isCheckout{
+  grid-template-columns: 0.95fr 1.05fr;
+}
+
+/* When right column is hidden, remove the border divider */
+.donateStripeCard.isIntro .donateStripeLeft{
+  border-right: none;
+}
+
+@media (max-width: 900px){
+  /* Always single column on mobile (intro + checkout) */
+  .donateStripeCard.isIntro,
+  .donateStripeCard.isCheckout{
+    grid-template-columns: 1fr;
+  }
+
+  .donateStripeRight{
+    padding: 0px;
+  }
+
+  .donateStripeFrame{
+    border: none;
+    border-radius: 0px;
+    background: transparent;
+  }
+
+  /* Border behavior when stacked */
+  .donateStripeLeft{
+    border-right: none;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.10);
+  }
+
+  /* When intro mode (right hidden), don't add an unnecessary bottom border */
+  .donateStripeCard.isIntro .donateStripeLeft{
+    border-bottom: none;
+  }
+
+  /* Give Stripe enough vertical space on phones */
+  .donateStripeFrame{
+    min-height: 620px; /* tweak 580–700 depending on how Stripe renders for you */
+  }
 }

@@ -23,6 +23,8 @@ import SubscribeUnsubscribe from "./pages/SubscribeUnsubscribe.jsx";
 
 import NewsletterPopup from "./components/NewsletterPopup.jsx";
 
+import DonateComplete from "./pages/DonateComplete.jsx";
+
 
 export default function App() {
   const location = useLocation();
@@ -47,6 +49,8 @@ export default function App() {
 
         <Route path="/subscribe/verify" element={<SubscribeVerify />} />
         <Route path="/subscribe/unsubscribe" element={<SubscribeUnsubscribe />} />
+
+        <Route path="/donate/complete" element={<DonateComplete />} />
 
         
         {/* Admin */}

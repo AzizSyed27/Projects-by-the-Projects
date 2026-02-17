@@ -42,6 +42,10 @@ public class SecurityConfig {
 		.requestMatchers("/api/events/**").permitAll()
 		.requestMatchers("/api/admin/events/**").hasRole("ADMIN")
 		
+		//for stripe
+		.requestMatchers("/api/donations/**", "/api/stripe/webhook").permitAll()
+		.requestMatchers("/api/admin/**").authenticated()
+		
 		.anyRequest().permitAll()
       );
 

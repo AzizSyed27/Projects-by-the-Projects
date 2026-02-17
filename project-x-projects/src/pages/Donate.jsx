@@ -12,6 +12,8 @@ import comm from "../assets/about/about-comm-icon.png"
 import project from "../assets/about/about-project-icon.png"
 import relief from "../assets/impact/carepackage-icon.png"
 
+import StripeDonateEmbed from "../components/StripeDonateEmbed.jsx";
+
 export default function Donate() {
 
     const bulletLeft = [
@@ -266,6 +268,8 @@ export default function Donate() {
                     </article>
                 </div>
             </section>
+
+            <StripeDonateEmbed />
 
             {/* DIRECT (CHOOSE WHERE YOUR GIFT GOES) */}
             <section className="donateDirect" aria-label="Choose where your gift goes">
