@@ -902,3 +902,29 @@
     min-height: 620px; /* tweak 580–700 depending on how Stripe renders for you */
   }
 }
+
+.donateStripeRow{
+  width: 100%;
+  display: grid;
+  gap: 6px;
+}
+
+.donateStripeLabel{
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(15, 23, 42, 0.70);
+}
+
+.donateStripeSelect{
+  height: 44px;
+  border-radius: 4px;
+  padding: 0 12px;
+  border: 1.5px solid var(--line);
+  background: white;
+}
+
+.donateStripeCompleteTitle{
+  text-align: center;
+}

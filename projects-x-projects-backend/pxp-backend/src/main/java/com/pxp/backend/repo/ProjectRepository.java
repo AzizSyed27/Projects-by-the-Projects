@@ -14,4 +14,7 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
 
   @Query("select distinct p from Project p left join fetch p.images where p.slug = :slug")
   Optional<Project> findBySlugWithImages(@Param("slug") String slug);
+  
+  List<Project> findByStatusOrderByDisplayOrderAscIdAsc(ProjectStatus status);
+
 }

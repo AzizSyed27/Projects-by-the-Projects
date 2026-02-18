@@ -87,10 +87,16 @@ public class DonationPaymentService {
       .addLineItem(lineItem)
       .setClientReferenceId(String.valueOf(d.getId()))
       .putMetadata("donationId", String.valueOf(d.getId()));
+    
+    SessionCreateParams.PaymentIntentData.Builder pid = SessionCreateParams.PaymentIntentData.builder()
+	    .putMetadata("donationId", String.valueOf(d.getId()));
 
     if (d.getProject() != null) {
-      builder.putMetadata("projectId", String.valueOf(d.getProject().getId()));
+      pid.putMetadata("projectId", String.valueOf(d.getProject().getId()));
+      pid.putMetadata("projectTitle", d.getProject().getTitle());
     }
+    
+    builder.setPaymentIntentData(pid.build());
 
     Session session = Session.create(builder.build());
 
