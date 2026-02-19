@@ -44,6 +44,9 @@ public class Donation {
   void onCreate() {
     if (createdAt == null) createdAt = OffsetDateTime.now();
   }
+  
+  @Column(name = "receipt_email_sent_at")
+  private OffsetDateTime receiptEmailSentAt;
 
   // getters/setters
   public Long getId() { return id; }
@@ -68,7 +71,13 @@ public class Donation {
 
   public String getCustomerEmail() { return customerEmail; }
   public void setCustomerEmail(String customerEmail) { this.customerEmail = customerEmail; }
+  
+  public OffsetDateTime getCreatedAt() {return createdAt;}
+  public void setCreatedAt(OffsetDateTime createdAt) { this.createdAt = createdAt; } 
 
   public OffsetDateTime getPaidAt() { return paidAt; }
   public void setPaidAt(OffsetDateTime paidAt) { this.paidAt = paidAt; }
+  
+  public OffsetDateTime getReceiptEmailSentAt() { return receiptEmailSentAt; }
+  public void setReceiptEmailSentAt(OffsetDateTime receiptEmailSentAt) { this.receiptEmailSentAt = receiptEmailSentAt; }
 }

@@ -2,6 +2,7 @@ package com.pxp.backend.web;
 
 import com.pxp.backend.entity.DonationStatus;
 import com.pxp.backend.repo.DonationRepository;
+import com.pxp.backend.service.DonationReceiptService;
 import com.stripe.exception.SignatureVerificationException;
 import com.stripe.model.Event;
 import com.stripe.model.StripeObject;
@@ -18,12 +19,14 @@ import java.time.OffsetDateTime;
 public class StripeWebhookController {
 
   private final DonationRepository donationRepo;
+  private final DonationReceiptService receiptService;
 
   @Value("${stripe.webhook-secret}")
   private String webhookSecret;
 
-  public StripeWebhookController(DonationRepository donationRepo) {
+  public StripeWebhookController(DonationRepository donationRepo, DonationReceiptService receiptService) {
     this.donationRepo = donationRepo;
+    this.receiptService = receiptService;
   }
 
   @PostMapping("/webhook")
@@ -73,6 +76,8 @@ public class StripeWebhookController {
     d.setStatus(DonationStatus.PAID);
     d.setPaidAt(OffsetDateTime.now());
     donationRepo.save(d);
+    //send recipt
+    receiptService.queueReceiptIfNeeded(d);
   }
 
   private void handleCheckoutExpired(Event event) {

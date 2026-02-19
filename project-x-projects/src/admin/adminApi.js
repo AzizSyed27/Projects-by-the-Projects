@@ -136,3 +136,20 @@ export const AdminEventsApi = {
       method: "DELETE",
     }),
 };
+
+//Donation info
+export const AdminDonationsApi = {
+  list: (params = {}) => {
+    const q = new URLSearchParams();
+    if (params.status) q.set("status", params.status);
+    if (params.projectId) q.set("projectId", String(params.projectId));
+    return adminFetch(`/api/admin/donations?${q.toString()}`);
+  },
+  stats: (params = {}) => {
+    const q = new URLSearchParams();
+    if (params.projectId) q.set("projectId", String(params.projectId));
+    if (params.fromDate) q.set("fromDate", params.fromDate);
+    if (params.toDate) q.set("toDate", params.toDate);
+    return adminFetch(`/api/admin/donations/stats?${q.toString()}`);
+  },
+};

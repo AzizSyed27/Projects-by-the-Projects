@@ -304,8 +304,9 @@ export default function StripeDonateEmbed({ projectId = null }) {
 
                             {complete && (
                             <div className="donateStripeComplete" role="status">
-                                <h3 className="donateStripeCompleteTitle">Thank you ❤️</h3>
+                                <h3 className="donateStripeCompleteTitle">Thank you for your generosity!</h3>
                                 <p className="donateStripeCompleteTitle">Your donation is being processed.</p>
+                                <p className="donateStripeCompleteTitle">You'll receive a confirmation email when it is paid.</p>
                                 <button className="donateStripeBtn" type="button" onClick={reset}>
                                 Make another donation
                                 </button>

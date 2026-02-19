@@ -69,6 +69,9 @@ export default function AdminDashboard() {
               <Link className="btn" to="/admin/events">
                 Events
               </Link>
+              <Link className="btn" to="/admin/donations">
+                Donations
+              </Link>
               <button className="btn" type="button" onClick={load}>
                 Refresh
               </button>

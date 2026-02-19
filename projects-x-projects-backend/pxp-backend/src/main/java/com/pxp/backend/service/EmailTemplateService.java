@@ -144,11 +144,13 @@ public class EmailTemplateService {
 
   private String layout(String title, String intro, String mainHtml, String extrasHtml, String footerHtml) {
     String preheader = "Updates from " + esc(orgName);
+    
+    
 
     return """
 		<!doctype html>
 		<html>
-		  <body style="margin:0;padding:0;background:#eef7f7;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;">
+		  <body style="margin:0;padding:0;background:#f3fbfb;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;">
 		    <span style="display:none;visibility:hidden;opacity:0;height:0;width:0;overflow:hidden;">%s</span>
 		    <table role="presentation" width="100%%" cellpadding="0" cellspacing="0" style="background:#eef7f7;padding:28px 12px;">
 		      <tr>
@@ -207,6 +209,49 @@ public class EmailTemplateService {
       esc(noSlash(siteUrl))
     );
   }
+  
+  //------------- DONATION RECIPT ------------//
+  
+//------------- DONATION RECIPT ------------//
+  
+  public EmailContent donationReceipt(
+		  String donorEmail,
+		  Long amountCents,
+		  String currency,
+		  String projectTitleOrNull
+		) {
+		  String subject = orgName + " — Donation confirmation";
+
+		  String amount = String.format("$%.2f %s", amountCents / 100.0, (currency == null ? "CAD" : currency.toUpperCase()));
+		  String projLine = (projectTitleOrNull == null || projectTitleOrNull.isBlank())
+		    ? "Donation target: Where needed most"
+		    : "Donation target: " + projectTitleOrNull;
+
+		  String text =
+		    "Hello,\n\n" +
+		    "Thank you for supporting " + orgName + ". Your donation has been confirmed.\n\n" +
+		    "Amount: " + amount + "\n" +
+		    projLine + "\n\n" +
+		    "This email is a payment confirmation and is not an official charitable tax receipt.\n\n" +
+		    "If you have any questions, reply to this email or contact: " + supportEmail + "\n\n" +
+		    orgName + " • " + orgLocation + "\n";
+
+		  String html = layout(
+		    "Donation confirmed",
+		    "Thank you for supporting <b>" + esc(orgName) + "</b>. Your donation has been confirmed.",
+		    pillRow("Amount", esc(amount)) +
+		      pillRow("Donation target", esc((projectTitleOrNull == null || projectTitleOrNull.isBlank())
+		        ? "Where needed most"
+		        : projectTitleOrNull)) +
+		      para("This email is a payment confirmation and is <b>not</b> an official charitable tax receipt."),
+		    "",
+			transactionalFooter()
+		  );
+
+		  // Transactional email: no list-unsubscribe header needed
+		  return new EmailContent(subject, text, html, null);
+		}
+  
 
   private String button(String text, String url) {
     return """
@@ -258,6 +303,16 @@ public class EmailTemplateService {
 	  <div style="font-size: 10px; margin-top:8px;">%s</div>
 	</div>
 	""".formatted(esc(orgName), esc(supportEmail), esc(supportEmail), unsub);
+  }
+  
+  private String transactionalFooter() {
+	  return """
+	  <div style="font-size:12px;line-height:1.6;color:rgba(15,23,42,.70);text-align:center;">
+	    <div style="font-weight:900;margin-bottom:6px;">%s</div>
+	    <div>%s</div>
+	    <div>Support: <a href="mailto:%s" style="color:#11878D;text-decoration:underline;">%s</a></div>
+	  </div>
+	  """.formatted(esc(orgName), esc(orgLocation), esc(supportEmail), esc(supportEmail));
   }
 
   private String esc(String s) {

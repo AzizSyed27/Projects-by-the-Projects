@@ -17,6 +17,7 @@ import ProtectedRoute from "./admin/ProtectedRoute.jsx";
 
 import AdminEvents from "./admin/AdminEvents.jsx";
 import AdminEventEditor from "./admin/AdminEventEditor.jsx";
+import AdminDonations from "./admin/AdminDonations.jsx";
 
 import SubscribeVerify from "./pages/SubscribeVerify.jsx";
 import SubscribeUnsubscribe from "./pages/SubscribeUnsubscribe.jsx";
@@ -106,6 +107,16 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+
+        <Route
+          path="/admin/donations"
+          element={
+            <ProtectedRoute>
+              <AdminDonations />
+            </ProtectedRoute>
+          }
+        />
+        
       </Routes>
 
       
