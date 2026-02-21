@@ -7,5 +7,6 @@ public record ProjectCardDto(
   String projectShortDesc,
   String projectTags,   // comma-separated
   String cardImageUrl,
-  boolean isCompleted
+  boolean isCompleted,
+  Long fundingGoalCents
 ) {}

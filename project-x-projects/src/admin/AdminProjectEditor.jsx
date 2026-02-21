@@ -21,6 +21,21 @@ async function putToPresignedUrl(uploadUrl, file) {
   if (!res.ok) throw new Error(`Upload failed (${res.status})`);
 }
 
+function dollarsToCents(input) {
+  const s = String(input ?? "").trim();
+  if (!s) return null;                 // blank = no goal
+  const n = Number(s);
+  if (!Number.isFinite(n) || n <= 0) return null;
+  return Math.round(n * 100);
+}
+
+function centsToDollarsString(cents) {
+  if (cents === null || cents === undefined) return "";
+  const n = Number(cents);
+  if (!Number.isFinite(n)) return "";
+  return (n / 100).toFixed(2);
+}
+
 export default function AdminProjectEditor({ mode }) {
   const nav = useNavigate();
   const { id } = useParams();
@@ -41,6 +56,7 @@ export default function AdminProjectEditor({ mode }) {
     mainImageUrl: "",
     displayOrder: 0,
     status: "DRAFT",
+    fundingGoalCad: "",
   });
 
   // Gallery
@@ -76,6 +92,7 @@ export default function AdminProjectEditor({ mode }) {
         mainImageUrl: p.mainImageUrl || "",
         displayOrder: p.displayOrder ?? 0,
         status: p.status || "DRAFT",
+        fundingGoalCad: centsToDollarsString(p.fundingGoalCents) || "",
       });
     } catch (e) {
       if (e?.message === "UNAUTHORIZED") nav("/admin/login", { replace: true });
@@ -128,6 +145,7 @@ export default function AdminProjectEditor({ mode }) {
         mainImageUrl: form.mainImageUrl || "",
         displayOrder: Number(form.displayOrder || 0),
         status: form.status,
+        fundingGoalCents: dollarsToCents(form.fundingGoalCad),
       };
 
       if (editing) {
@@ -375,15 +393,45 @@ export default function AdminProjectEditor({ mode }) {
                 </div>
 
                 <div className="adminField" style={{ gridColumn: "1 / -1" }}>
-                  <div className="adminLabel">Tags (comma-separated)</div>
-                  <input
-                    className="adminInput"
-                    value={form.projectTags}
-                    onChange={(e) => updateField("projectTags", e.target.value)}
-                    placeholder="Water, Malawi, Infrastructure"
-                  />
-                  <div className="adminHint">
-                    Keep tags comma-separated. They will be split by commas on the project pages.
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "1fr 1fr",
+                      gap: "16px",
+                      alignItems: "start",
+                    }}
+                  >
+                    {/* Tags */}
+                    <div>
+                      <div className="adminLabel">Tags (comma-separated)</div>
+                      <input
+                        className="adminInput"
+                        value={form.projectTags}
+                        onChange={(e) => updateField("projectTags", e.target.value)}
+                        placeholder="Water, Malawi, Infrastructure"
+                      />
+                      <div className="adminHint">
+                        Keep tags comma-separated. They will be split by commas on the project pages.
+                      </div>
+                    </div>
+
+                    {/* Funding Goal */}
+                    <div>
+                      <div className="adminLabel">Funding Goal (CAD)</div>
+                      <input
+                        className="adminInput"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        value={form.fundingGoalCad}
+                        onChange={(e) => updateField("fundingGoalCad", e.target.value)}
+                        placeholder="e.g., 2500.00"
+                      />
+                      <div className="adminHint">
+                        Optional. If set, the public project pages will show a progress meter. Leave blank to
+                        hide the meter.
+                      </div>
+                    </div>
                   </div>
                 </div>
 

@@ -57,6 +57,9 @@ public class Project {
   @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
   @OrderBy("sortOrder ASC, id ASC")
   private List<ProjectImage> images = new ArrayList<>();
+  
+  @Column(name="funding_goal_cents")
+  private Long fundingGoalCents;
 
   @PrePersist
   void onCreate() {
@@ -108,6 +111,9 @@ public class Project {
 
   public OffsetDateTime getCompletedAt() { return completedAt; }
   public void setCompletedAt(OffsetDateTime completedAt) { this.completedAt = completedAt; }
+  
+  public Long getFundingGoalCents() { return fundingGoalCents; }
+  public void setFundingGoalCents(Long fundingGoalCents) { this.fundingGoalCents = fundingGoalCents; }
 
   public List<ProjectImage> getImages() { return images; }
 }

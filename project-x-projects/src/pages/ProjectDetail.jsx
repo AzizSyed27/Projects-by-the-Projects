@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import "../styles/project-detail.css";
+import ProjectProgress from "../components/ProjectProgress";
 
 const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8080";
 
@@ -30,7 +31,23 @@ export default function ProjectDetail() {
         if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
         const json = await res.json();
 
-        setData(json);
+
+
+        const fundingRes = await fetch(`${API_BASE}/api/projects/funding`, { signal: ac.signal });
+        if (!fundingRes.ok) throw new Error(`FUNDING: ${fundingRes.status}`);
+        const fundingList = await fundingRes.json();
+
+        const fundingMap = new Map((fundingList || []).map((f) => [f.projectId, f]));
+         
+        const f = fundingMap.get(json.projectId);
+
+
+        setData({
+          ...json,
+          raisedCents: f?.raisedCents ?? 0,
+          goalCents: f?.goalCents ?? null
+
+      });
       } catch (e) {
         if (e?.name !== "AbortError") setError(e?.message || "Failed to load project.");
       } finally {
@@ -174,11 +191,22 @@ export default function ProjectDetail() {
                 <span className={`ppStatus ${data.isCompleted ? "ppStatusDone" : ""}`}>
                   {data.isCompleted ? "Completed" : "Ongoing"}
                 </span>
+
+                <ProjectProgress
+                  raisedCents={data.isCompleted ? data.goalCents : data.raisedCents}
+                  goalCents={data.goalCents}
+                  isDull={data.isCompleted}
+                />
               </div>
+
+              
             </div>
           )}
         </div>
       </section>
+
+      
+      
 
       {data && (
         <>
@@ -198,6 +226,7 @@ export default function ProjectDetail() {
                   <div className="ppEyebrow">What this means</div>
                   <h2 className="ppH2">A REAL PROJECT, WITH REAL IMPACT</h2>
                   <p className="ppLong">{data.projectLongDesc || "More details will be posted soon."}</p>
+                  
                 </div>
               </div>
             </div>

@@ -15,6 +15,8 @@ import arsalanLogo from "../assets/partners/arsalaan-logo.png";
 
 import locationIcon from "../assets/projects/location-icon.png";
 
+import ProjectProgress from "../components/ProjectProgress";
+
 const API_BASE = import.meta.env.VITE_API_URL;
 
 function parseTags(csv) {
@@ -137,8 +139,26 @@ export default function Projects() {
           }),
         ]);
 
-        setCurrentNow(active.map(mapApiProjectToCard));
-        setCompletedProjects(completed.map(mapApiProjectToCard));
+        const fundingRes = await fetch(`${API_BASE}/api/projects/funding`, { signal: ac.signal });
+        if (!fundingRes.ok) throw new Error(`FUNDING: ${fundingRes.status}`);
+        const fundingList = await fundingRes.json();
+
+        const fundingMap = new Map((fundingList || []).map((f) => [f.projectId, f]));
+
+        const addFunding = (arr, isCompleted) =>
+          (arr || []).map((apiP) => {
+            const card = mapApiProjectToCard(apiP);
+            const f = fundingMap.get(card.projectId);
+            return {
+              ...card,
+              raisedCents: f?.raisedCents ?? 0,
+              goalCents: f?.goalCents ?? null,
+              isCompleted,
+            };
+          });
+
+        setCurrentNow(addFunding(active, false));
+        setCompletedProjects(addFunding(completed, true));
       } catch (e) {
         if (e?.name !== "AbortError") {
           setProjectsError(e?.message || "Failed to load projects.");
@@ -265,6 +285,7 @@ export default function Projects() {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   };
+  
 
 
   return (
@@ -387,6 +408,12 @@ export default function Projects() {
                         <h3 className="currentNowCardTitle">{p.title}</h3>
                         <p className="currentNowDesc">{p.desc}</p>
 
+                        <ProjectProgress
+                          raisedCents={p.raisedCents}
+                          goalCents={p.goalCents}
+                          isDull={p.isCompleted}
+                        />
+
                         <div className="currentNowTags">
                           {p.tags.map((t) => (
                             <span className="currentNowTag" key={t}>
@@ -394,6 +421,8 @@ export default function Projects() {
                             </span>
                           ))}
                         </div>
+
+                        
 
                         <Link
                           to={`/projects/${p.slug}`}
@@ -444,6 +473,12 @@ export default function Projects() {
                       <div className="currentNowBody">
                         <h3 className="currentNowCardTitle">{p.title}</h3>
                         <p className="currentNowDesc">{p.desc}</p>
+
+                        <ProjectProgress
+                          raisedCents={p.isCompleted ? p.goalCents : p.raisedCents}
+                          goalCents={p.goalCents}
+                          isDull={p.isCompleted}
+                        />
 
                         <div className="currentNowTags">
                           {p.tags.map((t) => (

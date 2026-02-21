@@ -13,5 +13,6 @@ public record ProjectUpsertRequest(
   String cardImageUrl,
   String mainImageUrl,
   Integer displayOrder,
-  ProjectStatus status         // optional; default ACTIVE
+  ProjectStatus status,         // optional; default ACTIVE
+  Long fundingGoalCents
 ) {}

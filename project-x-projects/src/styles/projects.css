@@ -1407,3 +1407,35 @@
 .posterClose:hover{
   background: rgba(255,255,255,0.22);
 }
+
+
+/*////////////*/
+/* PROGRESS UI*/
+/*////////////*/
+
+.ppWrap{ margin-top: 10px; }
+.ppTop{ display:flex; justify-content:space-between; align-items:baseline; gap:10px; }
+.ppLabel{ font-size:12px; font-weight:900; letter-spacing:.08em; text-transform:uppercase; color:rgba(15,23,42,.65); }
+.ppNums{ font-weight:900; color:rgba(15,23,42,.92); }
+.ppOf{ font-weight:700; color:rgba(15,23,42,.55); margin-left:6px; }
+
+.ppBar{
+  margin-top: 8px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(15,23,42,.10);
+  overflow: hidden;
+  border: 1px solid rgba(15,23,42,.10);
+}
+.ppFill{
+  height: 100%;
+  border-radius: 999px;
+  background: #11878D; /* Blue Chill */
+}
+
+.ppFoot{ margin-top:6px; font-size:12px; color:rgba(15,23,42,.60); font-weight:700; }
+
+.ppWrap.isDull .ppFill{ opacity: .45; }
+.ppWrap.isDull .ppNums, .ppWrap.isDull .ppFoot{ color: rgba(15,23,42,.55); }
+
+

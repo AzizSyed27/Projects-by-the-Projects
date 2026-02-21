@@ -14,5 +14,6 @@ public record AdminProjectResponse(
   String mainImageUrl,
   Integer displayOrder,
   ProjectStatus status,
-  boolean isCompleted
+  boolean isCompleted,
+  Long fundingGoalCents
 ) {}

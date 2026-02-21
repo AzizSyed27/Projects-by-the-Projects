@@ -45,6 +45,7 @@ public class AdminProjectController {
     p.setCardImageUrl(req.cardImageUrl());
     p.setMainImageUrl(req.mainImageUrl());
     p.setDisplayOrder(req.displayOrder() != null ? req.displayOrder() : 0);
+    p.setFundingGoalCents(req.fundingGoalCents());
 
     ProjectStatus st = req.status() != null ? req.status() : ProjectStatus.ACTIVE;
     p.setStatus(st);
@@ -72,6 +73,7 @@ public class AdminProjectController {
     p.setProjectTags(req.projectTags());
     p.setCardImageUrl(req.cardImageUrl());
     p.setMainImageUrl(req.mainImageUrl());
+    p.setFundingGoalCents(req.fundingGoalCents());
     if (req.displayOrder() != null) p.setDisplayOrder(req.displayOrder());
 
     if (req.status() != null) {
@@ -122,7 +124,8 @@ public class AdminProjectController {
       p.getMainImageUrl(),
       p.getDisplayOrder(),
       p.getStatus(),
-      p.getStatus() == ProjectStatus.COMPLETED
+      p.getStatus() == ProjectStatus.COMPLETED,
+      p.getFundingGoalCents()
     );
   }
 

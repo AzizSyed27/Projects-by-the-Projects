@@ -39,7 +39,8 @@ public class ProjectService {
       p.getShortDesc(),
       p.getProjectTags(),
       p.getCardImageUrl(),
-      p.getStatus() == ProjectStatus.COMPLETED
+      p.getStatus() == ProjectStatus.COMPLETED,
+      p.getFundingGoalCents()
     );
   }
 
@@ -57,7 +58,8 @@ public class ProjectService {
       p.getProjectTags(),
       p.getMainImageUrl(),
       imgs,
-      p.getStatus() == ProjectStatus.COMPLETED
+      p.getStatus() == ProjectStatus.COMPLETED,
+      p.getFundingGoalCents()
     );
   }
 }

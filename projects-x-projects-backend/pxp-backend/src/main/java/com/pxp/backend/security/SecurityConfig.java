@@ -46,6 +46,8 @@ public class SecurityConfig {
 		.requestMatchers("/api/donations/**", "/api/stripe/webhook").permitAll()
 		.requestMatchers("/api/admin/**").authenticated()
 		
+		.requestMatchers("/api/projects/funding").permitAll()
+		
 		.anyRequest().permitAll()
       );
 

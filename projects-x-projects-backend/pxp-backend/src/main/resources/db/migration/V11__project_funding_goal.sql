@@ -1,0 +1,2 @@
+ALTER TABLE projects
+  ADD COLUMN IF NOT EXISTS funding_goal_cents BIGINT NULL;
