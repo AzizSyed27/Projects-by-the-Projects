@@ -340,7 +340,7 @@
 
 .currentNowSub{
   margin: 12px auto 0;
-  max-width: 72ch;
+  width: auto;
   color: rgba(15, 23, 42, 0.75);
   line-height: 1.7;
   font-size: clamp(14px, 1.2vw, 18px);
@@ -364,6 +364,7 @@
 }
 
 .currentNowMedia{
+  height: 350px;
   position: relative;
   overflow: hidden;
   display: block; /* disables grid centering */
@@ -420,7 +421,7 @@
   color: rgba(15, 23, 42, 0.78);
   line-height: 1.6;
   font-size: 13px;
-  max-width: 45ch;
+  width: auto;
   margin-bottom: 15px; 
 }
 
