@@ -118,26 +118,45 @@
 /* card with full image + overlay */
 .projectCard{
   position: relative;
+  border-radius: 4px;
   overflow: hidden;
+  min-height: 600px;
+  max-width: 550px;
+  background: rgba(15, 23, 42, 0.30);
 }
 
-.projectMedia{
-  position: absolute;
-  inset: 0;
-}
-
+.projectMedia,
 .projectMedia img{
   width: 100%;
   height: 100%;
+}
+
+.projectMedia img{
   object-fit: cover;
   display: block;
+  filter: grayscale(0.15) contrast(1.05) brightness(0.82);
+  transform: scale(1.02);
 }
 
 /* dark overlay like screenshot */
 .projectOverlay{
   position: absolute;
   inset: 0;
-  z-index: 1;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.72) 0%,
+    rgba(0,0,0,0.20) 55%,
+    rgba(0,0,0,0.00) 100%
+  );
+  color: rgba(255,255,255,0.92);
+
+  padding-bottom: 60px;
 }
 
 .projectKicker{
@@ -355,8 +374,8 @@
 .currentNowMedia img{
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  display: block;
+  object-fit: fill;
+  
 }
 
 .currentNowPlaceholder{
