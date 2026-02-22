@@ -19,6 +19,7 @@ import ProjectProgress from "../components/ProjectProgress";
 
 const API_BASE = import.meta.env.VITE_API_URL;
 
+
 function parseTags(csv) {
   return (csv || "")
     .split(",")
