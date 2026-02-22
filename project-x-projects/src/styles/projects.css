@@ -505,6 +505,7 @@
   .currentNowSection{ padding: 50px 0 20px; }
   .currentNowGrid{ grid-template-columns: 1fr; }
   .currentNowMedia{ height: 270px; }
+  .currentNowCard{ height: auto;}
 
   .workToggleTabs{
     gap: 6px;
@@ -521,7 +522,7 @@
   display: grid;
   place-items: center;
   overflow: hidden;
-}
+  }
 
   .currentNowMedia img{
     width: 100%;
