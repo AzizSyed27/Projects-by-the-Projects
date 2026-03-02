@@ -483,7 +483,7 @@
 /*////////////*/
 
 .donateStripeSection{
-  background: var(--bg1);
+  background: var(--bg2);
   padding: 50px 0 60px;
 }
 
@@ -525,9 +525,8 @@
   border: 1.5px solid rgba(15, 23, 42, 0.12);
   border-radius: 4px;
   overflow: hidden;
-  background: rgba(230, 251, 252, 0.72);
-  backdrop-filter: blur(10px);
-  box-shadow: var(--shadow);
+  background: var(--bg2);
+  
   display: grid;
   grid-template-columns: 0.95fr 1.05fr;
 }
@@ -927,4 +926,44 @@
 
 .donateStripeCompleteTitle{
   text-align: center;
+}
+
+/* ================================
+   DONATION METHOD TABS
+================================== */
+
+.donateMethodTabs{
+  margin: 18px auto 18px;
+  width: min(980px, 92vw);
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.donateMethodTab{
+  border: 1.5px solid rgba(15, 23, 42, 0.16);
+  background: rgba(255,255,255,0.55);
+  border-radius: 999px;
+  padding: 10px 14px;
+
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.donateMethodTab:hover{
+  box-shadow: var(--shadow);
+}
+
+.donateMethodTab.isActive{
+  border-color: rgba(17, 135, 141, 0.55);
+  background: rgba(17, 135, 141, 0.12);
+}
+
+.donateMethodPanel{
+  width: 100%;
 }

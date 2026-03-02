@@ -132,16 +132,10 @@ export default function StripeDonateEmbed({ projectId = null }) {
   return (
     <section className="donateStripeSection" aria-label="Donate by card">
         <div className="container">
-            <header className="donateStripeHead">
-                <div className="donateStripeEyebrow">Card</div>
-                <h2 className="donateDirectTitle">{heading}</h2>
-                <p className="donateStripeSub">
-                    Secure Stripe checkout. Your payment details go to Stripe, not our servers.
-                </p>
-            </header>
+           
 
             <article className={`donateStripeCard ${showCheckout ? "isCheckout" : "isIntro"}`}>
-                {/* LEFT: amount + reassurance */}
+                {/* LEFT: amount choise and disclaimer */}
                 <div className="donateStripeLeft">
                     
 

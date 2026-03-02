@@ -160,6 +160,9 @@ export default function Donate() {
         },
     ];
 
+    //for donating tabs
+    const [donateMethod, setDonateMethod] = useState("stripe");
+
     return (
         <main className="donatePage">
             {/* HEADER */}
@@ -185,91 +188,120 @@ export default function Donate() {
                         </p>
                     </header>
 
-                    <article className="donateCard">
-
-                        {/* Top bar */}
-                        <div className="donateCardTop">
-                            <div className="donateCardTopLeft">
-                                <div className="donateIcon" aria-hidden="true">
-                                    <img src={transferIcon} alt=""/>
-                                </div>
-
-                                <div className="donateCardTopText">
-                                <div className="donateMethod">SEND E-TRANSFER</div>
-                                <div className="donateTo">
-                                    To <span className="donateEmail">{etransferEmail}</span>
-                                </div>
-                                </div>
-                            </div>
-
-                            <div className="donateAnyAmount">ANY AMOUNT</div>
-                        </div>
-
-                        <div className="donateDivider" />
-
-                        {/* Middle content */}
-                        <div className="donateBody">
-                            <div className="donateBodyKicker">Tell us your project</div>
-
-                            <div className="donateChecks">
-                                <ul className="donateList">
-                                {bulletLeft.map((t) => (
-                                    <li key={t}>
-                                    <span className="donateCheck" aria-hidden="true">
-                                        <img src={check} alt=""/>
-                                    </span>
-                                    {t}
-                                    </li>
-                                ))}
-                                </ul>
-
-                                <ul className="donateList">
-                                {bulletRight.map((t) => (
-                                    <li key={t}>
-                                    <span className="donateCheck" aria-hidden="true">
-                                        <img src={check} alt=""/>
-                                    </span>
-                                    {t}
-                                    </li>
-                                ))}
-                                </ul>
-                            </div>
-                        </div>
-
-                        {/* Bottom CTA */}
+                    <div className="donateMethodTabs" role="tablist" aria-label="Donation method">
                         
-                        <div className="donateCardBottom">
-                           <button
-                                className="donateBtn"
-                                type="button"
-                                onClick={copyEmail}
-                                aria-label="Copy e-transfer email to clipboard"
-                                >
+                        <button
+                            type="button"
+                            className={`donateMethodTab ${donateMethod === "stripe" ? "isActive" : ""}`}
+                            role="tab"
+                            aria-selected={donateMethod === "stripe"}
+                            onClick={() => setDonateMethod("stripe")}
+                        >
+                            Card / Apple Pay
+                        </button>
 
-                                {copyStatus === "copied" ? "Copied!" : "Copy e-transfer email"}
+                        <button
+                            type="button"
+                            className={`donateMethodTab ${donateMethod === "etransfer" ? "isActive" : ""}`}
+                            role="tab"
+                            aria-selected={donateMethod === "etransfer"}
+                            onClick={() => setDonateMethod("etransfer")}
+                        >
+                            E-Transfer
+                        </button>
+                    </div>
 
-                            </button>
-
-                            <div className="donateNote" aria-live="polite">
-                                {copyStatus === "copied" && (
-                                    <>Copied <strong>{etransferEmail}</strong> to clipboard.</>
-                                )}
-                                {copyStatus === "error" && (
-                                    <>Couldn’t copy automatically — please copy manually: <strong>{etransferEmail}</strong></>
-                                )}
-                                {copyStatus === "idle" && (
-                                    <>Tip: include your preferred project in the e-transfer note (or email us after).</>
-                                )}
-                            </div>
-
-
+                    {donateMethod === "stripe" ? (
+                        <div className="donateMethodPanel" role="tabpanel" aria-label="Donate by card">
+                            <StripeDonateEmbed />
                         </div>
+                        ) : (
+                        <div className="donateMethodPanel" role="tabpanel" aria-label="Donate by e-transfer">
+                            
+                            <article className="donateCard">
+                                {/* Top bar */}
+                                <div className="donateCardTop">
+                                    <div className="donateCardTopLeft">
+                                    <div className="donateIcon" aria-hidden="true">
+                                        <img src={transferIcon} alt=""/>
+                                    </div>
 
-                    </article>
+                                    <div className="donateCardTopText">
+                                        <div className="donateMethod">SEND E-TRANSFER</div>
+                                        <div className="donateTo">
+                                        To <span className="donateEmail">{etransferEmail}</span>
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                    <div className="donateAnyAmount">ANY AMOUNT</div>
+                                </div>
+
+                                <div className="donateDivider" />
+
+                                {/* Middle content */}
+                                <div className="donateBody">
+                                    <div className="donateBodyKicker">Tell us your project</div>
+
+                                    <div className="donateChecks">
+                                        <ul className="donateList">
+                                            {bulletLeft.map((t) => (
+                                            <li key={t}>
+                                                <span className="donateCheck" aria-hidden="true">
+                                                <img src={check} alt=""/>
+                                                </span>
+                                                {t}
+                                            </li>
+                                            ))}
+                                        </ul>
+
+                                        <ul className="donateList">
+                                            {bulletRight.map((t) => (
+                                            <li key={t}>
+                                                <span className="donateCheck" aria-hidden="true">
+                                                <img src={check} alt=""/>
+                                                </span>
+                                                {t}
+                                            </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                {/* Bottom CTA */}
+                                <div className="donateCardBottom">
+                                    <button
+                                    className="donateBtn"
+                                    type="button"
+                                    onClick={copyEmail}
+                                    aria-label="Copy e-transfer email to clipboard"
+                                >
+                                    {copyStatus === "copied" ? "Copied!" : "Copy e-transfer email"}
+                                    </button>
+
+                                    <div className="donateNote" aria-live="polite">
+                                        {copyStatus === "copied" && (
+                                            <>Copied <strong>{etransferEmail}</strong> to clipboard.</>
+                                        )}
+                                        {copyStatus === "error" && (
+                                            <>Couldn’t copy automatically — please copy manually: <strong>{etransferEmail}</strong></>
+                                        )}
+                                        {copyStatus === "idle" && (
+                                            <>Tip: include your preferred project in the e-transfer note (or email us after).</>
+                                        )}
+                                    </div>
+
+                                </div>
+
+                            </article>
+                            
+                        </div>
+                    )}
+
+                    
                 </div>
             </section>
 
-            <StripeDonateEmbed />
 
             {/* DIRECT (CHOOSE WHERE YOUR GIFT GOES) */}
             <section className="donateDirect" aria-label="Choose where your gift goes">
