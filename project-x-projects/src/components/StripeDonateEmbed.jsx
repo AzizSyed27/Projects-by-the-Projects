@@ -131,7 +131,7 @@ export default function StripeDonateEmbed({ projectId = null }) {
 
   return (
     <section className="donateStripeSection" aria-label="Donate by card">
-        <div className="container">
+       
            
 
             <article className={`donateStripeCard ${showCheckout ? "isCheckout" : "isIntro"}`}>
@@ -324,7 +324,7 @@ export default function StripeDonateEmbed({ projectId = null }) {
                 )}
             
             </article>
-        </div>
+        
     </section>
   );
 }

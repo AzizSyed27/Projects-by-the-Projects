@@ -526,7 +526,6 @@
   border-radius: 4px;
   overflow: hidden;
   background: var(--bg2);
-  
   display: grid;
   grid-template-columns: 0.95fr 1.05fr;
 }
@@ -565,6 +564,7 @@
   padding: 10px 14px;
   font-weight: 900;
   cursor: pointer;
+  color: var(--ink);
 }
 
 .donateStripeChip:hover{
@@ -766,6 +766,7 @@
 @media (max-width: 900px){
   .donateStripeCard{
     grid-template-columns: 1fr;
+    
   }
   .donateStripeLeft{
     border-right: none;
@@ -775,6 +776,7 @@
   .donateStripePlaceholder{
     min-height: 560px;
   }
+  
 }
 
 /* Disclaimer*/
@@ -947,6 +949,7 @@
   border-radius: 999px;
   padding: 10px 14px;
 
+  color: var(--ink);
   font-weight: 900;
   letter-spacing: 0.06em;
   text-transform: uppercase;
