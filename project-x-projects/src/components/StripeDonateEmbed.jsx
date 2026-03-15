@@ -106,6 +106,13 @@ export default function StripeDonateEmbed({ projectId = null }) {
     const [selectedProjectTitle, setSelectedProjectTitle] = useState(null);
 
     useEffect(() => {
+        if (projects.length > 0 && selectedProjectId === null) {
+            setSelectedProjectId(Number(projects[0].id));
+            setSelectedProjectTitle(projects[0].title);
+        }
+    }, [projects]);
+
+    useEffect(() => {
     let cancelled = false;
 
     async function loadProjects() {
@@ -207,14 +214,12 @@ export default function StripeDonateEmbed({ projectId = null }) {
                                     }}
                                     disabled={projectsLoading}
                                 >
-                                    
+                                    <option value="">General donation (where needed most)</option>
                                     {projects.map((p) => (
                                     <option key={p.id} value={p.id}>
                                         {p.title}
                                     </option>
                                     ))}
-
-                                    <option value="">General donation (where needed most)</option>
                                 </select>
 
 
