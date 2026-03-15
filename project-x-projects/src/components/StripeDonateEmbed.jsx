@@ -186,7 +186,7 @@ export default function StripeDonateEmbed({ projectId = null }) {
 
                                 {/* Choose a Specific project*/}
                                 <label className="donateStripeLabel" htmlFor="donateProject">
-                                    Choose a project (optional)
+                                    Choose a project 
                                 </label>
 
                                 <select
@@ -207,12 +207,14 @@ export default function StripeDonateEmbed({ projectId = null }) {
                                     }}
                                     disabled={projectsLoading}
                                 >
-                                    <option value="">General donation (where needed most)</option>
+                                    
                                     {projects.map((p) => (
                                     <option key={p.id} value={p.id}>
                                         {p.title}
                                     </option>
                                     ))}
+
+                                    <option value="">General donation (where needed most)</option>
                                 </select>
 
 
