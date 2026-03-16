@@ -12,5 +12,6 @@ public record ProjectDetailDto(
   String mainImageUrl,
   List<ProjectImageDto> projectImages,
   boolean isCompleted,
-  Long fundingGoalCents
+  Long fundingGoalCents,
+  Long eTransferAmountCents
 ) {}

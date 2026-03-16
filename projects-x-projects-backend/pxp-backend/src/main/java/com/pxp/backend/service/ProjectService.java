@@ -40,7 +40,8 @@ public class ProjectService {
       p.getProjectTags(),
       p.getCardImageUrl(),
       p.getStatus() == ProjectStatus.COMPLETED,
-      p.getFundingGoalCents()
+      p.getFundingGoalCents(),
+      p.geteTransferAmountCents()
     );
   }
 
@@ -59,7 +60,8 @@ public class ProjectService {
       p.getMainImageUrl(),
       imgs,
       p.getStatus() == ProjectStatus.COMPLETED,
-      p.getFundingGoalCents()
+      p.getFundingGoalCents(),
+      p.geteTransferAmountCents()
     );
   }
 }

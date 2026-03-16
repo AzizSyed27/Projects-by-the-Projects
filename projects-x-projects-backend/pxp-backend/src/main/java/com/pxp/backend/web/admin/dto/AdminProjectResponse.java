@@ -15,5 +15,6 @@ public record AdminProjectResponse(
   Integer displayOrder,
   ProjectStatus status,
   boolean isCompleted,
-  Long fundingGoalCents
+  Long fundingGoalCents,
+  Long eTransferAmountCents
 ) {}

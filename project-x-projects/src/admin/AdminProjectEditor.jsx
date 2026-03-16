@@ -29,6 +29,14 @@ function dollarsToCents(input) {
   return Math.round(n * 100);
 }
 
+function dollarsToCentsOrZero(input) {
+  const s = String(input ?? "").trim();
+  if (!s) return 0;
+  const n = Number(s);
+  if (!Number.isFinite(n)) return 0;
+  return Math.round(n * 100);
+}
+
 function centsToDollarsString(cents) {
   if (cents === null || cents === undefined) return "";
   const n = Number(cents);
@@ -57,6 +65,8 @@ export default function AdminProjectEditor({ mode }) {
     displayOrder: 0,
     status: "DRAFT",
     fundingGoalCad: "",
+    eTransferAmountCad: "",
+    eTransferLumpSumCad: "0",
   });
 
   // Gallery
@@ -93,6 +103,8 @@ export default function AdminProjectEditor({ mode }) {
         displayOrder: p.displayOrder ?? 0,
         status: p.status || "DRAFT",
         fundingGoalCad: centsToDollarsString(p.fundingGoalCents) || "",
+        eTransferAmountCad: centsToDollarsString(p.eTransferAmountCents) || "",
+        eTransferLumpSumCad: "0",
       });
     } catch (e) {
       if (e?.message === "UNAUTHORIZED") nav("/admin/login", { replace: true });
@@ -134,6 +146,9 @@ export default function AdminProjectEditor({ mode }) {
     setBusy(true);
 
     try {
+      const existingETransferCents = dollarsToCentsOrZero(form.eTransferAmountCad);
+      const lumpSumETransferCents = dollarsToCentsOrZero(form.eTransferLumpSumCad);
+
       const payload = {
         slug: form.slug || undefined,
         projectTitle: form.projectTitle,
@@ -146,6 +161,7 @@ export default function AdminProjectEditor({ mode }) {
         displayOrder: Number(form.displayOrder || 0),
         status: form.status,
         fundingGoalCents: dollarsToCents(form.fundingGoalCad),
+        eTransferAmountCents: existingETransferCents + lumpSumETransferCents,
       };
 
       if (editing) {
@@ -432,6 +448,40 @@ export default function AdminProjectEditor({ mode }) {
                         hide the meter.
                       </div>
                     </div>
+
+                   {/* E-Transfer Total (read only) */}
+                    <div>
+                      <div className="adminLabel">E-Transfer Total (CAD)</div>
+                      <input
+                        className="adminInput"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        value={form.eTransferAmountCad}
+                        readOnly
+                      />
+                      <div className="adminHint">
+                        This is the saved running total of e-transfer donations.
+                      </div>
+                    </div>
+
+                    {/* E-Transfer Lump Sum */}
+                    <div>
+                      <div className="adminLabel">Add E-Transfer Lump Sum (CAD)</div>
+                      <input
+                        className="adminInput"
+                        type="number"
+                        step="0.01"
+                        value={form.eTransferLumpSumCad}
+                        onChange={(e) => updateField("eTransferLumpSumCad", e.target.value)}
+                        placeholder="0"
+                      />
+                      <div className="adminHint">
+                        Enter an amount to add to the total when you save. This field resets to 0 when the page loads.
+                      </div>
+                    </div>
+
+
                   </div>
                 </div>
 

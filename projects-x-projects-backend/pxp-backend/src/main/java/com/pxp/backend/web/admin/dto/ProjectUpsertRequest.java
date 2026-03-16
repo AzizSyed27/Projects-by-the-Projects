@@ -14,5 +14,6 @@ public record ProjectUpsertRequest(
   String mainImageUrl,
   Integer displayOrder,
   ProjectStatus status,         // optional; default ACTIVE
-  Long fundingGoalCents
+  Long fundingGoalCents,
+  Long eTransferAmountCents
 ) {}

@@ -74,6 +74,7 @@ public class AdminProjectController {
     p.setCardImageUrl(req.cardImageUrl());
     p.setMainImageUrl(req.mainImageUrl());
     p.setFundingGoalCents(req.fundingGoalCents());
+    p.seteTransferAmountCents(req.eTransferAmountCents());
     if (req.displayOrder() != null) p.setDisplayOrder(req.displayOrder());
 
     if (req.status() != null) {
@@ -125,7 +126,8 @@ public class AdminProjectController {
       p.getDisplayOrder(),
       p.getStatus(),
       p.getStatus() == ProjectStatus.COMPLETED,
-      p.getFundingGoalCents()
+      p.getFundingGoalCents(),
+      p.geteTransferAmountCents()
     );
   }
 

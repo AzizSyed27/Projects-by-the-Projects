@@ -7,6 +7,9 @@ import { clearAdminToken } from "../admin/adminAuth";
 
 const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8080";
 
+// pseudo-projectId for filtering general donations only
+const GENERAL_ONLY = "GENERAL_ONLY"; 
+
 function centsToCAD(c) {
   const n = Number(c || 0);
   return `$${(n / 100).toFixed(2)} CAD`;
@@ -26,7 +29,7 @@ export default function AdminDonations() {
   const nav = useNavigate();
 
   const [rows, setRows] = useState([]);
-  const [stats, setStats] = useState({ totalPaidCents: 0, countPaid: 0 });
+
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState("");
 
@@ -67,20 +70,14 @@ export default function AdminDonations() {
     try {
       const params = {
         status: current.status === "ALL" ? "" : current.status,
-        projectId: current.projectId || "",
+        projectId:
+          current.projectId && current.projectId !== GENERAL_ONLY
+            ? current.projectId
+            : "",
       };
 
-      const [list, st] = await Promise.all([
-        AdminDonationsApi.list(params),
-        AdminDonationsApi.stats({
-          projectId: current.projectId || "",
-          fromDate: current.fromDate || "",
-          toDate: current.toDate || "",
-        }),
-      ]);
-
-      setRows(list || []);
-      setStats(st || { totalPaidCents: 0, countPaid: 0 });
+      const list = await AdminDonationsApi.list(params);
+      setRows(Array.isArray(list) ? list : []);
     } catch (e) {
       if (e?.message === "UNAUTHORIZED") nav("/admin/login", { replace: true });
       else setErr(e?.message || "Failed to load donations");
@@ -107,6 +104,8 @@ export default function AdminDonations() {
 
   const activeProjectTitle = useMemo(() => {
     if (!applied.projectId) return "All (includes General)";
+    if (applied.projectId === GENERAL_ONLY) return "General only";
+
     const found = projects.find((p) => String(p.id) === String(applied.projectId));
     return found?.title || `Project #${applied.projectId}`;
   }, [applied.projectId, projects]);
@@ -129,16 +128,34 @@ export default function AdminDonations() {
     const to = endOfDayLocal(applied.toDate);
 
     return (rows || []).filter((d) => {
-      if (!from && !to) return true;
+      // General-only filter
+      if (applied.projectId === GENERAL_ONLY && d.projectId != null) {
+        return false;
+      }
 
       const t = Date.parse(d.createdAt || "");
-      if (!Number.isFinite(t)) return true; // if missing date, don’t hide it
+      if (!from && !to) return true;
+      if (!Number.isFinite(t)) return true;
 
       if (from && t < from.getTime()) return false;
       if (to && t > to.getTime()) return false;
+
       return true;
     });
-  }, [rows, applied.fromDate, applied.toDate]);
+  }, [rows, applied.projectId, applied.fromDate, applied.toDate]);
+
+  const stats = useMemo(() => {
+    return displayRows.reduce(
+      (acc, d) => {
+        if (d.status === "PAID") {
+          acc.totalPaidCents += Number(d.amountCents || 0);
+          acc.countPaid += 1;
+        }
+        return acc;
+      },
+      { totalPaidCents: 0, countPaid: 0 }
+    );
+  }, [displayRows]);
 
   return (
     <main className="adminPage">
@@ -219,6 +236,7 @@ export default function AdminDonations() {
                     onChange={(e) => setDraft((p) => ({ ...p, projectId: e.target.value }))}
                   >
                     <option value="">All (includes General)</option>
+                    <option value={GENERAL_ONLY}>General only</option>
                     {projects.map((p) => (
                       <option key={p.id} value={p.id}>
                         {p.title}

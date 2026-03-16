@@ -38,11 +38,17 @@ public class ProjectFundingController {
 
     // join with project goals
     return projectRepo.findAll().stream()
-      .map(p -> new FundingRow(
-        p.getId(),
-        raised.getOrDefault(p.getId(), 0L),
-        p.getFundingGoalCents()
-      ))
-      .toList();
+		.map(p -> {
+			  long stripeRaised = raised.getOrDefault(p.getId(), 0L);
+			  long eTransfer = (p.geteTransferAmountCents() == null) ? 0L : p.geteTransferAmountCents();
+			  long totalRaised = stripeRaised + eTransfer;
+		
+			  return new FundingRow(
+			    p.getId(),
+			    totalRaised,
+			    p.getFundingGoalCents()
+			  );
+			})
+		.toList();
   }
 }

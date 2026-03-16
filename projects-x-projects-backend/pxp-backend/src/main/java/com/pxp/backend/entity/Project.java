@@ -60,6 +60,9 @@ public class Project {
   
   @Column(name="funding_goal_cents")
   private Long fundingGoalCents;
+  
+  @Column(name = "etransfer_amount_cents", nullable = false)
+  private Long eTransferAmountCents = 0L;
 
   @PrePersist
   void onCreate() {
@@ -114,6 +117,11 @@ public class Project {
   
   public Long getFundingGoalCents() { return fundingGoalCents; }
   public void setFundingGoalCents(Long fundingGoalCents) { this.fundingGoalCents = fundingGoalCents; }
+  
+  public Long geteTransferAmountCents() { return eTransferAmountCents; }
+  public void seteTransferAmountCents(Long eTransferAmountCents) {
+    this.eTransferAmountCents = (eTransferAmountCents == null ? 0L : eTransferAmountCents);
+  }
 
   public List<ProjectImage> getImages() { return images; }
 }
