@@ -347,7 +347,7 @@ export default function GetInvolved() {
 
                         {loopStatus === "success" && (
                         <div className="giLoopMsg" role="status">
-                            Check your email to confirm your subscription 
+                            Check your email (or spam) to confirm your subscription 
                         </div>
                     )}
 

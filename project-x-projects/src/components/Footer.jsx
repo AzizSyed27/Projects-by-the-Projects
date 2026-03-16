@@ -105,7 +105,7 @@ export default function Footer() {
                 try {
                   const res = await subscribeEmail(trimmed);
                   setFooterStatus("success");
-                  setFooterMsg(res?.message || "Check your email to confirm your subscription.");
+                  setFooterMsg(res?.message || "Check your email (or spam) to confirm your subscription.");
                   setFooterEmail("");
                 } catch (err) {
                   setFooterStatus("error");
