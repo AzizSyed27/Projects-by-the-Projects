@@ -753,7 +753,7 @@ body{
 
 @media (max-width: 900px){
   .heroCard{ grid-template-columns: 1fr; }
-  .heroLeft{ padding: 34px 22px; }
+  .heroLeft{ padding: 34px 22px; gap: 0px;}
   .h1{ font-size: 36px; }
   .grid2{ grid-template-columns: 1fr; }
 }
