@@ -653,11 +653,12 @@ body{
   
   padding: clamp(24px, 4vw, 56px);
   background: var(--bg2);
+  gap: 10px;
 }
 
 .heroActions{
   display: flex;
-  gap: 12px;
+  gap: 15px;
   margin-top: 8px;
 }
 

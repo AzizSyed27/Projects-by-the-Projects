@@ -89,9 +89,41 @@ export default function HomeHero() {
                                 <Link className="btn btnPrimary" to="/donate">
                                     Donate
                                 </Link>
-                                <Link className="btn btnGhost" to="/projects">
-                                    Learn more<span aria-hidden="true">›</span>
+                                <Link
+                                    to={`/projects#projects-work`}
+                                    className="btn projectViewLink"
+                                    aria-label={`View Live Projects`}
+                                >
+                                    <span className="liveDot" aria-hidden="true" />
+                                    Live Projects <span aria-hidden="true">›</span>
                                 </Link>
+                            </div>
+
+                            <div className="liveProjectsHero">
+
+                                {/* CURRENT PROJECTS PROGRESS */}
+                                {loadingProjects && (
+                                    <p className="currentNowLoading">Loading projects…</p>
+                                )}
+            
+                                {!loadingProjects && currentNow.length > 0 && (
+                                    <div className="currentNowGridHome">
+                                        {currentNow.map((p) => (
+                                            <article className="" key={p.projectId}>
+                                                <h3 className="currentNowCardTitle">{p.title}</h3>
+            
+                                                    <ProjectProgress
+                                                        raisedCents={p.raisedCents}
+                                                        goalCents={p.goalCents}
+                                                        isDull={p.isCompleted}
+                                                    />
+            
+                                                    
+                                            </article>
+                                        ))}
+                                    </div>
+                                )}
+
                             </div>
 
                             
@@ -104,50 +136,6 @@ export default function HomeHero() {
                     </section>
 
                 </div>
-
-               {/* CURRENT PROJECTS PROGRESS */}
-               
-               {currentNow.length > 0 && (
-                    <div className="container">
-                        
-                        <div className="liveProgressSection">
-                            
-                            <Link
-                                to={`/projects#projects-work`}
-                                className="projectViewLink"
-                                aria-label={`View Live Projects`}
-                            >
-                                <span className="liveDot" aria-hidden="true" />
-                                Live Projects <span aria-hidden="true">›</span>
-                            </Link>
-
-                            {loadingProjects && (
-                                <p className="currentNowLoading">Loading projects…</p>
-                            )}
-        
-                            {!loadingProjects && currentNow.length > 0 && (
-                                <div className="currentNowGridHome">
-                                    {currentNow.map((p) => (
-                                        <article className="" key={p.projectId}>
-                                            <h3 className="currentNowCardTitle">{p.title}</h3>
-        
-                                                <ProjectProgress
-                                                    raisedCents={p.raisedCents}
-                                                    goalCents={p.goalCents}
-                                                    isDull={p.isCompleted}
-                                                />
-        
-                                                
-                                        </article>
-                                    ))}
-                                </div>
-                            )}
-
-                        </div>
-
-                        
-                    </div>
-                )}
 
             </section>
 

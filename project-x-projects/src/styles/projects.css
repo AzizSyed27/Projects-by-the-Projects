@@ -377,6 +377,13 @@
   border-radius: 5px;
 }
 
+.liveProjectsHero{
+  margin-top: 20px;
+  border-radius: 7px;
+  
+  padding: 0px;
+}
+
 .liveDot {
   display: inline-block;
   width: 8px;
