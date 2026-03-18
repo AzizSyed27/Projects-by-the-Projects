@@ -458,7 +458,6 @@ export default function AdminProjectEditor({ mode }) {
                         min="0"
                         step="0.01"
                         value={form.eTransferAmountCad}
-                        readOnly
                       />
                       <div className="adminHint">
                         This is the saved running total of e-transfer donations.
